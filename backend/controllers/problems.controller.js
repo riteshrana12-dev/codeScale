@@ -4,8 +4,15 @@ dotenv.config({ path: "./config/.env" });
 
 const problemsList = async (req, res) => {
   try {
-    const problems = await problemsModel.find(req.body);
-    res.status(201).json({
+    const { difficulty, tags } = req.query;
+    const filter = {};
+
+    if (difficulty) filter.difficulty = difficulty;
+
+    if (tags) filter.tags = { $in: tags.split(",") };
+
+    const problems = await problemsModel.find(filter);
+    res.status(200).json({
       message: "Problems",
       problems,
     });
@@ -29,7 +36,7 @@ const problems = async (req, res) => {
       });
     }
 
-    return res.status(201).json({
+    return res.status(200).json({
       problems,
     });
   } catch (err) {
