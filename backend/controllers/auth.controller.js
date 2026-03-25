@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
     });
   }
 
-  const userToken = jwt.sign(
+  const Token = jwt.sign(
     {
       id: isAlreadyExist._id,
       role: isAlreadyExist.role,
@@ -96,12 +96,12 @@ const loginUser = async (req, res) => {
     { expiresIn: "7d" },
   );
 
-  res.cookie("userToken", userToken);
+  res.cookie("userToken", Token);
 
   res.json({
     message: "sign in successful",
     user: isAlreadyExist,
-    userToken,
+    Token,
   });
 };
 
