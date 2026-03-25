@@ -26,6 +26,7 @@ out/
 .tmp/
 .temp/
 .vite/
+.temp_run*
 *.tsbuildinfo
 
 # 🖥️ OS FILES
