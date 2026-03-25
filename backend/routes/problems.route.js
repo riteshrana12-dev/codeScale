@@ -11,7 +11,7 @@ problemsRoutes.get(
 );
 
 problemsRoutes.get(
-  "/problem/:id",
+  "/problems/:id",
   authMiddleware(process.env.JWT_SECRET_USER),
   problemsController.problems,
 );
