@@ -17,7 +17,7 @@ function authMiddleware(secret) {
       next();
     } catch (err) {
       return res.status(404).json({
-        message: "Authentication failed",
+        message: "Authentication failed retry",
       });
     }
   };
