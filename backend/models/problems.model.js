@@ -7,8 +7,8 @@ const exampleSchema = new Schema({
 });
 
 const testCaseSchema = new Schema({
-  input: { type: Object, required: true }, // structured input
-  expectedOutput: { type: Object, required: true }, // structured output
+  input: { type: Object, required: true }, // structured inPut
+  expectedOutput: { type: Object, required: true }, // structured outPut
 });
 
 const solutionSchema = new Schema({
