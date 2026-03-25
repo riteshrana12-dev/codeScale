@@ -1,18 +1,18 @@
 import cookieParser from "cookie-parser";
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import problemsRoutes from "./routes/problems.route.js";
 import connectToDb from "./config/db.js";
 
 const app = express();
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173", // frontend URL
-//     credentials: true,
-//   }),
-// );
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL
+    credentials: true,
+  }),
+);
 
 app.use(cookieParser());
 
