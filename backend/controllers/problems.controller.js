@@ -32,7 +32,7 @@ const problems = async (req, res) => {
 
     if (!problems) {
       return res.status(400).json({
-        message: "Question not Available",
+        message: "Question are not Available",
       });
     }
 
