@@ -1,19 +1,13 @@
-# =========================
 # 🔐 ENV FILES (VERY IMPORTANT)
-# =========================
 .env
 .env.*
 config/.env
 
-# =========================
 # 📦 NODE MODULES
-# =========================
 node_modules/
 */node_modules/
 
-# =========================
 # 🧾 LOG FILES
-# =========================
 logs
 *.log
 npm-debug.log*
@@ -21,60 +15,42 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# =========================
 # 🗂️ BUILD FILES
-# =========================
 dist/
 build/
 out/
 .next/
 
-# =========================
 # ⚙️ CACHE / TEMP FILES
-# =========================
 .cache/
 .tmp/
 .temp/
 .vite/
 *.tsbuildinfo
 
-# =========================
 # 🖥️ OS FILES
-# =========================
 .DS_Store
 Thumbs.db
 
-# =========================
 # 🧠 IDE / EDITOR
-# =========================
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# =========================
 # 🧪 TEST COVERAGE
-# =========================
 coverage/
 
-# =========================
 # 🔐 COOKIE / TOKENS (OPTIONAL)
-# =========================
 cookies.txt
 
-# =========================
 # 📁 UPLOADS (if any)
-# =========================
 uploads/
 public/uploads/
 
-# =========================
 # 🐳 DOCKER (if you add later)
-# =========================
 docker-data/
 
-# =========================
 # 📊 DATABASE (local dumps)
-# =========================
 *.dump
 *.bak
