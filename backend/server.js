@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import problemsRoutes from "./routes/problems.route.js";
 import submissionRoutes from "./routes/submission.route.js";
+import userRouter from "./routes/user.route.js";
 import connectToDb from "./config/db.js";
 import fs from "fs";
 import path from "path";
@@ -52,6 +53,7 @@ const cleanupTempFolder = () => {
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/problems", problemsRoutes);
 app.use("/api/v1/problems", submissionRoutes);
+app.use("/api/v1/user", userRouter);
 
 // Database connection and Server Activation
 (async () => {
