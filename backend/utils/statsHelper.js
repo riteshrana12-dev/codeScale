@@ -1,4 +1,6 @@
-const updateStreakAndStats = async (user, problemDifficulty) => {
+//all user progress stats details
+
+const updateStreakAndStats = async (user, problemDifficulty, earnedPoints) => {
   const now = new Date();
   const lastSubDate = user.activity.lastSubmissionDate;
 
@@ -11,6 +13,7 @@ const updateStreakAndStats = async (user, problemDifficulty) => {
     user.summary[difficultyFeild] += 1;
     user.summary.totalSolved += 1;
   }
+  //   if()
 
   if (!lastSubDate) {
     user.activity.streak = 1;
@@ -41,6 +44,15 @@ const updateStreakAndStats = async (user, problemDifficulty) => {
   }
   // persist data as it was
   user.activity.lastSubmissionDate = now;
+
+  // Increment Solve Counts
+  user.summary[difficultyFeild] = (user.summary[difficultyFeild] || 0) + 1;
+  user.summary.totalSolved += 1;
+
+  //Increment points
+  const pointsField = `${problemDifficulty.toLowerCase()}Points`;
+  user.summary[pointsField] = (user.summary[pointsField] || 0) + 1;
+  user.summary.totalPoints += earnedPoints;
 
   // Save all changes to the Database
   return await user.save();
