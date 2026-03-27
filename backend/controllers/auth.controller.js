@@ -38,6 +38,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       role: "learner",
+      "activity.joinedDate": new Date(),
     });
 
     res.status(201).json({
