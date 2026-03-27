@@ -92,7 +92,7 @@ const submissionProblem = async (req, res) => {
       const user = userModel.findById(req.user_id);
       // 1. The 'user' object we just found
       // 2. The 'problem.difficulty' from your problemsModel
-      await updateStreakAndStats(user, problem.difficulty);
+      await updateStreakAndStats(user, problem.difficulty, problem.points);
       // passed to utils/statsHelper.js
     }
 
