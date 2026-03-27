@@ -15,7 +15,35 @@ const updateStreakAndStats = async (user, problemDifficulty) => {
   if (!lastSubDate) {
     user.activity.streak = 1;
     user.activity.maxStreak = 1;
+  } else {
+    const msInDay = 24 * 60 * 60 * 1000;
+
+    // reseting the time to zero and getting only date
+    const start = new Date(lastSubDate).setHours(0, 0, 0, 0);
+    const end = new Date(now).setHours(0, 0, 0, 0);
+
+    const dayDiff = Math.round((end - start) / msInDay);
+
+    if (dayDiff === 0) {
+      //user already solved a problem today no need to update or increament the streak count
+    } else if (dayDiff === 1) {
+      //user solved the next day consecutively increament the streak count
+      user.activity.streak += 1;
+    } else {
+      //user skipped the one or more days streak set to 1
+      user.activity.streak = 1;
+    }
   }
+
+  // update the maxStreak count if streak is more than maxstreak
+  if (user.activity.streak > user.activity.maxStreak) {
+    user.activity.maxStreak = user.activity.streak;
+  }
+  // persist data as it was
+  user.activity.lastSubmissionDate = now;
+
+  // Save all changes to the Database
+  return await user.save();
 };
 
 export default updateStreakAndStats;
