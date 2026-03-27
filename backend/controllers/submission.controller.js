@@ -4,6 +4,8 @@ import getWrapper from "../utils/template.js";
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import userModel from "../models/user.model.js";
+import updateStreakAndStats from "../utils/statsHelper.js";
 
 const submissionProblem = async (req, res) => {
   let tempFilePath = "";
@@ -85,6 +87,14 @@ const submissionProblem = async (req, res) => {
           : "failed",
       testCaseResults: results,
     });
+
+    if (allPassed) {
+      const user = userModel.findById(req.user_id);
+      // 1. The 'user' object we just found
+      // 2. The 'problem.difficulty' from your problemsModel
+      await updateStreakAndStats(user, problem.difficulty);
+      // passed to utils/statsHelper.js
+    }
 
     return res.status(200).json({ success: true, submission });
   } catch (err) {
