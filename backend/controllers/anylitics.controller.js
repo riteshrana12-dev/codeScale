@@ -59,7 +59,7 @@ const getActivityHeatMap = async (req, res) => {
       },
       {
         $group: {
-          _id: { $dateToString: { format: "%Y-%M-%D", date: "$createdAt" } },
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
           count: { $sum: 1 },
         },
       },
