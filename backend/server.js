@@ -8,7 +8,7 @@ import userRouter from "./routes/user.route.js";
 import connectToDb from "./config/db.js";
 import fs from "fs";
 import path from "path";
-import anlyticRouter from "./routes/anylitics.route.js";
+import analyticsRouter from "./routes/analytics.route.js";
 
 const app = express();
 
@@ -53,9 +53,9 @@ const cleanupTempFolder = () => {
 // Route Definitions
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/problems", problemsRoutes);
-app.use("/api/v1/problems", submissionRoutes);
+app.use("/api/v1/submission", submissionRoutes);
 app.use("/api/v1/user", userRouter);
-app.use("/api/v1/user/dashboard", anlyticRouter);
+app.use("/api/v1/analytics", analyticsRouter);
 
 // Database connection and Server Activation
 (async () => {
