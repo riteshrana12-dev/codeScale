@@ -63,6 +63,12 @@ const submissionProblem = async (req, res) => {
           allPassed = false;
           break;
         }
+
+        if (allPassed) {
+          await userModel.findByIdAndUpdate(userId, {
+            $addToSet: { solvedproblems: problem._id },
+          });
+        }
       } catch (err) {
         allPassed = false;
         results.push({
