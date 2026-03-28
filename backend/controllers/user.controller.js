@@ -1,56 +1,23 @@
-import submissionModel from "../models/submission.model.js";
-import mongoose from "mongoose";
 import userModel from "../models/user.model.js";
 //profile
-const userProfile = (req, res) => {
+const userProfile = async (req, res) => {
   try {
-  } catch (err) {
-    return res.status(500).json({
-      message: "error",
-      error: err.message,
-    });
-  }
-};
-
-// dashboard
-const getUserDashboard = async (req, res) => {
-  try {
-    const userId = req.user_id;
     const user = await userModel
-      .findById(userId)
-      .select("firstName lastname summary activity -_id");
+      .findById(req.user_id)
+      .select("firstName , lastName , email , profile , -_id");
 
     if (!user) {
       return res.status(404).json({
-        message: "user not found",
+        message: "User not found",
       });
     }
-    const submissionStats = await submissionModel.aggregate([
-      // filter by userId
-      {
-        $match: { userId: new mongoose.Types.ObjectId(userId) },
-      },
-      //group by status (accepted , failed,pending,error)
-      {
-        $group: {
-          _id: "$statue",
-          count: { $sum: 1 },
-        },
-      },
-    ]);
 
     return res.status(200).json({
       success: true,
-      profile: {
-        name: `${user.firstName} ${user.lastName}`,
-        joinedAt: user.activity.joinedDate,
-      },
-      points: user.summary, // Includes easyPoints, totalPoints, etc.
-      activity: user.activity, // Includes streaks
-      submissionRaw: submissionStats,
+      message: "User profile ",
+      profile: user,
     });
   } catch (err) {
-    console.error("Dashboard Error:", err);
     return res.status(500).json({
       message: "error",
       error: err.message,
@@ -58,4 +25,4 @@ const getUserDashboard = async (req, res) => {
   }
 };
 
-export default { userProfile, getUserDashboard };
+export default userProfile;
