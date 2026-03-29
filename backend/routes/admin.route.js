@@ -2,6 +2,7 @@ import { Router } from "express";
 import adminMiddleware from "../middleware/admin.middleware.js";
 import adminController from "../controllers/admin.controller.js";
 import authMiddleware from "../middleware/auth.middleware.js";
+import getPlatformStats from "../controllers/plateform_analytics.js";
 
 const adminRouter = Router();
 // --- Problem Management ---
@@ -27,5 +28,9 @@ adminRouter.delete(
   authMiddleware(process.env.JWT_SECRET_USER),
   adminController.deleteProblem,
 );
-
+adminRouter.get(
+  "/plateform-analytics",
+  authMiddleware(process.env.JWT_SECRET_USER),
+  getPlatformStats,
+);
 export default adminRouter;
