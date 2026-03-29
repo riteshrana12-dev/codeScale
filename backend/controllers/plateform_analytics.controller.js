@@ -1,3 +1,6 @@
+import userModel from "../models/user.model";
+import problemsModel from "../models/problems.model";
+
 const getPlatformStats = async (req, res) => {
   try {
     const totalUsers = await userModel.countDocuments({ role: "user" });
