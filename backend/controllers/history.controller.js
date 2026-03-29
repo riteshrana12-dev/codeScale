@@ -9,7 +9,7 @@ const getSubmissionHistory = async (req, res) => {
       .populate("problemId", "title difficulty");
 
     if (!history || history.length === 0) {
-      return res.json(200).json({
+      return res.status(200).json({
         success: true,
         message: "No submission found yet. Start coding!",
         data: [],
@@ -29,3 +29,5 @@ const getSubmissionHistory = async (req, res) => {
     });
   }
 };
+
+export default getSubmissionHistory;
