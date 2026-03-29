@@ -1,60 +1,56 @@
-//all user progress stats details
-
+/**
+ * Updates user streak, problem difficulty counts, and total points.
+ * Handles deduplication of solve counts and date-based streak logic.
+ */
 const updateStreakAndStats = async (user, problemDifficulty, earnedPoints) => {
   const now = new Date();
   const lastSubDate = user.activity.lastSubmissionDate;
+  const msInDay = 24 * 60 * 60 * 1000;
 
-  // 1. Update Difficulty Counters
-  // We use bracket notation to dynamically update 'easySolved', 'mediumSolved', etc.
-
-  const difficultyFeild = `${problemDifficulty.toLowerCase()}Solved`;
-
-  if (user.summary && typeof user.summary[difficultyFeild] != "undefined") {
-    user.summary[difficultyFeild] += 1;
-    user.summary.totalSolved += 1;
-  }
-  //   if()
-
+  // 1. STREAK LOGIC
   if (!lastSubDate) {
+    // First time solving a problem
     user.activity.streak = 1;
     user.activity.maxStreak = 1;
   } else {
-    const msInDay = 24 * 60 * 60 * 1000;
-
-    // reseting the time to zero and getting only date
+    // Reset time to zero to compare only the calendar dates
     const start = new Date(lastSubDate).setHours(0, 0, 0, 0);
     const end = new Date(now).setHours(0, 0, 0, 0);
-
     const dayDiff = Math.round((end - start) / msInDay);
 
-    if (dayDiff === 0) {
-      //user already solved a problem today no need to update or increament the streak count
-    } else if (dayDiff === 1) {
-      //user solved the next day consecutively increament the streak count
+    if (dayDiff === 1) {
+      // Consecutive day: Increment streak
       user.activity.streak += 1;
-    } else {
-      //user skipped the one or more days streak set to 1
+    } else if (dayDiff > 1) {
+      // Gap detected: Reset streak
       user.activity.streak = 1;
     }
+    // Note: if dayDiff === 0, user already solved a problem today; streak stays the same.
   }
 
-  // update the maxStreak count if streak is more than maxstreak
+  // Update maxStreak if current streak exceeds it
   if (user.activity.streak > user.activity.maxStreak) {
     user.activity.maxStreak = user.activity.streak;
   }
-  // persist data as it was
+
+  // Update last activity timestamp
   user.activity.lastSubmissionDate = now;
 
-  // Increment Solve Counts
-  user.summary[difficultyFeild] = (user.summary[difficultyFeild] || 0) + 1;
-  user.summary.totalSolved += 1;
-
-  //Increment points
+  const difficultyField = `${problemDifficulty.toLowerCase()}Solved`;
   const pointsField = `${problemDifficulty.toLowerCase()}Points`;
-  user.summary[pointsField] = (user.summary[pointsField] || 0) + 1;
-  user.summary.totalPoints += earnedPoints;
 
-  // Save all changes to the Database
+  // Initialize summary if not present (safety check)
+  if (!user.summary) user.summary = {};
+
+  // Increment solve counts (Only once!)
+  user.summary[difficultyField] = (user.summary[difficultyField] || 0) + 1;
+  user.summary.totalSolved = (user.summary.totalSolved || 0) + 1;
+
+  // Increment points
+  user.summary[pointsField] = (user.summary[pointsField] || 0) + earnedPoints;
+  user.summary.totalPoints = (user.summary.totalPoints || 0) + earnedPoints;
+
+  // 3. DATABASE PERSISTENCE
   return await user.save();
 };
 
