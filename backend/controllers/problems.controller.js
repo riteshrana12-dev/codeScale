@@ -1,5 +1,6 @@
 import problemsModel from "../models/problems.model.js";
 import dotenv from "dotenv";
+import userModel from "../models/user.model.js";
 dotenv.config({ path: "./config/.env" });
 
 const problemsList = async (req, res) => {
@@ -58,8 +59,22 @@ const problemsSelect = async (req, res) => {
       });
     }
 
+    const userId = req.user_id;
+    let isSolved = false;
+    if (userId) {
+      const user = await userModel.findById(userId).select("solvedProblems");
+      // check if this problem's ID is in user list
+      isSolved =
+        user?.solvedProblems?.some(
+          (id) => id.toString() === problems._id.toString(),
+        ) || false;
+    }
     return res.status(200).json({
-      problems,
+      success: true,
+      data: {
+        ...problem._doc,
+        isSolved,
+      },
     });
   } catch (err) {
     res.status(500).json({
