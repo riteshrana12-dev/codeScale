@@ -13,7 +13,7 @@ problemsRoutes.get(
 problemsRoutes.get(
   "/:id",
   authMiddleware(process.env.JWT_SECRET_USER),
-  problemsController.problems,
+  problemsController.problemsSelect,
 );
 
 export default problemsRoutes;
