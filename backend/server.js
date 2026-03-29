@@ -9,6 +9,7 @@ import connectToDb from "./config/db.js";
 import fs from "fs";
 import path from "path";
 import analyticsRouter from "./routes/analytics.route.js";
+import historyroute from "./routes/history.route.js";
 
 const app = express();
 
@@ -56,8 +57,10 @@ app.use("/api/v1/problems", problemsRoutes);
 app.use("/api/v1/submission", submissionRoutes);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/analytics", analyticsRouter);
+app.use("/api/v1/user", historyroute);
 
 // Database connection and Server Activation
+
 (async () => {
   try {
     await connectToDb();
