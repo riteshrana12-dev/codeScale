@@ -72,7 +72,7 @@ const problemsSelect = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: {
-        ...problem._doc,
+        ...problems._doc,
         isSolved,
       },
     });
