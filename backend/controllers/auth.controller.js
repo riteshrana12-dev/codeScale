@@ -105,8 +105,8 @@ const loginUser = async (req, res) => {
     message: "sign in successful",
     Token,
     user: {
-      firstname: user.firstname,
-      role: user.role, // 👈 The Frontend needs this to show the Admin Panel
+      firstname: isAlreadyExist.firstName,
+      role: isAlreadyExist.role, // 👈 The Frontend needs this to show the Admin Panel
     },
   });
 };
