@@ -65,7 +65,13 @@ const submissionProblem = async (req, res) => {
         }
 
         if (allPassed) {
+          await problemsModel.findByIdAndUpdate(req.params.id, {
+            //  increments a number of user solved
+            $inc: { totalSolves: 1 },
+          });
+
           await userModel.findByIdAndUpdate(userId, {
+            //  setting a feild solvedproblems to show the problem which are already solved
             $addToSet: { solvedproblems: problem._id },
           });
         }
