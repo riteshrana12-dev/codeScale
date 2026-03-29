@@ -2,7 +2,7 @@ import { Router } from "express";
 import adminMiddleware from "../middleware/admin.middleware.js";
 import adminController from "../controllers/admin.controller.js";
 import authMiddleware from "../middleware/auth.middleware.js";
-import getPlatformStats from "../controllers/plateform_analytics.js";
+import getPlatformStats from "../controllers/plateform_analytics.controller.js";
 
 const adminRouter = Router();
 // --- Problem Management ---
