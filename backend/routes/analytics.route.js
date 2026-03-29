@@ -15,4 +15,10 @@ analyticsRouter.get(
   analyticsController.getActivityHeatMap,
 );
 
+analyticsRouter.get(
+  "/leaderboard",
+  authMiddleware(process.env.JWT_SECRET_USER),
+  analyticsController.getLeaderboard,
+);
+
 export default analyticsRouter;
