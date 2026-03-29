@@ -3,13 +3,14 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import problemsRoutes from "./routes/problems.route.js";
-import submissionRoutes from "./routes/submission.route.js";
+import submissionRoutes from "./routes/user_submission.route.js";
 import userRouter from "./routes/user.route.js";
 import connectToDb from "./config/db.js";
 import fs from "fs";
 import path from "path";
-import analyticsRouter from "./routes/analytics.route.js";
-import historyroute from "./routes/history.route.js";
+import analyticsRouter from "./routes/user_analytics.route.js";
+import historyroute from "./routes/user_history.route.js";
+import adminRouter from "./routes/admin.route.js";
 
 const app = express();
 
@@ -52,15 +53,17 @@ const cleanupTempFolder = () => {
 };
 
 // Route Definitions
-app.use("/api/v1", authRoutes);
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/problems", problemsRoutes);
 app.use("/api/v1/submission", submissionRoutes);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/analytics", analyticsRouter);
 app.use("/api/v1/user", historyroute);
 
-// Database connection and Server Activation
+app.use("/api/v1/admin", adminRouter);
 
+// Database connection
+// Server Activation
 (async () => {
   try {
     await connectToDb();

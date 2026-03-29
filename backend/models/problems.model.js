@@ -17,7 +17,7 @@ const solutionSchema = new Schema({
 });
 
 const problemsSchema = new Schema({
-  title: { type: String, required: true, unique: true }, // "Two Sum"
+  title: { type: String, required: true, unique: true },
   functionName: { type: String, required: true },
   description: { type: String, required: true }, // Problem statement
   difficulty: {

@@ -5,7 +5,7 @@ import userModel from "../models/user.model.js";
 import dotenv from "dotenv";
 dotenv.config({ path: "./config/.env" });
 
-const registerUser = async (req, res) => {
+const signUpUser = async (req, res) => {
   try {
     const requiredBody = z.object({
       firstName: z.string().min(2).max(15),
@@ -42,6 +42,7 @@ const registerUser = async (req, res) => {
     });
 
     res.status(201).json({
+      success: true,
       message: "user",
       user,
       success: true,
@@ -99,11 +100,15 @@ const loginUser = async (req, res) => {
 
   res.cookie("userToken", Token);
 
-  res.json({
+  res.status(200).json({
+    success: true,
     message: "sign in successful",
-    user: isAlreadyExist,
     Token,
+    user: {
+      firstname: user.firstname,
+      role: user.role, // 👈 The Frontend needs this to show the Admin Panel
+    },
   });
 };
 
-export default { registerUser, loginUser };
+export default { signUpUser, loginUser };

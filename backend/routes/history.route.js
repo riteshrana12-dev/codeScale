@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authMiddleware from "../middleware/auth.middleware.js";
-import getSubmissionHistory from "../controllers/history.controller.js";
+import getSubmissionHistory from "../controllers/user_history.controller.js";
 const historyroute = Router();
 
 historyroute.get(

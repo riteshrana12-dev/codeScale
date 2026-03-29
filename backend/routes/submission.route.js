@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authMiddleware from "../middleware/auth.middleware.js";
-import submissionProblem from "../controllers/submission.controller.js";
+import submissionProblem from "../controllers/user_submission.controller.js";
 const submissionRoutes = Router();
 
 submissionRoutes.post(
