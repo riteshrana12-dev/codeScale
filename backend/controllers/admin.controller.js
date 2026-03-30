@@ -63,7 +63,7 @@ const addProblem = async (req, res) => {
 
 const updateProblem = async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const updatedProblem = await problemsModel.findByIdAndUpdate(id, req.body);
 
     if (!updatedProblem)
