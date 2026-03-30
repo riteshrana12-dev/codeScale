@@ -1,5 +1,5 @@
-import userModel from "../models/user.model";
-import problemsModel from "../models/problems.model";
+import userModel from "../models/user.model.js";
+import problemsModel from "../models/problems.model.js";
 
 const getPlatformStats = async (req, res) => {
   try {
