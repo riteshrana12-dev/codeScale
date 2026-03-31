@@ -26,6 +26,11 @@ const problemsSchema = new Schema({
     required: true,
     lowercase: true,
   },
+  tags: [{ type: String }], // ["Array", "HashMap"]
+  constraints: [{ type: String }], // ["1 <= nums.length <= 10^4"]
+  examples: [exampleSchema], // sample inputs/outputs
+  testCases: [testCaseSchema], // hidden evaluation cases
+  solutions: [solutionSchema], // reference solutions
 
   // THE KEY ADDITION:
   points: {
@@ -40,13 +45,16 @@ const problemsSchema = new Schema({
     },
   },
 
-  tags: [{ type: String }], // ["Array", "HashMap"]
-  constraints: [{ type: String }], // ["1 <= nums.length <= 10^4"]
-  examples: [exampleSchema], // sample inputs/outputs
-  testCases: [testCaseSchema], // hidden evaluation cases
-  solutions: [solutionSchema], // reference solutions
   // createdBy: { type: Schema.Types.ObjectId }, // admin/author
   createdAt: { type: Date, default: Date.now },
+});
+
+// Auto-generate slug before saving
+problemsSchema.pre("save", function (next) {
+  if (this.title) {
+    this.slug = this.title.toLowerCase().replace(/\s+/g, "-");
+  }
+  next();
 });
 
 const problemsModel = model("Question", problemsSchema);
