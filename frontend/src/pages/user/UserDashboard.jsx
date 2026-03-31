@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/api.js";
+// import UserHeatMap from "./userHeatMap.jsx";
 
 const UserDashboard = () => {
   const [dashboard, setDashboard] = useState({});
@@ -25,6 +26,10 @@ const UserDashboard = () => {
       ) : (
         <p>No response empty</p>
       )}
+      <hr />
+      <h3>Activity Heatmap</h3>
+      {/* Use the component that knows how to fetch its own data */}
+      {/* <UserHeatMap /> */}
     </div>
   );
 };
