@@ -50,7 +50,7 @@ const problemsList = async (req, res) => {
 const problemsSelect = async (req, res) => {
   try {
     const problems = await problemsModel
-      .findById(req.params.id)
+      .findOne({ slug: req.params.slug })
       .select("-testCases -solutions");
 
     if (!problems) {
