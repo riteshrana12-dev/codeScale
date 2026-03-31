@@ -4,6 +4,7 @@ import SignUp from "./pages/auth/SignUp";
 import SignIn from "./pages/auth/SignIn";
 import UserDashboard from "./pages/user/userDashboard";
 import ProblemsList from "./pages/user/ProblemsList";
+import ProblemSelected from "./components/codeEditor/ProblemSelected";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Route path="/signIn" element={<SignIn />} />
       <Route path="/dashboard" element={<UserDashboard />} />
       <Route path="/problems" element={<ProblemsList />} />
+      <Route path="/problems/:slug" element={<ProblemSelected />} />
     </Routes>
   );
 };
