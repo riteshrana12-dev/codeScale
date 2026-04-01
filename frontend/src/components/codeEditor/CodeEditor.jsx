@@ -72,7 +72,7 @@ function CodeEditor() {
           <Editor
             height="60vh"
             defaultLanguage="javascript"
-            defaultValue="// Write your solution here"
+            defaultValue="// Write your solution here !imp Use camel case for function name"
             theme="vs-dark"
             value={solution.code}
             onMount={handleEditorDidMount}
