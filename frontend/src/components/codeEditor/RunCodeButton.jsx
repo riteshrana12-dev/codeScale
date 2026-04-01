@@ -21,9 +21,24 @@ const RunCodeButton = () => {
 
   return (
     <button
+      style={{
+        marginTop: 12,
+        padding: "10px 28px",
+        background: "#0e7a0e",
+        color: "#fff",
+        border: "none",
+        borderRadius: 6,
+        fontSize: 14,
+        fontFamily: "monospace",
+        cursor: "pointer",
+        fontWeight: "bold",
+        letterSpacing: "0.5px",
+        transition: "background 0.2s",
+      }}
+      onMouseOver={(e) => (e.target.style.background = "#12a012")}
+      onMouseOut={(e) => (e.target.style.background = "#0e7a0e")}
       onClick={runCode}
       disabled={isLoading} // Prevent double clicks
-      style={{ opacity: isLoading ? 0.7 : 1 }}
     >
       {isLoading ? "Running..." : "Run Code"}
     </button>
