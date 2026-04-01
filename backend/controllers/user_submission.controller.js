@@ -109,12 +109,20 @@ const submissionProblem = async (req, res) => {
     });
 
     // 11. Trigger external utility to update user stats (streaks, points, etc.)
-    const user = await userModel.findById(req.user_id);
+
     if (allPassed) {
+      const user = await userModel.findById(req.user_id);
+      if (!user) {
+        return res.status(400).json({
+          message: "User not found",
+        });
+      }
       await updateStreakAndStats(user, problem.difficulty, problem.points);
-    } else {
-      user.summary.totalSubmissions += 1;
     }
+
+    await userModel.findByIdAndUpdate(req.user_id, {
+      $inc: { "summary.totalSubmissions": 1 },
+    });
 
     // 12. Return the final results to the frontend
     return res.status(200).json({ success: true, submission });
