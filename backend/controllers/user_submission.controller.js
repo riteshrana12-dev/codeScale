@@ -109,9 +109,11 @@ const submissionProblem = async (req, res) => {
     });
 
     // 11. Trigger external utility to update user stats (streaks, points, etc.)
+    const user = await userModel.findById(req.user_id);
     if (allPassed) {
-      const user = await userModel.findById(req.user_id);
       await updateStreakAndStats(user, problem.difficulty, problem.points);
+    } else {
+      user.summary.totalSubmissions += 1;
     }
 
     // 12. Return the final results to the frontend
