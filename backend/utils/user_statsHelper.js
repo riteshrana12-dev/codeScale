@@ -46,8 +46,6 @@ const updateStreakAndStats = async (user, problemDifficulty, earnedPoints) => {
   user.summary[difficultyField] = (user.summary[difficultyField] || 0) + 1;
   user.summary.totalSolved = (user.summary.totalSolved || 0) + 1;
 
-  //Increment totalSubmission
-  user.summary.totalSubmission += 1;
   // Increment points
   user.summary[pointsField] = (user.summary[pointsField] || 0) + earnedPoints;
   user.summary.totalPoints = (user.summary.totalPoints || 0) + earnedPoints;
