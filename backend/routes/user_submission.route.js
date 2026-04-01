@@ -4,7 +4,7 @@ import submissionProblem from "../controllers/user_submission.controller.js";
 const submissionRoutes = Router();
 
 submissionRoutes.post(
-  "/:id/submit",
+  "/:slug/submit",
   authMiddleware(process.env.JWT_SECRET_USER),
   submissionProblem,
 );
