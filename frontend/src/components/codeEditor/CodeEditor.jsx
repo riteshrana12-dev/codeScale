@@ -94,26 +94,7 @@ function CodeEditor() {
         </div>
 
         {/* Run Button */}
-        <RunCodeButton
-          style={{
-            marginTop: 12,
-            padding: "10px 28px",
-            background: "#0e7a0e",
-            color: "#fff",
-            border: "none",
-            borderRadius: 6,
-            fontSize: 14,
-            fontFamily: "monospace",
-            cursor: "pointer",
-            fontWeight: "bold",
-            letterSpacing: "0.5px",
-            transition: "background 0.2s",
-          }}
-          onMouseOver={(e) => (e.target.style.background = "#12a012")}
-          onMouseOut={(e) => (e.target.style.background = "#0e7a0e")}
-        >
-          ▶ Run Code
-        </RunCodeButton>
+        <RunCodeButton>▶ Run Code</RunCodeButton>
 
         {/* 2. Output Panel (Displaying context result) */}
 
@@ -121,6 +102,7 @@ function CodeEditor() {
         {isLoading && (
           <div
             style={{
+              marginTop: "20px",
               padding: "24px",
               background: "#1e1e1e",
               borderRadius: "8px",
@@ -147,6 +129,7 @@ function CodeEditor() {
         {!isLoading && submission && (
           <div
             style={{
+              marginTop: "20px",
               padding: "16px",
               background: "#1e1e1e",
               borderRadius: "8px",
