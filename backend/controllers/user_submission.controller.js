@@ -11,26 +11,31 @@ const submissionProblem = async (req, res) => {
   let tempFilePath = "";
   try {
     const { code, language } = req.body;
-    const problem = await problemsModel.findById(req.params.id);
+
+    // 1. Fetch the problem details from the database using the slug from the URL
+    const problem = await problemsModel.findOne({ slug: req.params.slug });
     if (!problem) return res.status(404).json({ message: "Problem not found" });
 
+    // 2. Determine the programming language and set the appropriate runner (Node or Python)
     const langLower = language.toLowerCase();
     const isPython = langLower.includes("python") || langLower === "py";
 
-    // Windows ke liye check: 'python' command ya 'py' command
     let runner = "node";
     if (isPython) {
       try {
+        // Check if 'python' command is available, otherwise fallback to 'py' (common on Windows)
         execSync("python --version", { stdio: "ignore" });
         runner = "python";
       } catch (e) {
-        runner = "py"; // Agar python command na mile toh 'py' try kare
+        runner = "py";
       }
     }
 
+    // 3. Create a temporary file path with the correct extension (.py or .cjs)
     const extension = isPython ? "py" : "cjs";
     tempFilePath = path.join(process.cwd(), `.temp_run.${extension}`);
 
+    // 4. Wrap the user's code with a template that handles input/output and write it to the temp file
     fs.writeFileSync(
       tempFilePath,
       getWrapper(language, code, problem.functionName),
@@ -39,15 +44,19 @@ const submissionProblem = async (req, res) => {
     const results = [];
     let allPassed = true;
 
+    // 5. Iterate through every test case stored in the problem model
     for (const tc of problem.testCases) {
       try {
+        // Execute the code in a child process
+        // 'input' is passed via stdin, 'timeout' prevents infinite loops
         const out = execSync(`"${runner}" "${tempFilePath}"`, {
           input: JSON.stringify(tc.input),
-          timeout: 5000,
+          timeout: 9000,
           encoding: "utf-8",
           shell: true,
         }).trim();
 
+        // 6. Compare the actual output from the process with the expected output in the DB
         const userOutput = JSON.parse(out);
         const isCorrect =
           JSON.stringify(userOutput) === JSON.stringify(tc.expectedOutput);
@@ -59,29 +68,33 @@ const submissionProblem = async (req, res) => {
           status: isCorrect ? "passed" : "failed",
         });
 
+        // If any single test fails, the overall submission is not accepted
         if (!isCorrect) {
           allPassed = false;
-          break;
-        }
-
-        if (allPassed) {
-          await userModel.findByIdAndUpdate(userId, {
-            //  setting a feild solvedproblems to show the problem which are already solved
-            $addToSet: { solvedproblems: problem._id },
-          });
         }
       } catch (err) {
+        // 7. Handle runtime errors or timeouts
         allPassed = false;
         results.push({
           status: "error",
           output: err.stderr?.toString() || err.message,
         });
-        break;
+        // We do not 'break' here so we can see which specific cases failed or erroed
       }
     }
 
+    // 8. If all test cases passed, update the user's solved problems list
+    if (allPassed) {
+      // FIXED: Used req.user_id instead of undefined 'userId'
+      await userModel.findByIdAndUpdate(req.user_id, {
+        $addToSet: { solvedproblems: problem._id },
+      });
+    }
+
+    // 9. Clean up: Delete the temporary file from the server
     if (fs.existsSync(tempFilePath)) fs.unlinkSync(tempFilePath);
 
+    // 10. Record the submission attempt in the database
     const submission = await submissionModel.create({
       userId: req.user_id,
       problemId: problem._id,
@@ -95,16 +108,16 @@ const submissionProblem = async (req, res) => {
       testCaseResults: results,
     });
 
+    // 11. Trigger external utility to update user stats (streaks, points, etc.)
     if (allPassed) {
       const user = await userModel.findById(req.user_id);
-      // 1. The 'user' object we just found
-      // 2. The 'problem.difficulty' from your problemsModel
       await updateStreakAndStats(user, problem.difficulty, problem.points);
-      // passed to utils/statsHelper.js
     }
 
+    // 12. Return the final results to the frontend
     return res.status(200).json({ success: true, submission });
   } catch (err) {
+    // 13. Global error handling: Ensure temp files are deleted if an crash occurs
     if (tempFilePath && fs.existsSync(tempFilePath))
       fs.unlinkSync(tempFilePath);
     return res.status(500).json({ success: false, error: err.message });
