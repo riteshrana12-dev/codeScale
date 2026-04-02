@@ -26,12 +26,6 @@ const submitCode = async (req, res) => {
     if (!problem) return res.status(404).json({ message: "Problem not found" });
     const output = await executionEngine(code, language, problem);
 
-    const finalStatus = output.allPassed
-      ? "accepted"
-      : output.results.some((r) => r.status === "error")
-        ? "error"
-        : "failed";
-
     const submission = await submissionModel.create({
       userId: req.user_id,
       problemId: problem._id,
