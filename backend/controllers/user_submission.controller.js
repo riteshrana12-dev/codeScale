@@ -12,6 +12,7 @@ const submissionProblem = async (req, res) => {
     const problem = await problemsModel.findOne({ slug: req.params.slug });
     if (!problem) return res.status(404).json({ message: "Problem not found" });
     const output = await executionEngine(code, language, problem);
+    console.log(output);
     res.json(output);
   } catch (err) {
     res.status(500).json({ error: err.message });
