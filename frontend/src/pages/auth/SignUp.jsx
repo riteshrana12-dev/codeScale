@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Added Link import
 import useSignUp from "../../hooks/signUp.js";
 
 const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
@@ -57,6 +57,7 @@ const InputField = ({
   const [showPw, setShowPw] = useState(false);
   const isPassword = type === "password";
   const inputType = isPassword ? (showPw ? "text" : "password") : type;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -16 }}
@@ -119,6 +120,7 @@ const SignUp = () => {
       console.log(err);
     }
   };
+
   return (
     <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center relative overflow-hidden px-4 py-12">
       {/* Grid */}
@@ -126,7 +128,7 @@ const SignUp = () => {
 
       {/* Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[500px] bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.07)_0%,transparent_65%)] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,255,157,0.06)_0%,transparent_65%)] pointer-events-none " />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,255,157,0.06)_0%,transparent_65%)] pointer-events-none" />
 
       {/* Particles */}
       {PARTICLES.map((p) => (
@@ -180,7 +182,7 @@ const SignUp = () => {
                   </span>
                 </div>
                 <span className="font-mono text-white text-lg font-semibold tracking-wide">
-                  CodeScale
+                  DevJudge
                 </span>
               </div>
               <h1 className="text-3xl font-black text-white tracking-tight mb-2">
@@ -318,10 +320,10 @@ const SignUp = () => {
                     {formData.password.length < 6
                       ? "weak"
                       : formData.password.length < 10
-                      ? "fair"
-                      : formData.password.length < 14
-                      ? "good"
-                      : "strong"}
+                        ? "fair"
+                        : formData.password.length < 14
+                          ? "good"
+                          : "strong"}
                   </span>
                 </motion.div>
               )}
@@ -350,7 +352,7 @@ const SignUp = () => {
                       <line x1="12" y1="8" x2="12" y2="12" />
                       <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <p className="font-mono text-xs text-[#f87171] ">{error}</p>
+                    <p className="font-mono text-xs text-[#f87171]">{error}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -363,7 +365,7 @@ const SignUp = () => {
                 className="pt-1"
               >
                 <button
-                  type="submit "
+                  type="submit"
                   disabled={loading}
                   className="relative w-full group overflow-hidden rounded-lg py-3.5 font-mono font-black text-sm tracking-wide transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
@@ -420,8 +422,13 @@ const SignUp = () => {
               </Link>
             </motion.p>
           </div>
+
           {/* Bottom line */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/30 to-transparent" />
         </div>
       </motion.div>
-   
+    </div>
+  );
+};
+
+export default SignUp;
