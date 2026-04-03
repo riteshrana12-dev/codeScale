@@ -41,3 +41,19 @@ const EyeIcon = ({ open }) =>
       <circle cx="12" cy="12" r="3" />
     </svg>
   );
+
+  const InputField = ({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  value,
+  onChange,
+  icon,
+  delay,
+  extra,
+}) => {
+  const [focused, setFocused] = useState(false);
+  const [showPw, setShowPw] = useState(false);
+  const isPassword = type === "password";
+  const inputType = isPassword ? (showPw ? "text" : "password") : type;
