@@ -350,7 +350,7 @@ const SignUp = () => {
                       <line x1="12" y1="8" x2="12" y2="12" />
                       <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <p className="font-mono text-xs text-[#f87171]">{error}</p>
+                    <p className="font-mono text-xs text-[#f87171] ">{error}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -396,5 +396,12 @@ const SignUp = () => {
                 </button>
               </motion.div>
             </form>
+
+            {/* Divider */}
+            <div className="flex items-center gap-4 my-6">
+              <div className="flex-1 h-px bg-white/5" />
+              <span className="font-mono text-xs text-[#2e2e48]">or</span>
+              <div className="flex-1 h-px bg-white/5" />
+            </div>
       </motion.div>
    
