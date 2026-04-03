@@ -150,6 +150,17 @@ const SignUp = () => {
           }}
         />
       ))}
-    </div>
-  );
-};
+
+      {/* Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 36, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-md z-10"
+      >
+        {/* Glow border */}
+        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00d4ff]/15 via-transparent to-[#00ff9d]/15 blur-sm" />
+
+        
+      </motion.div>
+   
