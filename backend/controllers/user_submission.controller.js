@@ -31,7 +31,7 @@ const submitCode = async (req, res) => {
       problemId: problem._id,
       code,
       language,
-      submissionStatus: output.allPassed ? "accepted" : "error", // Fixed typo from 'statue'
+      submissionStatus: output.allPassed ? "accepted" : "error",
       testCaseResults: output.results,
     });
     if (output.allPassed) {
