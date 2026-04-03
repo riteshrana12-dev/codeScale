@@ -159,8 +159,37 @@ const SignUp = () => {
         className="relative w-full max-w-md z-10"
       >
         {/* Glow border */}
-        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00d4ff]/15 via-transparent to-[#00ff9d]/15 blur-sm " />
+        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00d4ff]/15 via-transparent to-[#00ff9d]/15 blur-sm" />
 
-        
+        <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden">
+          {/* Top line */}
+          <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/50 to-transparent" />
+
+          <div className="px-8 pt-9 pb-9">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="mb-8"
+            >
+              <div className="flex items-center gap-2 mb-7">
+                <div className="w-8 h-8 rounded-lg bg-[#00ff9d]/10 border border-[#00ff9d]/20 flex items-center justify-center">
+                  <span className="font-mono text-[#00ff9d] text-sm font-bold">
+                    &gt;_
+                  </span>
+                </div>
+                <span className="font-mono text-white text-lg font-semibold tracking-wide">
+                  CodeScale
+                </span>
+              </div>
+              <h1 className="text-3xl font-black text-white tracking-tight mb-2">
+                Create account.
+              </h1>
+              <p className="text-[#555570] text-sm font-mono">
+                <span className="text-[#00d4ff]">$</span> join and start solving
+                problems
+              </p>
+            </motion.div>
       </motion.div>
    
