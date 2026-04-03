@@ -365,7 +365,7 @@ const SignUp = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="relative w-full group overflow-hidden rounded-lg py-3.5 font-mono font-black text-sm tracking-wide transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="relative w-full group overflow-hidden rounded-lg py-3.5 font-mono font-black text-sm tracking-wide transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed "
                 >
                   {!loading && (
                     <div className="absolute inset-0 bg-[#00ff9d] group-hover:bg-[#00e88a] transition-colors duration-200" />
