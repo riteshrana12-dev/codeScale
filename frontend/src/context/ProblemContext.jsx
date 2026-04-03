@@ -10,17 +10,17 @@ export const ProblemProvider = ({ children }) => {
     code: "",
   });
   const [submissionResult, setSubmissionResult] = useState(null);
-  const [submittedResult, setSubmittedResult] = useState(null);
+  const [submittedResult, setSubmittedResult] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const value = {
     solution,
     setSolution,
     submissionResult,
     setSubmissionResult,
-    isLoading,
-    setIsLoading,
     submittedResult,
     setSubmittedResult,
+    isLoading,
+    setIsLoading,
   };
   return (
     <ProblemContext.Provider value={value}>{children}</ProblemContext.Provider>
