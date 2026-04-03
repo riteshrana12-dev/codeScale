@@ -159,7 +159,7 @@ const SignUp = () => {
         className="relative w-full max-w-md z-10"
       >
         {/* Glow border */}
-        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00d4ff]/15 via-transparent to-[#00ff9d]/15 blur-sm" />
+        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00d4ff]/15 via-transparent to-[#00ff9d]/15 blur-sm " />
 
         
       </motion.div>
