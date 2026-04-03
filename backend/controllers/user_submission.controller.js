@@ -12,7 +12,7 @@ const submissionProblem = async (req, res) => {
     const problem = await problemsModel.findOne({ slug: req.params.slug });
     if (!problem) return res.status(404).json({ message: "Problem not found" });
     const output = await executionEngine(code, language, problem);
-    console.log(output);
+    // console.log(output);
     res.json(output);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -31,7 +31,7 @@ const submitCode = async (req, res) => {
       problemId: problem._id,
       code,
       language,
-      status: finalStatus, // Fixed typo from 'statue'
+      submissionStatus: output.allPassed ? "accepted" : "error", // Fixed typo from 'statue'
       testCaseResults: output.results,
     });
     if (output.allPassed) {
