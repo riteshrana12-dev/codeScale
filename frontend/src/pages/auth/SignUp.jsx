@@ -420,5 +420,8 @@ const SignUp = () => {
               </Link>
             </motion.p>
           </div>
+          {/* Bottom line */}
+          <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/30 to-transparent" />
+        </div>
       </motion.div>
    
