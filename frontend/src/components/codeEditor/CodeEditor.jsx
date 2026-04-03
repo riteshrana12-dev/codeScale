@@ -3,14 +3,22 @@ import Editor from "@monaco-editor/react";
 import Language from "./Language";
 import { useProblem } from "../../context/ProblemContext";
 import RunCodeButton from "./RunCodeButton";
+import SubmitCodeButton from "./SubmitButton";
 function CodeEditor() {
-  const { solution, setSolution, submissionResult, isLoading } = useProblem();
+  const {
+    solution,
+    setSolution,
+    submissionResult,
+    submittedResult,
+    isLoading,
+  } = useProblem();
   const editorRef = useRef(null);
 
   function handleEditorDidMount(editor) {
     editorRef.current = editor;
   }
-  const submission = submissionResult?.submission;
+  const submission = submissionResult;
+  const submit = submittedResult;
 
   return (
     <div>
@@ -96,9 +104,13 @@ function CodeEditor() {
         {/* Run Button */}
         <RunCodeButton>▶ Run Code</RunCodeButton>
 
+        <SubmitCodeButton>Submit</SubmitCodeButton>
         {/* 2. Output Panel (Displaying context result) */}
 
         {/* SHOW LOADING STATE */}
+        {/* --- OUTPUT SECTION --- */}
+
+        {/* 1. LOADING STATE (Combined into one block for cleanliness) */}
         {isLoading && (
           <div
             style={{
@@ -110,7 +122,10 @@ function CodeEditor() {
               border: "1px solid #333",
             }}
           >
-            <div className="spinner" style={{ marginBottom: "10px" }}>
+            <div
+              className="spinner"
+              style={{ marginBottom: "10px", fontSize: "20px" }}
+            >
               ⚙️
             </div>
             <div
@@ -120,13 +135,37 @@ function CodeEditor() {
                 fontFamily: "monospace",
               }}
             >
-              Executing your code against test cases...
+              Executing code against test cases...
             </div>
           </div>
         )}
 
-        {/* SHOW RESULTS (Only when not loading and submission exists) */}
-        {!isLoading && submission && (
+        {/* 2. SUBMITTED SUCCESS UI (Shows only when submit is explicitly true) */}
+        {!isLoading && submit === true && (
+          <div
+            style={{
+              marginTop: "20px",
+              padding: "30px",
+              background: "#1e1e1e",
+              borderRadius: "8px",
+              border: "1px solid #28c840",
+              textAlign: "center",
+            }}
+          >
+            <div style={{ fontSize: "40px", marginBottom: "10px" }}>🚀</div>
+            <h3 style={{ color: "#28c840", margin: 0, fontSize: "22px" }}>
+              Solution Submitted Successfully!
+            </h3>
+            <p style={{ color: "#aaa", fontSize: "14px", marginTop: "8px" }}>
+              Great job! Your stats and streak have been updated in the
+              database.
+            </p>
+          </div>
+        )}
+
+        {/* 3. RUN TEST RESULTS UI (Shows only if NOT in submit mode) */}
+        {/* Change: We check strictly that submit is NOT true to avoid overlapping UI */}
+        {!isLoading && submit !== true && submission && (
           <div
             style={{
               marginTop: "20px",
@@ -138,20 +177,18 @@ function CodeEditor() {
           >
             <h3
               style={{
-                color: submission.statue === "accepted" ? "#28c840" : "#ff5f57",
+                color: submission.allPassed ? "#28c840" : "#ff5f57",
                 marginTop: 0,
                 fontSize: "18px",
               }}
             >
-              {submission.statue === "accepted"
-                ? "✅ Accepted"
-                : `❌ ${submission.statue.toUpperCase()}`}
+              {submission.allPassed ? "✅ Passed" : "❌ Failed"}
             </h3>
 
             <div style={{ maxHeight: "400px", overflowY: "auto" }}>
-              {submission.testCaseResults.map((result, index) => (
+              {submission?.results?.map((result, index) => (
                 <div
-                  key={result._id || index}
+                  key={index}
                   style={{
                     marginBottom: "12px",
                     padding: "12px",
@@ -169,10 +206,10 @@ function CodeEditor() {
                       color: result.status === "passed" ? "#28c840" : "#ff5f57",
                     }}
                   >
-                    Case {index + 1}: {result.status.toUpperCase()}
+                    Case {index + 1}:{" "}
+                    {result.status ? result.status.toUpperCase() : "FAILED"}
                   </div>
 
-                  {/* If it passed or failed (but didn't error), show input/output */}
                   {result.status !== "error" && (
                     <div
                       style={{
@@ -182,10 +219,24 @@ function CodeEditor() {
                         fontFamily: "monospace",
                       }}
                     >
+                      {/* DYNAMIC INPUT RENDERING: Handles any variable names (nums, target, l1, etc.) */}
                       <div style={{ marginBottom: "4px" }}>
                         <strong style={{ color: "#888" }}>Input: </strong>
-                        {JSON.stringify(result.input)}
+                        {Object.entries(result.input).map(([key, value], i) => (
+                          <span key={key}>
+                            <span style={{ color: "#569cd6" }}>{key}</span>:{" "}
+                            <span style={{ color: "#ce9178" }}>
+                              {typeof value === "object"
+                                ? JSON.stringify(value)
+                                : String(value)}
+                            </span>
+                            {/* Add comma separator between arguments */}
+                            {i < Object.entries(result.input).length - 1 &&
+                              " , "}
+                          </span>
+                        ))}
                       </div>
+
                       <div style={{ marginBottom: "4px" }}>
                         <strong style={{ color: "#888" }}>Output: </strong>
                         <span
@@ -196,7 +247,9 @@ function CodeEditor() {
                                 : "#ff5f57",
                           }}
                         >
-                          {result.output}
+                          {typeof result.output === "string"
+                            ? result.output
+                            : JSON.stringify(result.output)}
                         </span>
                       </div>
                       <div>
@@ -206,7 +259,6 @@ function CodeEditor() {
                     </div>
                   )}
 
-                  {/* If it errored, show the error message */}
                   {result.status === "error" && (
                     <div
                       style={{
