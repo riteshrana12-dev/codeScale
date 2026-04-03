@@ -5,9 +5,9 @@ const submissionSchema = new Schema({
   problemId: { type: Schema.Types.ObjectId, ref: "Question" },
   code: { type: String, required: true },
   language: { type: String, required: true },
-  statue: {
+  submissionStatus: {
     type: String,
-    enum: ["pending", "accepted", "failed", "error"],
+    enum: ["accepted", "failed", "error"],
     default: "pending",
   },
   testCaseResults: [
