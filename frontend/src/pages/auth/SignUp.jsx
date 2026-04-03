@@ -403,5 +403,22 @@ const SignUp = () => {
               <span className="font-mono text-xs text-[#2e2e48]">or</span>
               <div className="flex-1 h-px bg-white/5" />
             </div>
+
+            {/* Sign in link - Replaced <a> with <Link> */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-center font-mono text-sm text-[#444460]"
+            >
+              Already have an account?{" "}
+              <Link
+                to="/signin"
+                className="text-[#00ff9d] hover:text-[#00e88a] transition-colors font-bold"
+              >
+                Sign in →
+              </Link>
+            </motion.p>
+          </div>
       </motion.div>
    
