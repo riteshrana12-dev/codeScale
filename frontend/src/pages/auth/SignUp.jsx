@@ -107,3 +107,15 @@ const InputField = ({
     </motion.div>
   );
 };
+
+const SignUp = () => {
+  const { formData, handleChange, executeSignUp, loading, error } = useSignUp();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await executeSignUp();
+    } catch (err) {
+      console.log(err);
+    }
+  };
