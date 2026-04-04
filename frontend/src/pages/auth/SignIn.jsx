@@ -35,10 +35,15 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center relative overflow-hidden px-4">
+      {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.025)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      {/* Radial glow top-left */}
       <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,157,0.07)_0%,transparent_65%)] pointer-events-none" />
+      {/* Radial glow bottom-right */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,212,255,0.06)_0%,transparent_65%)] pointer-events-none" />
 
+      {/* Floating particles */}
       {PARTICLES.map((p) => (
         <motion.div
           key={p.id}
@@ -60,17 +65,23 @@ const SignIn = () => {
         />
       ))}
 
+      {/* Card */}
       <motion.div
         initial={{ opacity: 0, y: 32, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-md z-10"
       >
+        {/* Glow behind card */}
         <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00ff9d]/20 via-transparent to-[#00d4ff]/10 blur-sm" />
+
         <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden">
-        <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/60 to-transparent" />
-        <div className="px-8 pt-10 pb-10">
-          <motion.div
+          {/* Top accent bar */}
+          <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/60 to-transparent" />
+
+          <div className="px-8 pt-10 pb-10">
+            {/* Logo + heading */}
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.5 }}
@@ -86,14 +97,19 @@ const SignIn = () => {
                   DevJudge
                 </span>
               </div>
+
               <h1 className="text-3xl font-black text-white tracking-tight mb-2">
                 Welcome back.
               </h1>
               <p className="text-[#555570] text-sm font-mono">
-                <span className="text-[#00ff9d]">$</span> sign in to continue solving
+                <span className="text-[#00ff9d]">$</span> sign in to continue
+                solving
               </p>
             </motion.div>
+
+            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Email */}
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -136,6 +152,8 @@ const SignIn = () => {
                   />
                 </div>
               </motion.div>
+
+              {/* Password */}
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -180,13 +198,29 @@ const SignIn = () => {
                     tabIndex={-1}
                   >
                     {showPassword ? (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      >
                         <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
                         <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
                         <line x1="1" y1="1" x2="23" y2="23" />
                       </svg>
                     ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      >
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                         <circle cx="12" cy="12" r="3" />
                       </svg>
@@ -194,6 +228,8 @@ const SignIn = () => {
                   </button>
                 </div>
               </motion.div>
+
+              {/* Error */}
               <AnimatePresence>
                 {error && (
                   <motion.div
@@ -203,7 +239,16 @@ const SignIn = () => {
                     transition={{ duration: 0.25 }}
                     className="flex items-center gap-3 bg-[#f87171]/8 border border-[#f87171]/20 rounded-lg px-4 py-3"
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" className="flex-shrink-0">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#f87171"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      className="flex-shrink-0"
+                    >
                       <circle cx="12" cy="12" r="10" />
                       <line x1="12" y1="8" x2="12" y2="12" />
                       <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -212,6 +257,8 @@ const SignIn = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+
+              {/* Submit */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -237,7 +284,11 @@ const SignIn = () => {
                       <>
                         <motion.span
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                           className="inline-block w-3.5 h-3.5 border-2 border-[#00ff9d]/30 border-t-[#00ff9d] rounded-full"
                         />
                         signing in...
@@ -249,6 +300,8 @@ const SignIn = () => {
                 </button>
               </motion.div>
             </form>
+
+            {/* Divider */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -259,6 +312,8 @@ const SignIn = () => {
               <span className="font-mono text-xs text-[#333350]">or</span>
               <div className="flex-1 h-px bg-white/5" />
             </motion.div>
+
+            {/* Sign up link */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -266,7 +321,7 @@ const SignIn = () => {
               className="text-center font-mono text-sm text-[#444460]"
             >
               No account?{" "}
-              
+              <a
                 href="/signup"
                 className="text-[#00ff9d] hover:text-[#00e88a] transition-colors font-bold"
               >
@@ -274,10 +329,13 @@ const SignIn = () => {
               </a>
             </motion.p>
           </div>
+
+          {/* Bottom accent bar */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
         </div>
       </motion.div>
     </div>
   );
 };
+
 export default SignIn;
