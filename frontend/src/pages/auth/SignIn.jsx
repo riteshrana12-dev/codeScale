@@ -259,3 +259,18 @@ const SignIn = () => {
               <span className="font-mono text-xs text-[#333350]">or</span>
               <div className="flex-1 h-px bg-white/5" />
             </motion.div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55 }}
+              className="text-center font-mono text-sm text-[#444460]"
+            >
+              No account?{" "}
+              
+                href="/signup"
+                className="text-[#00ff9d] hover:text-[#00e88a] transition-colors font-bold"
+              >
+                Create one →
+              </a>
+            </motion.p>
+          </div>
