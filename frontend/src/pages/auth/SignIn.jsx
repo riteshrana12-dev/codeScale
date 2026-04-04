@@ -18,3 +18,7 @@ const SignIn = () => {
   const [focused, setFocused] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setMounted(true), 100);
+  }, []);
