@@ -22,3 +22,13 @@ const SignIn = () => {
   useEffect(() => {
     setTimeout(() => setMounted(true), 100);
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await executeSignUp();
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
