@@ -94,3 +94,11 @@ const SignIn = () => {
               </p>
             </motion.div>
             <form onSubmit={handleSubmit} className="space-y-5">
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.25, duration: 0.5 }}
+              >
+                <label className="block font-mono text-xs text-[#555570] mb-2 tracking-widest uppercase">
+                  Email
+                </label>
