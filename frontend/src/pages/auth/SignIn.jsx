@@ -32,3 +32,6 @@ const SignIn = () => {
       console.log(error);
     }
   };
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center relative overflow-hidden px-4">
