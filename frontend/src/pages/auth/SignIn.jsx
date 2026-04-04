@@ -13,3 +13,5 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
 }));
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { formData, handleChange, executeSignUp, error, loading } = useSignIn();
