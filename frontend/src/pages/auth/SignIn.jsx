@@ -148,3 +148,17 @@ const SignIn = () => {
                       : "border-white/8 bg-white/3 hover:border-white/15"
                   }`}
                 >
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke={focused === "password" ? "#00ff9d" : "#444460"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    >
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </div>
