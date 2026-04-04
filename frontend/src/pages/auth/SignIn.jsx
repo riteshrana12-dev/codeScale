@@ -86,3 +86,10 @@ const SignIn = () => {
                   DevJudge
                 </span>
               </div>
+              <h1 className="text-3xl font-black text-white tracking-tight mb-2">
+                Welcome back.
+              </h1>
+              <p className="text-[#555570] text-sm font-mono">
+                <span className="text-[#00ff9d]">$</span> sign in to continue solving
+              </p>
+            </motion.div>
