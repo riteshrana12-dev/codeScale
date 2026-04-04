@@ -68,3 +68,4 @@ const SignIn = () => {
       >
         <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00ff9d]/20 via-transparent to-[#00d4ff]/10 blur-sm" />
         <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/60 to-transparent" />
