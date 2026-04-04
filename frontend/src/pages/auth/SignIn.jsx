@@ -102,3 +102,10 @@ const SignIn = () => {
                 <label className="block font-mono text-xs text-[#555570] mb-2 tracking-widest uppercase">
                   Email
                 </label>
+                <div
+                  className={`relative rounded-lg border transition-all duration-300 ${
+                    focused === "email"
+                      ? "border-[#00ff9d]/50 bg-[#00ff9d]/5 shadow-[0_0_20px_rgba(0,255,157,0.08)]"
+                      : "border-white/8 bg-white/3 hover:border-white/15"
+                  }`}
+                >
