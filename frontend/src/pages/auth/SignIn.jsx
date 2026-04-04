@@ -162,3 +162,14 @@ const SignIn = () => {
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                   </div>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="••••••••"
+                    value={formData.password}
+                    onChange={handleChange}
+                    onFocus={() => setFocused("password")}
+                    onBlur={() => setFocused(null)}
+                    className="w-full bg-transparent pl-10 pr-12 py-3.5 text-sm text-white placeholder-[#333350] font-mono outline-none"
+                    autoComplete="current-password"
+                  />
