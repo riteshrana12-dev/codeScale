@@ -93,3 +93,4 @@ const SignIn = () => {
                 <span className="text-[#00ff9d]">$</span> sign in to continue solving
               </p>
             </motion.div>
+            <form onSubmit={handleSubmit} className="space-y-5">
