@@ -11,3 +11,5 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
   duration: Math.random() * 6 + 6,
   delay: Math.random() * 4,
 }));
+
+const SignIn = () => {
