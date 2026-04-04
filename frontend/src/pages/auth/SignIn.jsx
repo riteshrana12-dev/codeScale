@@ -230,3 +230,22 @@ const SignIn = () => {
                   {loading && (
                     <div className="absolute inset-0 bg-[#00ff9d]/10 border border-[#00ff9d]/20" />
                   )}
+                  <span
+                    className={`relative z-10 flex items-center justify-center gap-2 ${loading ? "text-[#00ff9d]" : "text-[#0a0a0f]"}`}
+                  >
+                    {loading ? (
+                      <>
+                        <motion.span
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="inline-block w-3.5 h-3.5 border-2 border-[#00ff9d]/30 border-t-[#00ff9d] rounded-full"
+                        />
+                        signing in...
+                      </>
+                    ) : (
+                      "Sign In →"
+                    )}
+                  </span>
+                </button>
+              </motion.div>
+            </form>
