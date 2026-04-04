@@ -194,3 +194,21 @@ const SignIn = () => {
                   </button>
                 </div>
               </motion.div>
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, height: 0 }}
+                    animate={{ opacity: 1, y: 0, height: "auto" }}
+                    exit={{ opacity: 0, y: -8, height: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex items-center gap-3 bg-[#f87171]/8 border border-[#f87171]/20 rounded-lg px-4 py-3"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" className="flex-shrink-0">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <p className="font-mono text-xs text-[#f87171]">{error}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
