@@ -249,3 +249,13 @@ const SignIn = () => {
                 </button>
               </motion.div>
             </form>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex items-center gap-4 my-7"
+            >
+              <div className="flex-1 h-px bg-white/5" />
+              <span className="font-mono text-xs text-[#333350]">or</span>
+              <div className="flex-1 h-px bg-white/5" />
+            </motion.div>
