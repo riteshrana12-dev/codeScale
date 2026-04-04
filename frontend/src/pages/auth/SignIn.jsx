@@ -123,3 +123,16 @@ const SignIn = () => {
                       <polyline points="22,6 12,13 2,6" />
                     </svg>
                   </div>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="abc123@gmail.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={() => setFocused("email")}
+                    onBlur={() => setFocused(null)}
+                    className="w-full bg-transparent pl-10 pr-4 py-3.5 text-sm text-white placeholder-[#333350] font-mono outline-none"
+                    autoComplete="email"
+                  />
+                </div>
+              </motion.div>
