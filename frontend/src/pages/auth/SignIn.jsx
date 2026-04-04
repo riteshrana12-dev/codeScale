@@ -136,3 +136,15 @@ const SignIn = () => {
                   />
                 </div>
               </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.32, duration: 0.5 }}
+              >
+                <div
+                  className={`relative rounded-lg border transition-all duration-300 ${
+                    focused === "password"
+                      ? "border-[#00ff9d]/50 bg-[#00ff9d]/5 shadow-[0_0_20px_rgba(0,255,157,0.08)]"
+                      : "border-white/8 bg-white/3 hover:border-white/15"
+                  }`}
+                >
