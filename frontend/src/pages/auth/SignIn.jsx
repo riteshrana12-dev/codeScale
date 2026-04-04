@@ -76,3 +76,13 @@ const SignIn = () => {
               transition={{ delay: 0.15, duration: 0.5 }}
               className="mb-10"
             >
+              <div className="flex items-center gap-2 mb-8">
+                <div className="w-8 h-8 rounded-lg bg-[#00ff9d]/10 border border-[#00ff9d]/20 flex items-center justify-center">
+                  <span className="font-mono text-[#00ff9d] text-sm font-bold">
+                    &gt;_
+                  </span>
+                </div>
+                <span className="font-mono text-white text-lg font-semibold tracking-wide">
+                  DevJudge
+                </span>
+              </div>
