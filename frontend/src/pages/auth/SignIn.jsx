@@ -218,3 +218,9 @@ const SignIn = () => {
                 transition={{ delay: 0.4, duration: 0.5 }}
                 className="pt-2"
               >
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="relative w-full group overflow-hidden rounded-lg py-3.5 font-mono font-black text-sm tracking-wide transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{ background: loading ? "#1a2e24" : undefined }}
+                >
