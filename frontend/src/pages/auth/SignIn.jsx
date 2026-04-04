@@ -274,3 +274,9 @@ const SignIn = () => {
               </a>
             </motion.p>
           </div>
+          <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
+        </div>
+      </motion.div>
+    </div>
+  );
+};
