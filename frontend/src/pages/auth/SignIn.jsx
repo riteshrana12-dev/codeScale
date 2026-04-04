@@ -15,3 +15,6 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
 const SignIn = () => {
   const navigate = useNavigate();
   const { formData, handleChange, executeSignUp, error, loading } = useSignIn();
+  const [focused, setFocused] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [mounted, setMounted] = useState(false);
