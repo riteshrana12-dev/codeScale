@@ -70,3 +70,9 @@ const SignIn = () => {
         <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/60 to-transparent" />
         <div className="px-8 pt-10 pb-10">
+          <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="mb-10"
+            >
