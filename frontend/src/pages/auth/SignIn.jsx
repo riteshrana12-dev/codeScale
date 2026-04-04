@@ -66,3 +66,4 @@ const SignIn = () => {
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-md z-10"
       >
+        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#00ff9d]/20 via-transparent to-[#00d4ff]/10 blur-sm" />
