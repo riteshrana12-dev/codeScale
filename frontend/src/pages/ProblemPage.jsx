@@ -63,3 +63,4 @@ const ProblemPage = () => {
 
     return (
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
+      <div className="h-12 bg-[#0d0d1a] border-b border-white/5 flex items-center px-4 gap-4 flex-shrink-0">
