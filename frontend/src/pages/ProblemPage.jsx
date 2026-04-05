@@ -89,3 +89,7 @@ const ProblemPage = () => {
         </div>
       </div>
       <div className="flex flex-1 overflow-hidden">
+
+        <div className="w-[45%] min-w-[340px] flex flex-col border-r border-white/5 overflow-hidden">
+          <ProblemDescription problem={problem} />
+        </div>
