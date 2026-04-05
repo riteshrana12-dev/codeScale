@@ -26,3 +26,4 @@ const difficultyConfig = {
 };
 
 const ProblemPage = () => {
+  const { setSolution, setSubmissionResult } = useProblem();
