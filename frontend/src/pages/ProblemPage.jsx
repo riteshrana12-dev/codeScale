@@ -76,3 +76,15 @@ const ProblemPage = () => {
         <span className="font-semibold text-xs text-[#626282] truncate max-w-xs">
           {problem.title}
         </span>
+
+        <div
+          className="ml-auto font-mono text-xs px-2.5 py-1 rounded-full border"
+          style={{
+            color: diff.color,
+            background: diff.bg,
+            borderColor: diff.border,
+          }}
+        >
+          {problem.difficulty}
+        </div>
+      </div>
