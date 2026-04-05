@@ -60,3 +60,6 @@ const ProblemPage = () => {
     );
 
     const diff = difficultyConfig[problem.difficulty] || difficultyConfig.Medium;
+
+    return (
+    <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
