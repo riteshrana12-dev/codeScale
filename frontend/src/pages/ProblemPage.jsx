@@ -24,3 +24,5 @@ const difficultyConfig = {
     border: "rgba(248,113,113,0.2)",
   },
 };
+
+const ProblemPage = () => {
