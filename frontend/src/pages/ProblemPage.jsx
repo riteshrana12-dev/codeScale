@@ -72,3 +72,7 @@ const ProblemPage = () => {
             CodeScale
           </span>
         </div>
+        <div className="w-px h-4 bg-white/10" />
+        <span className="font-semibold text-xs text-[#626282] truncate max-w-xs">
+          {problem.title}
+        </span>
