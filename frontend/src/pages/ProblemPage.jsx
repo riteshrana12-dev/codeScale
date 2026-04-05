@@ -58,3 +58,5 @@ const ProblemPage = () => {
         />
       </div>
     );
+
+    const diff = difficultyConfig[problem.difficulty] || difficultyConfig.Medium;
