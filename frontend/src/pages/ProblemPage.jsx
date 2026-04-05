@@ -27,3 +27,5 @@ const difficultyConfig = {
 
 const ProblemPage = () => {
   const { setSolution, setSubmissionResult } = useProblem();
+  const { slug } = useParams();
+  const [problem, setProblem] = useState(null);
