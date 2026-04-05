@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api/api.js";
-import CodeEditor from "../components/codeEditor/CodeEditor";
+import CodeEditor from "../components/codeEditor/CodeEditor"; // Your existing component
 import ProblemDescription from "../components/codeEditor/ProblemDescription";
-
 import { useProblem } from "../context/ProblemContext.jsx";
 import { motion } from "framer-motion";
 
@@ -63,6 +62,7 @@ const ProblemPage = () => {
 
   return (
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
+      {/* Top Bar */}
       <div className="h-12 bg-[#0d0d1a] border-b border-white/5 flex items-center px-4 gap-4 flex-shrink-0">
         <div className="flex items-center gap-2">
           <span className="font-mono text-[#00ff9d] font-bold text-sm">
@@ -76,7 +76,6 @@ const ProblemPage = () => {
         <span className="font-semibold text-xs text-[#626282] truncate max-w-xs">
           {problem.title}
         </span>
-
         <div
           className="ml-auto font-mono text-xs px-2.5 py-1 rounded-full border"
           style={{
@@ -88,10 +87,15 @@ const ProblemPage = () => {
           {problem.difficulty}
         </div>
       </div>
+
+      {/* Main Split View */}
       <div className="flex flex-1 overflow-hidden">
+        {/* LEFT: Content */}
         <div className="w-[45%] min-w-[340px] flex flex-col border-r border-white/5 overflow-hidden">
           <ProblemDescription problem={problem} />
         </div>
+
+        {/* RIGHT: Editor */}
         <div className="flex-1 flex flex-col overflow-hidden">
           <CodeEditor testCase={problem.testCase} />
         </div>
@@ -99,4 +103,5 @@ const ProblemPage = () => {
     </div>
   );
 };
+
 export default ProblemPage;
