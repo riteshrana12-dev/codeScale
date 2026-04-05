@@ -59,12 +59,12 @@ const ProblemPage = () => {
       </div>
     );
 
-    const diff = difficultyConfig[problem.difficulty] || difficultyConfig.Medium;
+  const diff = difficultyConfig[problem.difficulty] || difficultyConfig.Medium;
 
-    return (
+  return (
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
       <div className="h-12 bg-[#0d0d1a] border-b border-white/5 flex items-center px-4 gap-4 flex-shrink-0">
-      <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <span className="font-mono text-[#00ff9d] font-bold text-sm">
             &gt;_
           </span>
@@ -89,7 +89,13 @@ const ProblemPage = () => {
         </div>
       </div>
       <div className="flex flex-1 overflow-hidden">
-
         <div className="w-[45%] min-w-[340px] flex flex-col border-r border-white/5 overflow-hidden">
           <ProblemDescription problem={problem} />
         </div>
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <CodeEditor testCase={problem.testCase} />
+        </div>
+      </div>
+    </div>
+  );
+};
