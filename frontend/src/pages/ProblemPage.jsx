@@ -29,3 +29,15 @@ const ProblemPage = () => {
   const { setSolution, setSubmissionResult } = useProblem();
   const { slug } = useParams();
   const [problem, setProblem] = useState(null);
+
+  useEffect(() => {
+    async function fetchProblem() {
+      try {
+        const response = await api.get(`/problems/${slug}`);
+        setProblem(response.data.data);
+      } catch (err) {
+        console.log("Error fetching problem:", err);
+      }
+    }
+
+    if (slug) fetchProblem();
