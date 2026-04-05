@@ -41,3 +41,9 @@ const ProblemPage = () => {
     }
 
     if (slug) fetchProblem();
+
+    return () => {
+      setSolution({ language: "JavaScript", code: "" });
+      setSubmissionResult(null);
+    };
+  }, [slug, setSolution, setSubmissionResult]);
