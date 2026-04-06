@@ -16,4 +16,10 @@ problemsRoutes.get(
   problemsController.problemsSelect,
 );
 
+problemsRoutes.get(
+  "/search",
+  authMiddleware(process.env.JWT_SECRET_USER),
+  problemsController.problemSearch,
+);
+
 export default problemsRoutes;
