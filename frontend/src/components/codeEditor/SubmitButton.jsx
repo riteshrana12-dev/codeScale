@@ -19,3 +19,8 @@ const SubmitCodeButton = () => {
 
     try {
       const response = await api.post(`/submission/${slug}/submit`, solution);
+      if (response.data.success) {
+        setSubmittedResult(response.data.success);
+      } else {
+        setSubmittedResult(true);
+      }
