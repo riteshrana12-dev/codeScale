@@ -16,3 +16,6 @@ const SubmitCodeButton = () => {
   async function submitCode() {
     setIsLoading(true);
     setSubmissionResult(null);
+
+    try {
+      const response = await api.post(`/submission/${slug}/submit`, solution);
