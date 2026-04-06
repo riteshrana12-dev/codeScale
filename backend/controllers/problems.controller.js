@@ -84,4 +84,35 @@ const problemsSelect = async (req, res) => {
   }
 };
 
-export default { problemsList, problemsSelect };
+const problemSearch = async (req, res) => {
+  try {
+    const { text } = req.query; // e.g. /search?text=algo
+
+    if (!text) {
+      return res.status(404).json({
+        success: false,
+        message: "No search term provided",
+      });
+    }
+
+    // Regex for case-insensitive search (start + middle)
+    const regex = new RegExp(text, "i");
+
+    // Assuming your model has a "title" field
+    const results = await problemsModel.find({ title: regex });
+
+    return res.status(200).json({
+      success: true,
+      message: "Filtered search results",
+      data: results,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Error fetching problems",
+      error: err.message,
+    });
+  }
+};
+
+export default { problemsList, problemsSelect, problemSearch };
