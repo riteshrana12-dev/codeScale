@@ -12,3 +12,7 @@ const SubmitCodeButton = () => {
     isLoading,
     setSubmissionResult,
   } = useProblem();
+
+  async function submitCode() {
+    setIsLoading(true);
+    setSubmissionResult(null);
