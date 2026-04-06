@@ -24,3 +24,9 @@ const SubmitCodeButton = () => {
       } else {
         setSubmittedResult(true);
       }
+      } catch (err) {
+      console.error("Submission failed to reach server", err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
