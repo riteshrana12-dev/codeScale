@@ -30,3 +30,9 @@ const SubmitCodeButton = () => {
       setIsLoading(false);
     }
   }
+  return (
+    <button
+      onClick={submitCode}
+      disabled={isLoading}
+      className="relative flex items-center gap-2 font-mono text-xs font-black px-5 py-2 rounded-lg overflow-hidden transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed group"
+    >
