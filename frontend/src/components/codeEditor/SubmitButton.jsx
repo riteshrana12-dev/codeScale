@@ -55,3 +55,5 @@ const SubmitCodeButton = () => {
     </button>
   );
 };
+
+export default SubmitCodeButton;
