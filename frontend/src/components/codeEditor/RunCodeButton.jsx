@@ -4,7 +4,6 @@ import api from "../../api/api";
 
 const RunCodeButton = () => {
   const { slug } = useParams();
-
   const {
     solution,
     setSubmissionResult,
@@ -16,7 +15,6 @@ const RunCodeButton = () => {
   async function runCode() {
     setIsLoading(true);
     setSubmittedResult(false);
-
     try {
       const response = await api.post(`/submission/${slug}/run-code`, solution);
       console.log(response.data);
