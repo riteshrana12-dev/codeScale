@@ -41,3 +41,5 @@ const RunCodeButton = () => {
     </button>
   );
 };
+
+export default RunCodeButton;
