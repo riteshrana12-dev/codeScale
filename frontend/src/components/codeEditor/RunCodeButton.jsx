@@ -12,3 +12,7 @@ const RunCodeButton = () => {
     isLoading,
     setSubmittedResult,
   } = useProblem();
+
+  async function runCode() {
+    setIsLoading(true);
+    setSubmittedResult(false);
