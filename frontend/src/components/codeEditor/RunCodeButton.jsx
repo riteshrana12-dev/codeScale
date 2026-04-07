@@ -27,3 +27,10 @@ const RunCodeButton = () => {
       setIsLoading(false);
     }
   }
+
+  return (
+    <button
+      onClick={runCode}
+      disabled={isLoading}
+      className="flex items-center gap-2 font-mono text-xs font-bold px-4 py-2 rounded-lg border border-white/10 text-[#9999b0] bg-white/[0.03] hover:bg-white/[0.07] hover:text-white hover:border-white/20 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+    >
