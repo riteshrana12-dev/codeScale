@@ -4,3 +4,11 @@ import api from "../../api/api";
 
 const RunCodeButton = () => {
   const { slug } = useParams();
+
+  const {
+    solution,
+    setSubmissionResult,
+    setIsLoading,
+    isLoading,
+    setSubmittedResult,
+  } = useProblem();
