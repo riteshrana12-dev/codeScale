@@ -8,6 +8,7 @@ const Language = () => {
   const dropdownRef = useRef(null);
   const languages = ["JavaScript", "Python"];
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -20,6 +21,7 @@ const Language = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
+      {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-between w-32 font-mono text-[11px] px-3 py-1.5 rounded-md border transition-all duration-200 outline-none
@@ -42,6 +44,8 @@ const Language = () => {
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
+
+      {/* Modern Animated Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
