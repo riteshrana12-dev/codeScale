@@ -29,7 +29,6 @@ const Language = () => {
               : "bg-[#0f0f1e] border-white/10 text-[#9999b0] hover:border-white/20 hover:text-white"
           }`}
       >
-
         <span>{solution.language || "Select"}</span>
         <svg
           width="10"
@@ -66,3 +65,17 @@ const Language = () => {
                       : "text-[#9999b0] hover:bg-white/[0.03] hover:text-white"
                   }`}
               >
+                <div className="flex items-center justify-between">
+                  {lang}
+                  {solution.language === lang && (
+                    <div className="w-1 h-1 rounded-full bg-[#00ff9d] shadow-[0_0_8px_#00ff9d]" />
+                  )}
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
