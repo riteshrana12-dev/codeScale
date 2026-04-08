@@ -17,3 +17,6 @@ const Language = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
