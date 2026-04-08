@@ -29,3 +29,17 @@ const Language = () => {
               : "bg-[#0f0f1e] border-white/10 text-[#9999b0] hover:border-white/20 hover:text-white"
           }`}
       >
+
+        <span>{solution.language || "Select"}</span>
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          className={`transition-transform duration-200 ${isOpen ? "rotate-180 text-[#00ff9d]" : "text-[#444460]"}`}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
