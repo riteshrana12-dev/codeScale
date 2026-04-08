@@ -52,3 +52,17 @@ const Language = () => {
             transition={{ duration: 0.1 }}
             className="absolute z-50 w-full bg-[#0d0d1a] border border-white/10 rounded-lg shadow-2xl overflow-hidden py-1"
           >
+            {languages.map((lang) => (
+              <button
+                key={lang}
+                onClick={() => {
+                  setSolution({ ...solution, language: lang });
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-3 py-2 font-mono text-[11px] transition-colors
+                  ${
+                    solution.language === lang
+                      ? "bg-[#00ff9d]/10 text-[#00ff9d]"
+                      : "text-[#9999b0] hover:bg-white/[0.03] hover:text-white"
+                  }`}
+              >
