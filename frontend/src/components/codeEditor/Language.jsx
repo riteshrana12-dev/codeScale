@@ -43,3 +43,12 @@ const Language = () => {
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 5, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.1 }}
+            className="absolute z-50 w-full bg-[#0d0d1a] border border-white/10 rounded-lg shadow-2xl overflow-hidden py-1"
+          >
