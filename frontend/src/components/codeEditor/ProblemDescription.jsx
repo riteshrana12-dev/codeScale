@@ -9,6 +9,7 @@ const ProblemDescription = ({ problem }) => {
       className="flex-1 overflow-y-auto px-6 py-8 scrollbar-hide"
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
+      {/* 1. Description Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -17,15 +18,21 @@ const ProblemDescription = ({ problem }) => {
         <h1 className="font-mono text-2xl font-black text-white mb-2 leading-tight">
           {problem.title}
         </h1>
+
         <p className="text-[#9999b0] text-s leading-relaxed font-light whitespace-pre-wrap">
           {problem.description}
         </p>
+
+        {/* --- THE LIGHTNING BORDER --- */}
         <div className="absolute bottom-0 left-0 w-full">
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#00ff9d]/50 to-transparent shadow-[0_0_15px_rgba(0,255,157,0.5)]" />
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent mt-[-1px]" />
         </div>
       </motion.section>
+
       <div className="h-px bg-white/5 mb-10" />
+
+      {/* 2. Examples Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -75,7 +82,10 @@ const ProblemDescription = ({ problem }) => {
           </div>
         ))}
       </motion.section>
+
       <div className="h-px bg-white/5 mb-10" />
+
+      {/* 3. Constraints Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -103,4 +113,5 @@ const ProblemDescription = ({ problem }) => {
     </div>
   );
 };
+
 export default ProblemDescription;
