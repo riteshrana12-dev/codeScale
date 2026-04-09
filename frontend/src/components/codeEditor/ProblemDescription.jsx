@@ -81,3 +81,6 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="pb-10"
       >
+        <h2 className="font-mono text-xs text-[#f87171] tracking-widest uppercase mb-4">
+          Constraints
+        </h2>
