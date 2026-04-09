@@ -53,3 +53,11 @@ const ProblemDescription = ({ problem }) => {
                   {exp.input}
                 </code>
               </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-mono text-[13px] text-[#606086] uppercase">
+                  Output
+                </span>
+                <code className="font-mono text-xs text-[#00ff9d] bg-[#00ff9d]/5 p-2 rounded border border-[#00ff9d]/10">
+                  {exp.output}
+                </code>
+              </div>
