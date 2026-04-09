@@ -90,3 +90,6 @@ const ProblemDescription = ({ problem }) => {
               key={i}
               className="flex items-start gap-3 bg-white/[0.02] p-2 rounded border border-white/5"
             >
+              <span className="text-[#f87171] font-mono text-xs tracking-tighter">
+                {"{ ! }"}
+              </span>
