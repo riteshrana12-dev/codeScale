@@ -17,3 +17,6 @@ const ProblemDescription = ({ problem }) => {
         <h1 className="font-mono text-2xl font-black text-white mb-2 leading-tight">
           {problem.title}
         </h1>
+        <p className="text-[#9999b0] text-s leading-relaxed font-light whitespace-pre-wrap">
+          {problem.description}
+        </p>
