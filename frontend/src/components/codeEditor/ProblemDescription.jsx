@@ -14,3 +14,6 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="relative pb-10 mb-10"
       >
+        <h1 className="font-mono text-2xl font-black text-white mb-2 leading-tight">
+          {problem.title}
+        </h1>
