@@ -20,3 +20,8 @@ const ProblemDescription = ({ problem }) => {
         <p className="text-[#9999b0] text-s leading-relaxed font-light whitespace-pre-wrap">
           {problem.description}
         </p>
+        <div className="absolute bottom-0 left-0 w-full">
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#00ff9d]/50 to-transparent shadow-[0_0_15px_rgba(0,255,157,0.5)]" />
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent mt-[-1px]" />
+        </div>
+      </motion.section>
