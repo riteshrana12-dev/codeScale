@@ -31,3 +31,6 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="mb-10 space-y-4"
       >
+        <h2 className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase mb-4">
+          Examples
+        </h2>
