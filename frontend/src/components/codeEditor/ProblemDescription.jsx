@@ -93,3 +93,13 @@ const ProblemDescription = ({ problem }) => {
               <span className="text-[#f87171] font-mono text-xs tracking-tighter">
                 {"{ ! }"}
               </span>
+              <code className="font-mono text-xs text-[#9999b0] leading-relaxed italic">
+                {c}
+              </code>
+            </li>
+          ))}
+        </ul>
+      </motion.section>
+    </div>
+  );
+};
