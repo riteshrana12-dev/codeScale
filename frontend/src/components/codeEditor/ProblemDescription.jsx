@@ -34,3 +34,8 @@ const ProblemDescription = ({ problem }) => {
         <h2 className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase mb-4">
           Examples
         </h2>
+        {problem.examples.map((exp, i) => (
+          <div
+            key={exp._id || i}
+            className="rounded-xl border border-white/8 bg-[#0d0d1a] overflow-hidden"
+          >
