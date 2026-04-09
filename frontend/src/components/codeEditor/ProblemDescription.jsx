@@ -44,3 +44,4 @@ const ProblemDescription = ({ problem }) => {
                 Example {i + 1}
               </span>
             </div>
+            <div className="p-4 space-y-3">
