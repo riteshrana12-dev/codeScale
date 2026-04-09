@@ -75,3 +75,4 @@ const ProblemDescription = ({ problem }) => {
           </div>
         ))}
       </motion.section>
+      <div className="h-px bg-white/5 mb-10" />
