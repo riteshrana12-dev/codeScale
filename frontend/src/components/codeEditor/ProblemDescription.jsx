@@ -26,3 +26,8 @@ const ProblemDescription = ({ problem }) => {
         </div>
       </motion.section>
       <div className="h-px bg-white/5 mb-10" />
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="mb-10 space-y-4"
+      >
