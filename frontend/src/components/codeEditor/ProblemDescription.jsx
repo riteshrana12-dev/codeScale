@@ -76,3 +76,8 @@ const ProblemDescription = ({ problem }) => {
         ))}
       </motion.section>
       <div className="h-px bg-white/5 mb-10" />
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="pb-10"
+      >
