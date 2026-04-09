@@ -61,3 +61,17 @@ const ProblemDescription = ({ problem }) => {
                   {exp.output}
                 </code>
               </div>
+              {exp.explanation && (
+                <div className="pt-2 border-t border-white/5">
+                  <p className="text-xs text-[#777790] leading-relaxed italic">
+                    <span className="text-[#555570] not-italic mr-2">
+                      Note:
+                    </span>
+                    {exp.explanation}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </motion.section>
