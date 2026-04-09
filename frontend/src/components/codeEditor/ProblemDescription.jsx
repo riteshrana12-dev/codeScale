@@ -103,3 +103,4 @@ const ProblemDescription = ({ problem }) => {
     </div>
   );
 };
+export default ProblemDescription;
