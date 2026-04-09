@@ -39,3 +39,8 @@ const ProblemDescription = ({ problem }) => {
             key={exp._id || i}
             className="rounded-xl border border-white/8 bg-[#0d0d1a] overflow-hidden"
           >
+            <div className="px-4 py-2 border-b border-white/5 bg-[#111120]">
+              <span className="font-mono text-[13px] text-[#606086]">
+                Example {i + 1}
+              </span>
+            </div>
