@@ -25,3 +25,4 @@ const ProblemDescription = ({ problem }) => {
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent mt-[-1px]" />
         </div>
       </motion.section>
+      <div className="h-px bg-white/5 mb-10" />
