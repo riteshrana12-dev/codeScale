@@ -84,3 +84,9 @@ const ProblemDescription = ({ problem }) => {
         <h2 className="font-mono text-xs text-[#f87171] tracking-widest uppercase mb-4">
           Constraints
         </h2>
+        <ul className="space-y-3">
+          {problem.constraints?.map((c, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3 bg-white/[0.02] p-2 rounded border border-white/5"
+            >
