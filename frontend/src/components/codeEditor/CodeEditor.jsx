@@ -77,3 +77,4 @@ function CodeEditor() {
           </div>
         )}
       </div>
+      <AnimatePresence mode="wait">
