@@ -1,2 +1,6 @@
 import { useRef } from "react";
 import Editor from "@monaco-editor/react";
+
+import Language from "./Language";
+import RunCodeButton from "./RunCodeButton";
+import SubmitCodeButton from "./SubmitButton";
