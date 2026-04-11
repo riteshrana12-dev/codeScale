@@ -39,3 +39,4 @@ const ProblemsList = () => {
     );
     return (
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.025)_1px,transparent_1px)] bg-[size:60px_60px]" />
