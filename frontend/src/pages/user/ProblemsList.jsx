@@ -89,3 +89,15 @@ const ProblemsList = () => {
           }`}
         >
           <AnimatePresence mode="popLayout">
+            {problems.map((p, index) => (
+              <motion.div
+                key={p._id}
+                layout
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{
+                  layout: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 },
+                }}
+              >
