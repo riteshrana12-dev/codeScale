@@ -26,3 +26,14 @@ const ProblemsList = () => {
   useEffect(() => {
     listOfProblem();
   }, []);
+
+  if (loading)
+    return (
+      <div className="h-screen bg-[#0a0a0f] flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="w-8 h-8 border-2 border-[#00ff9d]/20 border-t-[#00ff9d] rounded-full"
+        />
+      </div>
+    );
