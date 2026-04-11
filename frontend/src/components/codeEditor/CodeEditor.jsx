@@ -37,3 +37,10 @@ function CodeEditor() {
         </div>
       </div>
       <div className="flex-1 min-h-0">
+        <Editor
+          height="100%"
+          defaultLanguage="javascript"
+          defaultValue="// Write your solution here !imp Use camel case for function name"
+          theme="vs-dark"
+          value={solution.code}
+          onMount={handleEditorDidMount}
