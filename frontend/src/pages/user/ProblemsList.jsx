@@ -76,3 +76,7 @@ const ProblemsList = () => {
           </div>
         </div>
       </div>
+      <div
+        className="flex-1 overflow-y-auto px-6 lg:px-24 py-10 scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
