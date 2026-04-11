@@ -13,6 +13,7 @@ const ProblemsList = () => {
   const [problems, setProblems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("grid"); // "grid" or "list"
+
   async function listOfProblem() {
     try {
       const response = await api.get("/problems/");
@@ -23,6 +24,7 @@ const ProblemsList = () => {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     listOfProblem();
   }, []);
@@ -37,11 +39,17 @@ const ProblemsList = () => {
         />
       </div>
     );
-    return (
+
+  return (
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
+      {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.025)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      {/* Radial glow top-left */}
       <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,157,0.07)_0%,transparent_65%)] pointer-events-none" />
+      {/* Radial glow bottom-right */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,212,255,0.06)_0%,transparent_65%)] pointer-events-none" />
+      {/* FIXED HEADER */}
       <div className="flex-shrink-0 pt-2 pb-2 px-6 lg:px-24 bg-[#0a0a0f] z-10 border-b border-white/5">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
@@ -52,6 +60,8 @@ const ProblemsList = () => {
               {problems.length} Mission Objectives Found
             </p>
           </div>
+
+          {/* VIEW TOGGLE */}
           <div className="flex items-center bg-[#0d0d1a] border border-white/10 p-1 rounded-xl shadow-inner">
             <button
               onClick={() => setViewMode("grid")}
@@ -76,6 +86,8 @@ const ProblemsList = () => {
           </div>
         </div>
       </div>
+
+      {/* SCROLLABLE AREA */}
       <div
         className="flex-1 overflow-y-auto px-6 lg:px-24 py-10 scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -109,7 +121,13 @@ const ProblemsList = () => {
                       : "rounded-xl p-4 flex flex-row items-center justify-between"
                   }`}
                 >
+                  {/* Content Wrapper */}
                   <motion.div
+                    layout
+                    className={`flex ${viewMode === "grid" ? "flex-col" : "flex-row items-center gap-8 flex-1"}`}
+                  >
+                    {/* Badge */}
+                    <motion.div
                       layout
                       className={viewMode === "grid" ? "mb-6" : "mb-0"}
                     >
@@ -119,6 +137,8 @@ const ProblemsList = () => {
                         {p.difficulty}
                       </span>
                     </motion.div>
+
+                    {/* Text Container */}
                     <motion.div
                       layout
                       className={viewMode === "list" ? "flex-1" : ""}
@@ -143,6 +163,17 @@ const ProblemsList = () => {
                         {p.description}
                       </motion.p>
                     </motion.div>
+                  </motion.div>
+
+                  {/* Footer / Action */}
+                  <motion.div
+                    layout
+                    className={`flex items-center justify-between ${
+                      viewMode === "grid"
+                        ? "mt-8 pt-6 border-t border-white/5"
+                        : "ml-8 border-l border-white/5 pl-8"
+                    }`}
+                  >
                     <motion.div layout className="flex gap-2">
                       {p.tags?.slice(0, 2).map((tag) => (
                         <span
@@ -153,6 +184,7 @@ const ProblemsList = () => {
                         </span>
                       ))}
                     </motion.div>
+
                     <motion.div
                       layout
                       className="text-[#00ff9d] flex items-center gap-3"
@@ -173,4 +205,18 @@ const ProblemsList = () => {
                         →
                       </span>
                     </motion.div>
-                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00ff9d]/0 group-hover:via-[#00ff9d]/40 to-transparent transition-all duration-500" />
+                  </motion.div>
+
+                  {/* Sublte lightning highlight on hover */}
+                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00ff9d]/0 group-hover:via-[#00ff9d]/40 to-transparent transition-all duration-500" />
+                </Link>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default ProblemsList;
