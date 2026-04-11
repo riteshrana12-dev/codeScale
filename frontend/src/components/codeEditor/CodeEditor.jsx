@@ -61,3 +61,6 @@ function CodeEditor() {
           onChange={(value) => setSolution({ ...solution, code: value })}
         />
       </div>
+      <div className="flex items-center gap-3 px-4 py-3 bg-[#0f0f1e] border-t border-white/5 flex-shrink-0">
+        <RunCodeButton />
+        <SubmitCodeButton />
