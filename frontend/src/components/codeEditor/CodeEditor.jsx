@@ -32,3 +32,7 @@ function CodeEditor() {
         </div>
         <div className="w-px h-4 bg-white/10" />
         <span className="font-mono text-xs text-[#444460]">solution.js</span>
+        <div className="ml-auto flex items-center gap-2">
+          <Language />
+        </div>
+      </div>
