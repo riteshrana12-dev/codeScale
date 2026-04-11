@@ -80,3 +80,12 @@ const ProblemsList = () => {
         className="flex-1 overflow-y-auto px-6 lg:px-24 py-10 scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+        <motion.div
+          layout
+          className={`grid gap-6 ${
+            viewMode === "grid"
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              : "grid-cols-1 max-w-5xl mx-auto"
+          }`}
+        >
+          <AnimatePresence mode="popLayout">
