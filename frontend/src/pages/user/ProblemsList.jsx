@@ -10,3 +10,6 @@ const difficultyColors = {
 };
 
 const ProblemsList = () => {
+  const [problems, setProblems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState("grid"); // "grid" or "list"
