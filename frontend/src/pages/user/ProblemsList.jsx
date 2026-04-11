@@ -119,3 +119,27 @@ const ProblemsList = () => {
                         {p.difficulty}
                       </span>
                     </motion.div>
+                    <motion.div
+                      layout
+                      className={viewMode === "list" ? "flex-1" : ""}
+                    >
+                      <motion.h3
+                        layout="position"
+                        className={`font-bold text-white group-hover:text-[#00ff9d] transition-colors ${
+                          viewMode === "grid" ? "text-xl mb-2" : "text-lg mb-0"
+                        }`}
+                      >
+                        {p.title}
+                      </motion.h3>
+
+                      <motion.p
+                        layout="position"
+                        className={`text-[#a0a0c0] font-normal leading-relaxed ${
+                          viewMode === "grid"
+                            ? "text-sm line-clamp-2"
+                            : "text-xs line-clamp-1 opacity-60"
+                        }`}
+                      >
+                        {p.description}
+                      </motion.p>
+                    </motion.div>
