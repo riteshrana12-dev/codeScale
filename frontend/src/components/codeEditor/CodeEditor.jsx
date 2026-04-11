@@ -58,3 +58,6 @@ function CodeEditor() {
             fontLigatures: true,
             padding: { top: 16, bottom: 16 },
           }}
+          onChange={(value) => setSolution({ ...solution, code: value })}
+        />
+      </div>
