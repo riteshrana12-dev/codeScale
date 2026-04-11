@@ -143,3 +143,13 @@ const ProblemsList = () => {
                         {p.description}
                       </motion.p>
                     </motion.div>
+                    <motion.div layout className="flex gap-2">
+                      {p.tags?.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] text-[#65658b] font-semibold font-bold uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </motion.div>
