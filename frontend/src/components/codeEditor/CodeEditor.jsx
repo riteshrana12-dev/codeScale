@@ -8,3 +8,10 @@ import { useProblem } from "../../context/ProblemContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 function CodeEditor() {
+  const {
+    solution,
+    setSolution,
+    submissionResult,
+    submittedResult,
+    isLoading,
+  } = useProblem();
