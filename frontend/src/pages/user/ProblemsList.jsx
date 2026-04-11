@@ -8,3 +8,5 @@ const difficultyColors = {
   Medium: "text-[#facc15] border-[#facc15]/30 bg-[#facc15]/5",
   Hard: "text-[#f87171] border-[#f87171]/30 bg-[#f87171]/5",
 };
+
+const ProblemsList = () => {
