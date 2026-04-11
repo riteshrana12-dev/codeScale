@@ -17,3 +17,6 @@ function CodeEditor() {
   } = useProblem();
 
   const editorRef = useRef(null);
+  function handleEditorDidMount(editor) {
+    editorRef.current = editor;
+  }
