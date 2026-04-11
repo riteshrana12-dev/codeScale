@@ -153,3 +153,23 @@ const ProblemsList = () => {
                         </span>
                       ))}
                     </motion.div>
+                    <motion.div
+                      layout
+                      className="text-[#00ff9d] flex items-center gap-3"
+                    >
+                      <AnimatePresence>
+                        {viewMode === "grid" && (
+                          <motion.span
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -5 }}
+                            className="text-[12px] font-black font-semibold tracking-tighter"
+                          >
+                            SOLVE_CHALLENGE
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                      <span className="text-xl group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </motion.div>
