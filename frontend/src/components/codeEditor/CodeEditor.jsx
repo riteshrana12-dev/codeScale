@@ -25,3 +25,8 @@ function CodeEditor() {
   return (
     <div className="flex flex-col h-full bg-[#0a0a0f]">
       <div className="flex items-center gap-3 px-4 h-11 bg-[#0f0f1e] border-b border-white/5 flex-shrink-0">
+      <div className="flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+          <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+          <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+        </div>
