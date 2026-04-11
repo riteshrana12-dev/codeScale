@@ -64,3 +64,16 @@ function CodeEditor() {
       <div className="flex items-center gap-3 px-4 py-3 bg-[#0f0f1e] border-t border-white/5 flex-shrink-0">
         <RunCodeButton />
         <SubmitCodeButton />
+        {isLoading && (
+          <div className="ml-auto flex items-center gap-2">
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="inline-block w-3.5 h-3.5 border-2 border-[#00ff9d]/20 border-t-[#00ff9d] rounded-full"
+            />
+            <span className="font-mono text-xs text-[#555570]">
+              executing...
+            </span>
+          </div>
+        )}
+      </div>
