@@ -42,3 +42,13 @@ const ProblemsList = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.025)_1px,transparent_1px)] bg-[size:60px_60px]" />
       <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,157,0.07)_0%,transparent_65%)] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,212,255,0.06)_0%,transparent_65%)] pointer-events-none" />
+      <div className="flex-shrink-0 pt-2 pb-2 px-6 lg:px-24 bg-[#0a0a0f] z-10 border-b border-white/5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-3">
+              <span className="text-[#00ff9d] font-mono">&gt;_</span> Challenges
+            </h1>
+            <p className="text-[#8888a0] font-mono text-sm mt-2 uppercase tracking-[0.2em]">
+              {problems.length} Mission Objectives Found
+            </p>
+          </div>
