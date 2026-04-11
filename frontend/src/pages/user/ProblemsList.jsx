@@ -13,3 +13,13 @@ const ProblemsList = () => {
   const [problems, setProblems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("grid"); // "grid" or "list"
+  async function listOfProblem() {
+    try {
+      const response = await api.get("/problems/");
+      setProblems(response.data.data);
+    } catch (err) {
+      console.error("Fetch error:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
