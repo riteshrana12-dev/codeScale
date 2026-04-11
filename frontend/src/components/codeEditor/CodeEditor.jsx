@@ -44,3 +44,17 @@ function CodeEditor() {
           theme="vs-dark"
           value={solution.code}
           onMount={handleEditorDidMount}
+          options={{
+            fontSize: 13,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            automaticLayout: true,
+            tabSize: 2,
+            wordWrap: "on",
+            lineNumbers: "on",
+            renderLineHighlight: "all",
+            cursorBlinking: "smooth",
+            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+            fontLigatures: true,
+            padding: { top: 16, bottom: 16 },
+          }}
