@@ -15,3 +15,5 @@ function CodeEditor() {
     submittedResult,
     isLoading,
   } = useProblem();
+
+  const editorRef = useRef(null);
