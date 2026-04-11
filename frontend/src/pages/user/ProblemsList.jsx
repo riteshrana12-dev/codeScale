@@ -173,3 +173,4 @@ const ProblemsList = () => {
                         →
                       </span>
                     </motion.div>
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00ff9d]/0 group-hover:via-[#00ff9d]/40 to-transparent transition-all duration-500" />
