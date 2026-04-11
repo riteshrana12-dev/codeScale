@@ -20,3 +20,5 @@ function CodeEditor() {
   function handleEditorDidMount(editor) {
     editorRef.current = editor;
   }
+  const submission = submissionResult;
+  const submit = submittedResult;
