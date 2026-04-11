@@ -6,3 +6,5 @@ import SubmitCodeButton from "./SubmitButton";
 
 import { useProblem } from "../../context/ProblemContext";
 import { motion, AnimatePresence } from "framer-motion";
+
+function CodeEditor() {
