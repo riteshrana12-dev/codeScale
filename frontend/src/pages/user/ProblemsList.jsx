@@ -101,3 +101,11 @@ const ProblemsList = () => {
                   opacity: { duration: 0.2 },
                 }}
               >
+                <Link
+                  to={`/problems/${p.slug}`}
+                  className={`group block relative bg-[#0d0d1a] border border-white/10 transition-colors duration-300 hover:border-[#00ff9d]/50 hover:bg-[#111122] overflow-hidden ${
+                    viewMode === "grid"
+                      ? "rounded-2xl p-8 h-full flex flex-col"
+                      : "rounded-xl p-4 flex flex-row items-center justify-between"
+                  }`}
+                >
