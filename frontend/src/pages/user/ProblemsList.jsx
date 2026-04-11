@@ -109,3 +109,13 @@ const ProblemsList = () => {
                       : "rounded-xl p-4 flex flex-row items-center justify-between"
                   }`}
                 >
+                  <motion.div
+                      layout
+                      className={viewMode === "grid" ? "mb-6" : "mb-0"}
+                    >
+                      <span
+                        className={`px-3 py-1 rounded border text-[10px] font-black font-mono tracking-widest uppercase ${difficultyColors[p.difficulty] || difficultyColors.Medium}`}
+                      >
+                        {p.difficulty}
+                      </span>
+                    </motion.div>
