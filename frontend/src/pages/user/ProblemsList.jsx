@@ -23,3 +23,6 @@ const ProblemsList = () => {
       setLoading(false);
     }
   }
+  useEffect(() => {
+    listOfProblem();
+  }, []);
