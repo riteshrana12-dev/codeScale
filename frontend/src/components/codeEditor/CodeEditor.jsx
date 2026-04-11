@@ -30,3 +30,5 @@ function CodeEditor() {
           <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <span className="w-3 h-3 rounded-full bg-[#28c840]" />
         </div>
+        <div className="w-px h-4 bg-white/10" />
+        <span className="font-mono text-xs text-[#444460]">solution.js</span>
