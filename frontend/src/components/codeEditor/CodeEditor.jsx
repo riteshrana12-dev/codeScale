@@ -1,10 +1,9 @@
 import { useRef } from "react";
 import Editor from "@monaco-editor/react";
 import Language from "./Language";
+import { useProblem } from "../../context/ProblemContext";
 import RunCodeButton from "./RunCodeButton";
 import SubmitCodeButton from "./SubmitButton";
-
-import { useProblem } from "../../context/ProblemContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 function CodeEditor() {
@@ -15,17 +14,20 @@ function CodeEditor() {
     submittedResult,
     isLoading,
   } = useProblem();
-
   const editorRef = useRef(null);
+
   function handleEditorDidMount(editor) {
     editorRef.current = editor;
   }
+
   const submission = submissionResult;
   const submit = submittedResult;
+
   return (
     <div className="flex flex-col h-full bg-[#0a0a0f]">
+      {/* Editor toolbar */}
       <div className="flex items-center gap-3 px-4 h-11 bg-[#0f0f1e] border-b border-white/5 flex-shrink-0">
-      <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
           <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <span className="w-3 h-3 rounded-full bg-[#28c840]" />
@@ -36,6 +38,8 @@ function CodeEditor() {
           <Language />
         </div>
       </div>
+
+      {/* Monaco Editor — fills remaining space */}
       <div className="flex-1 min-h-0">
         <Editor
           height="100%"
@@ -61,6 +65,8 @@ function CodeEditor() {
           onChange={(value) => setSolution({ ...solution, code: value })}
         />
       </div>
+
+      {/* Action Bar */}
       <div className="flex items-center gap-3 px-4 py-3 bg-[#0f0f1e] border-t border-white/5 flex-shrink-0">
         <RunCodeButton />
         <SubmitCodeButton />
@@ -77,4 +83,7 @@ function CodeEditor() {
           </div>
         )}
       </div>
+
+      {/* Output Panel */}
       <AnimatePresence mode="wait">
+      
