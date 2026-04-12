@@ -87,3 +87,29 @@ function CodeEditor() {
       {/* Output Panel */}
       <AnimatePresence mode="wait">
       
+      {isLoading && (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="border-t border-white/5 bg-[#0d0d1a] px-5 py-6 flex-shrink-0"
+          >
+            <div className="flex items-center gap-3">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+                className="w-5 h-5 border-2 border-[#00ff9d]/20 border-t-[#00ff9d] rounded-full flex-shrink-0"
+              />
+              <div>
+                <p className="font-mono text-sm text-white">
+                  Executing code...
+                </p>
+                <p className="font-mono text-xs text-[#555570] mt-0.5">
+                  Running against test cases in sandbox
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
