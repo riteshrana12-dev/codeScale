@@ -244,3 +244,13 @@ function CodeEditor() {
                           {typeof result.output === "string" ? result.output : JSON.stringify(result.output)}
                         </code>
                       </div>
+                      <div className="flex items-start gap-3">
+                        <span className="font-mono text-xs text-[#444460] w-18 flex-shrink-0 pt-0.5">
+                          Expected
+                        </span>
+                        <code className="font-mono text-xs text-[#9999b0] leading-relaxed">
+                          {JSON.stringify(result.expectedOutput)}
+                        </code>
+                      </div>
+                    </div>
+                  )}
