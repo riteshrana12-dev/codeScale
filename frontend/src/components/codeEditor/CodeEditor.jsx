@@ -188,3 +188,7 @@ function CodeEditor() {
                 ))}
               </div>
             </div>
+            <div
+              className="overflow-y-auto [&::-webkit-scrollbar]:hidden"
+              style={{ maxHeight: "28vh", msOverflowStyle: "none", scrollbarWidth: "none" }}
+            >
