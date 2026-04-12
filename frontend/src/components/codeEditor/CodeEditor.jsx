@@ -86,8 +86,7 @@ function CodeEditor() {
 
       {/* Output Panel */}
       <AnimatePresence mode="wait">
-      
-      {isLoading && (
+        {isLoading && (
           <motion.div
             key="loading"
             initial={{ opacity: 0, height: 0 }}
@@ -162,16 +161,34 @@ function CodeEditor() {
                 }`}
               >
                 {submission.allPassed ? (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 ) : (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                 )}
-                {submission.allPassed ? "All cases passed" : "Some cases failed"}
+                {submission.allPassed
+                  ? "All cases passed"
+                  : "Some cases failed"}
               </div>
               <div className="ml-auto flex gap-2">
                 {submission?.results?.map((r, i) => (
@@ -190,7 +207,11 @@ function CodeEditor() {
             </div>
             <div
               className="overflow-y-auto [&::-webkit-scrollbar]:hidden"
-              style={{ maxHeight: "28vh", msOverflowStyle: "none", scrollbarWidth: "none" }}
+              style={{
+                maxHeight: "28vh",
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
+              }}
             >
               {submission?.results?.map((result, index) => (
                 <div
@@ -203,15 +224,20 @@ function CodeEditor() {
                 >
                   <div
                     className={`flex items-center gap-2 px-4 py-2 border-b ${
-                      result.status === "passed" ? "border-[#00ff9d]/10" : "border-[#f87171]/10"
+                      result.status === "passed"
+                        ? "border-[#00ff9d]/10"
+                        : "border-[#f87171]/10"
                     }`}
                   >
                     <span
                       className={`font-mono text-xs font-bold ${
-                        result.status === "passed" ? "text-[#00ff9d]" : "text-[#f87171]"
+                        result.status === "passed"
+                          ? "text-[#00ff9d]"
+                          : "text-[#f87171]"
                       }`}
                     >
-                      Case {index + 1} · {result.status ? result.status.toUpperCase() : "FAILED"}
+                      Case {index + 1} ·{" "}
+                      {result.status ? result.status.toUpperCase() : "FAILED"}
                     </span>
                   </div>
                   {result.status !== "error" && (
@@ -221,16 +247,21 @@ function CodeEditor() {
                           Input
                         </span>
                         <code className="font-mono text-xs text-[#9999b0] leading-relaxed flex-1">
-                          {Object.entries(result.input).map(([key, value], i) => (
-                            <span key={key}>
-                              <span style={{ color: "#569cd6" }}>{key}</span>
-                              {": "}
-                              <span style={{ color: "#ce9178" }}>
-                                {typeof value === "object" ? JSON.stringify(value) : String(value)}
+                          {Object.entries(result.input).map(
+                            ([key, value], i) => (
+                              <span key={key}>
+                                <span style={{ color: "#569cd6" }}>{key}</span>
+                                {": "}
+                                <span style={{ color: "#ce9178" }}>
+                                  {typeof value === "object"
+                                    ? JSON.stringify(value)
+                                    : String(value)}
+                                </span>
+                                {i < Object.entries(result.input).length - 1 &&
+                                  ", "}
                               </span>
-                              {i < Object.entries(result.input).length - 1 && ", "}
-                            </span>
-                          ))}
+                            ),
+                          )}
                         </code>
                       </div>
                       <div className="flex items-start gap-3">
@@ -239,9 +270,16 @@ function CodeEditor() {
                         </span>
                         <code
                           className="font-mono text-xs leading-relaxed"
-                          style={{ color: result.status === "passed" ? "#00ff9d" : "#f87171" }}
+                          style={{
+                            color:
+                              result.status === "passed"
+                                ? "#00ff9d"
+                                : "#f87171",
+                          }}
                         >
-                          {typeof result.output === "string" ? result.output : JSON.stringify(result.output)}
+                          {typeof result.output === "string"
+                            ? result.output
+                            : JSON.stringify(result.output)}
                         </code>
                       </div>
                       <div className="flex items-start gap-3">
@@ -254,3 +292,24 @@ function CodeEditor() {
                       </div>
                     </div>
                   )}
+                  {result.status === "error" && (
+                    <div className="px-4 py-3">
+                      <div className="bg-[#f87171]/5 border border-[#f87171]/10 rounded-lg p-3">
+                        <p className="font-mono text-xs text-[#f87171] font-bold mb-1">
+                          Runtime Error
+                        </p>
+                        <pre className="font-mono text-xs text-[#f87171]/70 whitespace-pre-wrap leading-relaxed">
+                          {result.output}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
