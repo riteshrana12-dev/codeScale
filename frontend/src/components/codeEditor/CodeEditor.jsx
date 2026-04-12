@@ -86,6 +86,7 @@ function CodeEditor() {
 
       {/* Output Panel */}
       <AnimatePresence mode="wait">
+        {/* LOADING */}
         {isLoading && (
           <motion.div
             key="loading"
@@ -112,6 +113,8 @@ function CodeEditor() {
             </div>
           </motion.div>
         )}
+
+        {/* SUBMITTED SUCCESS */}
         {!isLoading && submit === true && (
           <motion.div
             key="submitted"
@@ -144,6 +147,8 @@ function CodeEditor() {
             </div>
           </motion.div>
         )}
+
+        {/* RUN RESULTS */}
         {!isLoading && submit !== true && submission && (
           <motion.div
             key="results"
@@ -154,6 +159,7 @@ function CodeEditor() {
             className="border-t border-white/5 bg-[#0d0d1a] flex-shrink-0"
             style={{ maxHeight: "38vh" }}
           >
+            {/* Results header */}
             <div className="flex items-center gap-3 px-5 py-3 border-b border-white/5">
               <div
                 className={`flex items-center gap-2 font-mono text-sm font-bold ${
@@ -205,6 +211,8 @@ function CodeEditor() {
                 ))}
               </div>
             </div>
+
+            {/* Test case results */}
             <div
               className="overflow-y-auto [&::-webkit-scrollbar]:hidden"
               style={{
@@ -222,6 +230,7 @@ function CodeEditor() {
                       : "border-[#f87171]/15 bg-[#f87171]/3"
                   }`}
                 >
+                  {/* Case header */}
                   <div
                     className={`flex items-center gap-2 px-4 py-2 border-b ${
                       result.status === "passed"
@@ -240,6 +249,7 @@ function CodeEditor() {
                       {result.status ? result.status.toUpperCase() : "FAILED"}
                     </span>
                   </div>
+
                   {result.status !== "error" && (
                     <div className="px-4 py-3 space-y-2">
                       <div className="flex items-start gap-3">
@@ -292,6 +302,7 @@ function CodeEditor() {
                       </div>
                     </div>
                   )}
+
                   {result.status === "error" && (
                     <div className="px-4 py-3">
                       <div className="bg-[#f87171]/5 border border-[#f87171]/10 rounded-lg p-3">
