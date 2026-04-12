@@ -313,3 +313,5 @@ function CodeEditor() {
     </div>
   );
 }
+
+export default CodeEditor;
