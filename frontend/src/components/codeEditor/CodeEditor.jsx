@@ -201,3 +201,16 @@ function CodeEditor() {
                       : "border-[#f87171]/15 bg-[#f87171]/3"
                   }`}
                 >
+                  <div
+                    className={`flex items-center gap-2 px-4 py-2 border-b ${
+                      result.status === "passed" ? "border-[#00ff9d]/10" : "border-[#f87171]/10"
+                    }`}
+                  >
+                    <span
+                      className={`font-mono text-xs font-bold ${
+                        result.status === "passed" ? "text-[#00ff9d]" : "text-[#f87171]"
+                      }`}
+                    >
+                      Case {index + 1} · {result.status ? result.status.toUpperCase() : "FAILED"}
+                    </span>
+                  </div>
