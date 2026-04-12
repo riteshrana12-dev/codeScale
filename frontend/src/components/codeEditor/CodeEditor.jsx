@@ -122,3 +122,26 @@ function CodeEditor() {
             transition={{ duration: 0.35 }}
             className="border-t border-[#00ff9d]/20 bg-[#00ff9d]/5 px-5 py-6 flex-shrink-0"
           >
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#00ff9d]/10 border border-[#00ff9d]/20 flex items-center justify-center flex-shrink-0">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#00ff9d"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-mono font-black text-[#00ff9d] text-base">
+                  Submitted
+                </h3>
+              </div>
+            </div>
+          </motion.div>
+        )}
