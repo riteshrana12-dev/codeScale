@@ -192,3 +192,12 @@ function CodeEditor() {
               className="overflow-y-auto [&::-webkit-scrollbar]:hidden"
               style={{ maxHeight: "28vh", msOverflowStyle: "none", scrollbarWidth: "none" }}
             >
+              {submission?.results?.map((result, index) => (
+                <div
+                  key={index}
+                  className={`mx-4 my-3 rounded-xl border overflow-hidden ${
+                    result.status === "passed"
+                      ? "border-[#00ff9d]/15 bg-[#00ff9d]/3"
+                      : "border-[#f87171]/15 bg-[#f87171]/3"
+                  }`}
+                >
