@@ -173,3 +173,18 @@ function CodeEditor() {
                 )}
                 {submission.allPassed ? "All cases passed" : "Some cases failed"}
               </div>
+              <div className="ml-auto flex gap-2">
+                {submission?.results?.map((r, i) => (
+                  <div
+                    key={i}
+                    className={`w-6 h-6 rounded flex items-center justify-center font-mono text-xs font-bold ${
+                      r.status === "passed"
+                        ? "bg-[#00ff9d]/10 text-[#00ff9d] border border-[#00ff9d]/20"
+                        : "bg-[#f87171]/10 text-[#f87171] border border-[#f87171]/20"
+                    }`}
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </div>
