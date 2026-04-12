@@ -233,3 +233,14 @@ function CodeEditor() {
                           ))}
                         </code>
                       </div>
+                      <div className="flex items-start gap-3">
+                        <span className="font-mono text-xs text-[#444460] w-18 flex-shrink-0 pt-0.5">
+                          Output
+                        </span>
+                        <code
+                          className="font-mono text-xs leading-relaxed"
+                          style={{ color: result.status === "passed" ? "#00ff9d" : "#f87171" }}
+                        >
+                          {typeof result.output === "string" ? result.output : JSON.stringify(result.output)}
+                        </code>
+                      </div>
