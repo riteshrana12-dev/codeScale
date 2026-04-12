@@ -145,3 +145,13 @@ function CodeEditor() {
             </div>
           </motion.div>
         )}
+        {!isLoading && submit !== true && submission && (
+          <motion.div
+            key="results"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="border-t border-white/5 bg-[#0d0d1a] flex-shrink-0"
+            style={{ maxHeight: "38vh" }}
+          >
