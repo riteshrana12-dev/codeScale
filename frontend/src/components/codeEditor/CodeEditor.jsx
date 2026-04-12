@@ -113,3 +113,12 @@ function CodeEditor() {
             </div>
           </motion.div>
         )}
+        {!isLoading && submit === true && (
+          <motion.div
+            key="submitted"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="border-t border-[#00ff9d]/20 bg-[#00ff9d]/5 px-5 py-6 flex-shrink-0"
+          >
