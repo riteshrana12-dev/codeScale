@@ -214,3 +214,22 @@ function CodeEditor() {
                       Case {index + 1} · {result.status ? result.status.toUpperCase() : "FAILED"}
                     </span>
                   </div>
+                  {result.status !== "error" && (
+                    <div className="px-4 py-3 space-y-2">
+                      <div className="flex items-start gap-3">
+                        <span className="font-mono text-xs text-[#444460] w-18 flex-shrink-0 pt-0.5">
+                          Input
+                        </span>
+                        <code className="font-mono text-xs text-[#9999b0] leading-relaxed flex-1">
+                          {Object.entries(result.input).map(([key, value], i) => (
+                            <span key={key}>
+                              <span style={{ color: "#569cd6" }}>{key}</span>
+                              {": "}
+                              <span style={{ color: "#ce9178" }}>
+                                {typeof value === "object" ? JSON.stringify(value) : String(value)}
+                              </span>
+                              {i < Object.entries(result.input).length - 1 && ", "}
+                            </span>
+                          ))}
+                        </code>
+                      </div>
