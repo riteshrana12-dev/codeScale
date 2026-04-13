@@ -86,19 +86,18 @@ const problemsSelect = async (req, res) => {
 
 const problemSearch = async (req, res) => {
   try {
-    const { text } = req.query; // e.g. /search?text=algo
-
-    if (!text) {
-      return res.status(404).json({
-        success: false,
-        message: "No search term provided",
-      });
+    const { text } = req.query;
+    const cleanText = text.trim();
+    if (!cleanText) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No search term provided" });
     }
 
-    // Regex for case-insensitive search (start + middle)
-    const regex = new RegExp(text, "i");
+    // Build regex object with case-insensitive flag
+    const regex = new RegExp(cleanText, "i");
+    console.log("Regex built:", regex);
 
-    // Assuming your model has a "title" field
     const results = await problemsModel.find({ title: regex });
 
     return res.status(200).json({
