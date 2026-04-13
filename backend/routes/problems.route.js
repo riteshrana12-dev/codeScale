@@ -6,19 +6,19 @@ const problemsRoutes = Router();
 
 problemsRoutes.get(
   "/",
-  // authMiddleware(process.env.JWT_SECRET_USER),
+  authMiddleware(process.env.JWT_SECRET_USER),
   problemsController.problemsList,
 );
 
 problemsRoutes.get(
   "/search",
-  // authMiddleware(process.env.JWT_SECRET_USER),
+  authMiddleware(process.env.JWT_SECRET_USER),
   problemsController.problemSearch,
 );
 
 problemsRoutes.get(
   "/:slug",
-  // authMiddleware(process.env.JWT_SECRET_USER),
+  authMiddleware(process.env.JWT_SECRET_USER),
   problemsController.problemsSelect,
 );
 
