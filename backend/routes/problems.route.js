@@ -6,20 +6,20 @@ const problemsRoutes = Router();
 
 problemsRoutes.get(
   "/",
-  authMiddleware(process.env.JWT_SECRET_USER),
+  // authMiddleware(process.env.JWT_SECRET_USER),
   problemsController.problemsList,
 );
 
 problemsRoutes.get(
-  "/:slug",
-  authMiddleware(process.env.JWT_SECRET_USER),
-  problemsController.problemsSelect,
+  "/search",
+  // authMiddleware(process.env.JWT_SECRET_USER),
+  problemsController.problemSearch,
 );
 
 problemsRoutes.get(
-  "/search",
-  authMiddleware(process.env.JWT_SECRET_USER),
-  problemsController.problemSearch,
+  "/:slug",
+  // authMiddleware(process.env.JWT_SECRET_USER),
+  problemsController.problemsSelect,
 );
 
 export default problemsRoutes;
