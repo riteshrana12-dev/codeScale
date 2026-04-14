@@ -133,3 +133,9 @@ const CODE_LINES = [
   { ln: "08", tokens: [{ t: "  }", c: "#d4d4d4" }] },
   { ln: "09", tokens: [{ t: "}", c: "#d4d4d4" }] },
 ];
+
+function useScrollReveal() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return [ref, inView];
+}
