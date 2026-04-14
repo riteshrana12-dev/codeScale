@@ -52,3 +52,16 @@ const DIFFICULTIES = [
   { label: "Medium", count: 10, color: "#facc15", bg: "rgba(250,204,21,0.08)" },
   { label: "Hard", count: 10, color: "#f87171", bg: "rgba(248,113,113,0.08)" },
 ];
+
+const TAGS = [
+  "Array",
+  "String",
+  "DP",
+  "Tree",
+  "Graph",
+  "Hash Map",
+  "Binary Search",
+  "Stack",
+  "Sliding Window",
+  "Backtracking",
+];
