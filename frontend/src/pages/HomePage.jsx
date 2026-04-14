@@ -46,3 +46,9 @@ const FEATURES = [
     accent: "#facc15",
   },
 ];
+
+const DIFFICULTIES = [
+  { label: "Easy", count: 10, color: "#00ff9d", bg: "rgba(0,255,157,0.08)" },
+  { label: "Medium", count: 10, color: "#facc15", bg: "rgba(250,204,21,0.08)" },
+  { label: "Hard", count: 10, color: "#f87171", bg: "rgba(248,113,113,0.08)" },
+];
