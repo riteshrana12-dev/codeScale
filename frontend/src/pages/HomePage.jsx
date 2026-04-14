@@ -65,3 +65,71 @@ const TAGS = [
   "Sliding Window",
   "Backtracking",
 ];
+
+const CODE_LINES = [
+  {
+    ln: "01",
+    tokens: [
+      { t: "function", c: "#569cd6" },
+      { t: " twoSum", c: "#dcdcaa" },
+      { t: "(nums, target) {", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "02",
+    tokens: [
+      { t: "  const", c: "#569cd6" },
+      { t: " map", c: "#9cdcfe" },
+      { t: " = ", c: "#d4d4d4" },
+      { t: "new", c: "#569cd6" },
+      { t: " Map();", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "03",
+    tokens: [
+      { t: "  for", c: "#c586c0" },
+      { t: " (", c: "#d4d4d4" },
+      { t: "let", c: "#569cd6" },
+      { t: " i = ", c: "#d4d4d4" },
+      { t: "0", c: "#b5cea8" },
+      { t: "; i < nums.length; i++) {", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "04",
+    tokens: [
+      { t: "    const", c: "#569cd6" },
+      { t: " comp", c: "#9cdcfe" },
+      { t: " = target - nums[i];", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "05",
+    tokens: [
+      { t: "    if", c: "#c586c0" },
+      { t: " (map.", c: "#d4d4d4" },
+      { t: "has", c: "#dcdcaa" },
+      { t: "(comp))", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "06",
+    tokens: [
+      { t: "      return", c: "#c586c0" },
+      { t: " [map.", c: "#d4d4d4" },
+      { t: "get", c: "#dcdcaa" },
+      { t: "(comp), i];", c: "#d4d4d4" },
+    ],
+  },
+  {
+    ln: "07",
+    tokens: [
+      { t: "    map.", c: "#d4d4d4" },
+      { t: "set", c: "#dcdcaa" },
+      { t: "(nums[i], i);", c: "#d4d4d4" },
+    ],
+  },
+  { ln: "08", tokens: [{ t: "  }", c: "#d4d4d4" }] },
+  { ln: "09", tokens: [{ t: "}", c: "#d4d4d4" }] },
+];
