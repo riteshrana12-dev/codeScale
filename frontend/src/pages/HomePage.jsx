@@ -139,3 +139,6 @@ function useScrollReveal() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return [ref, inView];
 }
+
+function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
