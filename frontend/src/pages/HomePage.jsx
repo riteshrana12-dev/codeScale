@@ -260,4 +260,15 @@ function HeroSection() {
       <motion.div
         style={{ y, opacity }}
         className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20"
-      ></motion.div>
+      >
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 border border-[#00ff9d]/20 bg-[#00ff9d]/5 px-4 py-1.5 rounded-full mb-8"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff9d] animate-pulse" />
+            <span className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase">
+              JavaScript & Python · Open Beta
+            </span>
+          </motion.div>
