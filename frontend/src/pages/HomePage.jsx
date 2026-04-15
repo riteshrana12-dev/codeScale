@@ -230,3 +230,9 @@ function CodeWindow() {
             </span>
           </motion.div>
         ))}
+        <motion.div
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 1, repeat: Infinity }}
+          className="inline-block w-2 h-4 bg-[#00ff9d] ml-1 align-middle mt-1"
+        />
+      </div>
