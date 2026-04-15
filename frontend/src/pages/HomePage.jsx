@@ -165,3 +165,15 @@ function NavBar() {
             CodeScale
           </span>
         </div>
+        <div className="flex items-center gap-3">
+          <button className="text-[#8888a0] hover:text-white text-sm font-mono transition-colors px-4 py-2">
+            Sign in
+          </button>
+          <button className="bg-[#00ff9d] text-[#0a0a0f] text-sm font-mono font-bold px-5 py-2 rounded hover:bg-[#00e88a] transition-colors duration-200">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </motion.nav>
+  );
+}
