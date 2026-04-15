@@ -236,3 +236,13 @@ function CodeWindow() {
           className="inline-block w-2 h-4 bg-[#00ff9d] ml-1 align-middle mt-1"
         />
       </div>
+      <div className="px-5 py-3 bg-[#16162a] border-t border-white/5 flex items-center gap-3">
+        <span className="w-2 h-2 rounded-full bg-[#00ff9d]" />
+        <span className="font-mono text-xs text-[#00ff9d]">Accepted</span>
+        <span className="font-mono text-xs text-[#555570] ml-auto">
+          Runtime: 52ms · Memory: 44.1MB
+        </span>
+      </div>
+    </div>
+  );
+}
