@@ -192,3 +192,9 @@ function CodeWindow() {
     }, 120);
     return () => clearInterval(t);
   }, [inView]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative rounded-xl overflow-hidden border border-white/10 bg-[#1e1e2e] shadow-2xl shadow-black/60"
+    >
