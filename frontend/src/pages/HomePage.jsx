@@ -198,3 +198,14 @@ function CodeWindow() {
       ref={ref}
       className="relative rounded-xl overflow-hidden border border-white/10 bg-[#1e1e2e] shadow-2xl shadow-black/60"
     >
+      <div className="flex items-center gap-2 px-4 py-3 bg-[#16162a] border-b border-white/5">
+        <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+        <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+        <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+        <span className="ml-4 font-mono text-xs text-[#555570]">
+          solution.js
+        </span>
+        <span className="ml-auto font-mono text-xs text-[#00ff9d]">
+          ● JavaScript
+        </span>
+      </div>
