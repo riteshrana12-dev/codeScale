@@ -254,3 +254,4 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
