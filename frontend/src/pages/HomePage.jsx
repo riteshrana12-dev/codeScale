@@ -177,3 +177,7 @@ function NavBar() {
     </motion.nav>
   );
 }
+
+function CodeWindow() {
+  const [visibleLines, setVisibleLines] = useState(0);
+  const [ref, inView] = useScrollReveal();
