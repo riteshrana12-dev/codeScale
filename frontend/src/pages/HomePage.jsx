@@ -181,3 +181,14 @@ function NavBar() {
 function CodeWindow() {
   const [visibleLines, setVisibleLines] = useState(0);
   const [ref, inView] = useScrollReveal();
+
+  useEffect(() => {
+    if (!inView) return;
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      setVisibleLines(i);
+      if (i >= CODE_LINES.length) clearInterval(t);
+    }, 120);
+    return () => clearInterval(t);
+  }, [inView]);
