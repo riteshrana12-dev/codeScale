@@ -255,3 +255,5 @@ function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse,rgba(0,255,157,0.06)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,212,255,0.05)_0%,transparent_70%)] pointer-events-none" />
