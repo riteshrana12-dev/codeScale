@@ -209,3 +209,24 @@ function CodeWindow() {
           ● JavaScript
         </span>
       </div>
+      <div className="p-5 font-mono text-sm leading-relaxed min-h-[240px]">
+        {CODE_LINES.map((line, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -8 }}
+            animate={visibleLines > i ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.2 }}
+            className="flex gap-4"
+          >
+            <span className="text-[#3a3a5c] select-none w-5 text-right flex-shrink-0">
+              {line.ln}
+            </span>
+            <span>
+              {line.tokens.map((tok, j) => (
+                <span key={j} style={{ color: tok.c }}>
+                  {tok.t}
+                </span>
+              ))}
+            </span>
+          </motion.div>
+        ))}
