@@ -246,3 +246,8 @@ function CodeWindow() {
     </div>
   );
 }
+
+function HeroSection() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 120]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
