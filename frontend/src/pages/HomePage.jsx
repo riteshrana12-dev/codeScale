@@ -406,3 +406,4 @@ function FeaturesSection() {
             <span className="text-[#444460]">Nothing you don't.</span>
           </h2>
         </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
