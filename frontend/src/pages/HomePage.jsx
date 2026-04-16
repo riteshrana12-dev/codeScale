@@ -387,3 +387,7 @@ function StatsBar() {
 }
 function FeaturesSection() {
   const [ref, inView] = useScrollReveal();
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent to-[#00ff9d]/20" />
