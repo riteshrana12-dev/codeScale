@@ -272,3 +272,17 @@ function HeroSection() {
               JavaScript & Python · Open Beta
             </span>
           </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl lg:text-7xl font-black leading-[0.95] tracking-tight text-white mb-6"
+          >
+            Code.
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#00d4ff]">
+              Execute.
+            </span>
+            <br />
+            Improve.
+          </motion.h1>
