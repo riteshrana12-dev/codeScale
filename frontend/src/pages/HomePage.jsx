@@ -498,3 +498,25 @@ function HowItWorksSection() {
               {i < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-white/10 to-transparent z-10" />
               )}
+
+              <div className="border border-white/5 bg-[#0d0d1a] rounded-xl p-6 hover:border-white/10 transition-colors h-full">
+                <div
+                  className="font-mono text-5xl font-black mb-4"
+                  style={{ color: s.color, opacity: 0.3 }}
+                >
+                  {s.num}
+                </div>
+                <h3 className="font-mono text-white font-bold mb-3">
+                  {s.title}
+                </h3>
+                <p className="text-[#555570] text-sm leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
