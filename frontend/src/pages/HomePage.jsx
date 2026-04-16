@@ -391,3 +391,18 @@ function FeaturesSection() {
   return (
     <section ref={ref} className="py-32 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent to-[#00ff9d]/20" />
+      <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <span className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase block mb-4">
+            // features
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-black text-white">
+            Everything you need.
+            <br />
+            <span className="text-[#444460]">Nothing you don't.</span>
+          </h2>
+        </motion.div>
