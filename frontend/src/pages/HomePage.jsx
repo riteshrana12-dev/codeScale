@@ -308,3 +308,22 @@ function HeroSection() {
               View Problems
             </button>
           </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="flex items-center gap-6 mt-12"
+          >
+            {DIFFICULTIES.map((d) => (
+              <div key={d.label} className="flex items-center gap-2">
+                <span
+                  className="w-2 h-2 rounded-full"
+                  style={{ backgroundColor: d.color }}
+                />
+                <span className="font-mono text-xs text-[#555570]">
+                  {d.count} {d.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
