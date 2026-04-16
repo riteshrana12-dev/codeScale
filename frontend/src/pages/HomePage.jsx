@@ -574,3 +574,17 @@ function Footer() {
     </footer>
   );
 }
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+      <NavBar />
+      <HeroSection />
+      <StatsBar />
+      <FeaturesSection />
+      <HowItWorksSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+}
