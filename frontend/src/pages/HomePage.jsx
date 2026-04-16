@@ -544,3 +544,16 @@ function CTASection() {
           <p className="text-[#666680] text-lg mb-10">
             Join developers who are sharpening their skills one problem at a time.
           </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <button className="bg-[#00ff9d] text-[#0a0a0f] font-mono font-black px-10 py-4 rounded-lg text-base hover:bg-[#00e88a] transition-all duration-200 tracking-wide">
+              Create Free Account
+            </button>
+            <button className="font-mono text-sm text-[#8888a0] hover:text-white transition-colors">
+              or sign in →
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
