@@ -467,3 +467,21 @@ function HowItWorksSection() {
       color: "#fb923c",
     },
   ];
+
+  return (
+    <section ref={ref} className="py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-20"
+        >
+          <span className="font-mono text-xs text-[#a78bfa] tracking-widest uppercase block mb-4">
+            // how it works
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-black text-white">
+            Four steps.
+            <br />
+            <span className="text-[#444460]">Infinite growth.</span>
+          </h2>
+        </motion.div>
