@@ -286,3 +286,12 @@ function HeroSection() {
             <br />
             Improve.
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="text-[#8888a0] text-lg leading-relaxed mb-10 max-w-md font-light"
+          >
+            A focused coding judge for developers. Solve real algorithmic
+            problems, get instant verdicts, and track your growth.
+          </motion.p>
