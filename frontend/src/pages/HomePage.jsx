@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -165,10 +166,10 @@ function NavBar() {
 
         <div className="flex items-center gap-3">
           <button className="text-[#8888a0] hover:text-white text-sm font-mono transition-colors px-4 py-2">
-            Sign in
+            <Link to="/signIn">Sign in</Link>
           </button>
           <button className="bg-[#00ff9d] text-[#0a0a0f] text-sm font-mono font-bold px-5 py-2 rounded hover:bg-[#00e88a] transition-colors duration-200">
-            Get Started
+            <Link to="/signUp">Get Started</Link>
           </button>
         </div>
       </div>
@@ -307,10 +308,9 @@ function HeroSection() {
             className="flex items-center gap-4"
           >
             <button className="group relative bg-[#00ff9d] text-[#0a0a0f] font-mono font-bold px-8 py-4 rounded-lg text-base hover:bg-[#00e88a] transition-all duration-200 overflow-hidden">
-              <span className="relative z-10">Start Solving →</span>
-            </button>
-            <button className="font-mono text-sm text-[#8888a0] hover:text-white transition-colors border border-white/10 hover:border-white/20 px-6 py-4 rounded-lg">
-              View Problems
+              <Link to="/problems" className="relative z-10">
+                Start Solving →
+              </Link>
             </button>
           </motion.div>
 
@@ -554,10 +554,10 @@ function CTASection() {
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <button className="bg-[#00ff9d] text-[#0a0a0f] font-mono font-black px-10 py-4 rounded-lg text-base hover:bg-[#00e88a] transition-all duration-200 tracking-wide">
-              Create Free Account
+              <Link to="/signUp">Create Free Account</Link>
             </button>
             <button className="font-mono text-sm text-[#8888a0] hover:text-white transition-colors">
-              or sign in →
+              <Link to="/signIn"> or sign in →</Link>
             </button>
           </div>
         </motion.div>
