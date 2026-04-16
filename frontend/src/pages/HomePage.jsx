@@ -361,3 +361,27 @@ function StatsBar() {
     { value: "1.2k+", label: "Developers" },
     { value: "98%", label: "Uptime" },
   ];
+
+  return (
+    <section ref={ref} className="border-y border-white/5 bg-[#0d0d1a]">
+      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="text-center"
+          >
+            <div className="font-mono text-3xl font-black text-white mb-1">
+              {s.value}
+            </div>
+            <div className="font-mono text-xs text-[#555570] tracking-widest uppercase">
+              {s.label}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
