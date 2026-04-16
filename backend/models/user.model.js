@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
   firstName: { type: String, required: true }, // firstname userInput
-  lastName: { type: String, required: true }, // lastname userINPUT
+  lastName: { type: String }, // lastname userINPUT
   email: {
     type: String,
     required: true,
