@@ -557,3 +557,20 @@ function CTASection() {
     </section>
   );
 }
+function Footer() {
+  return (
+    <footer className="border-t border-white/5 py-12">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-[#00ff9d] font-bold">&gt;_</span>
+          <span className="font-mono text-[#333350] text-sm">
+            CodeScale · Built with MERN
+          </span>
+        </div>
+        <div className="font-mono text-xs text-[#333350]">
+          JavaScript & Python only. No excuses.
+        </div>
+      </div>
+    </footer>
+  );
+}
