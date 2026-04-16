@@ -121,6 +121,7 @@ const schema = z.object({
 
 const SignUp = () => {
   const [validationError, setValidationError] = useState("");
+  const [message, setMessage] = useState("");
   const { formData, handleChange, executeSignUp, loading, error } = useSignUp();
 
   const handleSubmit = async (e) => {
@@ -138,9 +139,10 @@ const SignUp = () => {
     }
     console.log(validationError);
     try {
-      await executeSignUp();
+      const response = await executeSignUp();
+      setMessage(response?.success);
     } catch (err) {
-      console.error(err);
+      setMessage(err || "Signup failed");
     }
   };
 
@@ -461,6 +463,7 @@ const SignUp = () => {
             </motion.p>
           </div>
 
+          {message && <p>{message}</p>}
           {/* Bottom line */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/30 to-transparent" />
         </div>
