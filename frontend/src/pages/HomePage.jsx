@@ -416,3 +416,25 @@ function FeaturesSection() {
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
               className="group bg-[#0a0a0f] hover:bg-[#0f0f1e] p-8 transition-colors duration-300 cursor-default"
             >
+
+              <div
+                className="mb-5 font-mono text-3xl"
+                style={{ color: f.accent }}
+              >
+                {f.icon}
+              </div>
+              <h3 className="font-mono text-white font-bold text-lg mb-3 group-hover:text-white/90">
+                {f.title}
+              </h3>
+              <p className="text-[#666680] text-sm leading-relaxed">{f.desc}</p>
+              <div
+                className="mt-6 w-8 h-px transition-all duration-300 group-hover:w-16"
+                style={{ backgroundColor: f.accent }}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
