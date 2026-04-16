@@ -523,3 +523,6 @@ function HowItWorksSection() {
 
 function CTASection() {
   const [ref, inView] = useScrollReveal();
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,157,0.06)_0%,transparent_65%)]" />
