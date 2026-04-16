@@ -295,3 +295,16 @@ function HeroSection() {
             A focused coding judge for developers. Solve real algorithmic
             problems, get instant verdicts, and track your growth.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex items-center gap-4"
+          >
+            <button className="group relative bg-[#00ff9d] text-[#0a0a0f] font-mono font-bold px-8 py-4 rounded-lg text-base hover:bg-[#00e88a] transition-all duration-200 overflow-hidden">
+              <span className="relative z-10">Start Solving →</span>
+            </button>
+            <button className="font-mono text-sm text-[#8888a0] hover:text-white transition-colors border border-white/10 hover:border-white/20 px-6 py-4 rounded-lg">
+              View Problems
+            </button>
+          </motion.div>
