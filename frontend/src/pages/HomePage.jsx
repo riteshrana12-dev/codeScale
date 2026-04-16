@@ -407,3 +407,12 @@ function FeaturesSection() {
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+
+        {FEATURES.map((f, i) => (
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              className="group bg-[#0a0a0f] hover:bg-[#0f0f1e] p-8 transition-colors duration-300 cursor-default"
+            >
