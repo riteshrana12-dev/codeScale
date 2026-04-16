@@ -526,3 +526,9 @@ function CTASection() {
   return (
     <section ref={ref} className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,157,0.06)_0%,transparent_65%)]" />
+      <div className="max-w-3xl mx-auto px-6 text-center relative">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
