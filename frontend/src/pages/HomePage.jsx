@@ -532,3 +532,15 @@ function CTASection() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
+
+          <div className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase mb-6">
+            // ready to start?
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            Stop reading.
+            <br />
+            Start coding.
+          </h2>
+          <p className="text-[#666680] text-lg mb-10">
+            Join developers who are sharpening their skills one problem at a time.
+          </p>
