@@ -385,3 +385,5 @@ function StatsBar() {
     </section>
   );
 }
+function FeaturesSection() {
+  const [ref, inView] = useScrollReveal();
