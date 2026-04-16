@@ -353,3 +353,11 @@ function HeroSection() {
     </section>
   );
 }
+function StatsBar() {
+  const [ref, inView] = useScrollReveal();
+  const stats = [
+    { value: "20+", label: "Problems" },
+    { value: "1k+", label: "Submissions" },
+    { value: "1.2k+", label: "Developers" },
+    { value: "98%", label: "Uptime" },
+  ];
