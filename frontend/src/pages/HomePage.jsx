@@ -495,3 +495,6 @@ function HowItWorksSection() {
               transition={{ duration: 0.5, delay: i * 0.12 }}
               className="relative"
             >
+              {i < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-white/10 to-transparent z-10" />
+              )}
