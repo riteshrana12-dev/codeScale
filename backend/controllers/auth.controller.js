@@ -8,8 +8,8 @@ dotenv.config({ path: "./config/.env" });
 const signUpUser = async (req, res) => {
   try {
     const requiredBody = z.object({
-      firstName: z.string().min(2).max(15),
-      lastName: z.string().min(2).max(15),
+      firstName: z.string().min(1).max(15), // 1 charcter min
+      lastName: z.string().max(15).optional(),
       email: z.string().min(11).max(30).email(),
       password: z.string().min(6).max(10),
       // role: z.string(),
