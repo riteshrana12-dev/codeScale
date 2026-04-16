@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../api/api.js";
 import CodeEditor from "../components/codeEditor/CodeEditor"; // Your existing component
 import ProblemDescription from "../components/codeEditor/ProblemDescription";
@@ -25,6 +25,7 @@ const difficultyConfig = {
 };
 
 const ProblemPage = () => {
+  const navigate = useNavigate();
   const { setSolution, setSubmissionResult } = useProblem();
   const { slug } = useParams();
   const [problem, setProblem] = useState(null);
@@ -33,9 +34,13 @@ const ProblemPage = () => {
     async function fetchProblem() {
       try {
         const response = await api.get(`/problems/${slug}`);
+        // console.log(response.data.data);
         setProblem(response.data.data);
       } catch (err) {
         console.log("Error fetching problem:", err);
+        if (err?.response.status === 403) {
+          navigate("/signIn");
+        }
       }
     }
 
