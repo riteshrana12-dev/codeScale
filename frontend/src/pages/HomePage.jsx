@@ -520,3 +520,6 @@ function HowItWorksSection() {
     </section>
   );
 }
+
+function CTASection() {
+  const [ref, inView] = useScrollReveal();
