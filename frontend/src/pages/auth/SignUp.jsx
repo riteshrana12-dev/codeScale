@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { z } from "zod";
 import { Link } from "react-router-dom"; // Added Link import
 import useSignUp from "../../hooks/signUp.js";
 
-const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 110 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
-  size: Math.random() * 2 + 1,
+  size: Math.random() * 2 + 2,
   duration: Math.random() * 6 + 6,
   delay: Math.random() * 5,
 }));
@@ -109,15 +110,37 @@ const InputField = ({
   );
 };
 
+const schema = z.object({
+  firstName: z.string().min(1, "First name required"),
+  lastName: z.string().optional(),
+  email: z.string().email("Invalid email format"),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 and atmost 10 chars"),
+});
+
 const SignUp = () => {
+  const [validationError, setValidationError] = useState("");
   const { formData, handleChange, executeSignUp, loading, error } = useSignUp();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const result = schema.safeParse(formData);
+    const feildError = {}; // created to store the error as per feild than show in to repesctive input filed
+    if (!result.success) {
+      const zodError = result.error.issues;
+      console.log(zodError);
+      zodError.forEach((element) => {
+        setValidationError(element.message);
+        feildError[element.path[0]] = element.message;
+      });
+      setValidationError(feildError);
+    }
+    console.log(validationError);
     try {
       await executeSignUp();
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -143,7 +166,7 @@ const SignUp = () => {
             background: p.id % 3 === 0 ? "#00d4ff" : "#00ff9d",
             opacity: 0,
           }}
-          animate={{ opacity: [0, 0.35, 0], y: [0, -50, -100] }}
+          animate={{ opacity: [0, 1, 0], y: [0, -50, -100] }}
           transition={{
             duration: p.duration,
             delay: p.delay,
@@ -182,7 +205,7 @@ const SignUp = () => {
                   </span>
                 </div>
                 <span className="font-mono text-white text-lg font-semibold tracking-wide">
-                  DevJudge
+                  CodeScale
                 </span>
               </div>
               <h1 className="text-3xl font-black text-white tracking-tight mb-2">
@@ -197,28 +220,33 @@ const SignUp = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* First + Last name row */}
               <div className="grid grid-cols-2 gap-3">
-                <InputField
-                  label="First name"
-                  name="firstName"
-                  placeholder="John"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  delay={0.2}
-                  icon={
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    >
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
-                    </svg>
-                  }
-                />
+                <div>
+                  <InputField
+                    label="First name"
+                    name="firstName"
+                    placeholder="John"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    delay={0.2}
+                    icon={
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      >
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                    }
+                  />
+                  {validationError.firstName && (
+                    <p className="text-red-500">{validationError.firstName}</p>
+                  )}
+                </div>
                 <InputField
                   label="Last name"
                   name="lastName"
@@ -244,55 +272,63 @@ const SignUp = () => {
               </div>
 
               {/* Email */}
-              <InputField
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="abc123@gmail.com"
-                value={formData.email}
-                onChange={handleChange}
-                delay={0.32}
-                icon={
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                }
-              />
-
+              <div>
+                <InputField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="abc123@gmail.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  delay={0.32}
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    >
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  }
+                />
+                {validationError.email && (
+                  <p className="text-red-500">{validationError.email}</p>
+                )}
+              </div>
               {/* Password */}
-              <InputField
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Create a strong password"
-                value={formData.password}
-                onChange={handleChange}
-                delay={0.38}
-                icon={
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  </svg>
-                }
-              />
-
+              <div>
+                <InputField
+                  label="Password"
+                  name="password"
+                  type="password"
+                  placeholder="Create a strong password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  delay={0.38}
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    >
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  }
+                />
+                {validationError.password && (
+                  <p className="text-red-500">{validationError.password}</p>
+                )}
+              </div>
               {/* Password strength hint */}
               {formData.password?.length > 0 && (
                 <motion.div
@@ -396,6 +432,8 @@ const SignUp = () => {
                     )}
                   </span>
                 </button>
+
+                {error && <p className="text-red-500">{error}</p>}
               </motion.div>
             </form>
 
