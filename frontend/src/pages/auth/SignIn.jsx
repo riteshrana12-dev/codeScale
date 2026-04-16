@@ -1,19 +1,29 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { z } from "zod";
 import useSignIn from "../../hooks/signIn";
 
-const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 110 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
-  size: Math.random() * 2 + 1,
+  size: Math.random() * 2 + 2,
   duration: Math.random() * 6 + 6,
-  delay: Math.random() * 4,
+  delay: Math.random() * 5,
 }));
+
+const schema = z.object({
+  email: z.string().email("Invalid email format"),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 and atmost 10 chars"),
+});
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const [validationError, setValidationError] = useState("");
+
   const { formData, handleChange, executeSignUp, error, loading } = useSignIn();
   const [focused, setFocused] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -25,6 +35,16 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const result = schema.safeParse(formData);
+    const feildError = {}; // created to store the error as per feild than show in to repesctive input filed
+    if (!result.success) {
+      const zodError = result.error.issues;
+      zodError.forEach((element) => {
+        setValidationError(element.message);
+        feildError[element.path[0]] = element.message;
+      });
+      setValidationError(feildError);
+    }
     try {
       await executeSignUp();
       navigate("/dashboard");
@@ -94,7 +114,7 @@ const SignIn = () => {
                   </span>
                 </div>
                 <span className="font-mono text-white text-lg font-semibold tracking-wide">
-                  DevJudge
+                  CodeScale
                 </span>
               </div>
 
@@ -149,8 +169,12 @@ const SignIn = () => {
                     onBlur={() => setFocused(null)}
                     className="w-full bg-transparent pl-10 pr-4 py-3.5 text-sm text-white placeholder-[#333350] font-mono outline-none"
                     autoComplete="email"
+                    required
                   />
                 </div>
+                {validationError.email && (
+                  <p className="text-red-500">{validationError.email}</p>
+                )}
               </motion.div>
 
               {/* Password */}
@@ -227,6 +251,9 @@ const SignIn = () => {
                     )}
                   </button>
                 </div>
+                {validationError.password && (
+                  <p className="text-red-500">{validationError.password}</p>
+                )}
               </motion.div>
 
               {/* Error */}
@@ -321,12 +348,12 @@ const SignIn = () => {
               className="text-center font-mono text-sm text-[#444460]"
             >
               No account?{" "}
-              <a
-                href="/signup"
+              <Link
+                to="/signup"
                 className="text-[#00ff9d] hover:text-[#00e88a] transition-colors font-bold"
               >
                 Create one →
-              </a>
+              </Link>
             </motion.p>
           </div>
 
