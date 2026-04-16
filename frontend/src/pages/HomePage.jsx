@@ -438,3 +438,32 @@ function FeaturesSection() {
     </section>
   );
 }
+
+function HowItWorksSection() {
+  const [ref, inView] = useScrollReveal();
+  const steps = [
+    {
+      num: "01",
+      title: "Pick a problem",
+      desc: "Browse by difficulty, tag, or search. Each problem has a clear description, constraints, and examples.",
+      color: "#00ff9d",
+    },
+    {
+      num: "02",
+      title: "Write your solution",
+      desc: "Use the Monaco editor to write JavaScript. Auto-complete and syntax highlighting are built in.",
+      color: "#00d4ff",
+    },
+    {
+      num: "03",
+      title: "Submit & get verdict",
+      desc: "Your code runs against hidden test cases in a sandboxed environment. Get instant, detailed feedback.",
+      color: "#a78bfa",
+    },
+    {
+      num: "04",
+      title: "Track your progress",
+      desc: "Every submission is stored. Watch your acceptance rate, streak, and rank improve over time.",
+      color: "#fb923c",
+    },
+  ];
