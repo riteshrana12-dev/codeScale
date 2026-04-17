@@ -10,6 +10,8 @@ const SubmitCodeButton = () => {
     setIsLoading,
     isLoading,
     setSubmissionResult,
+    canSubmit,
+    setCanSubmit,
   } = useProblem();
 
   async function submitCode() {
@@ -28,11 +30,12 @@ const SubmitCodeButton = () => {
     } finally {
       setIsLoading(false);
     }
+    setCanSubmit(false);
   }
   return (
     <button
       onClick={submitCode}
-      disabled={isLoading}
+      disabled={isLoading || !canSubmit}
       className="relative flex items-center gap-2 font-mono text-xs font-black px-5 py-2 rounded-lg overflow-hidden transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed group"
     >
       <div className="absolute inset-0 bg-[#00ff9d] group-hover:bg-[#00e88a] transition-colors duration-200" />
