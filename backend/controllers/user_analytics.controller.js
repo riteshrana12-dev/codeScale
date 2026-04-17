@@ -23,7 +23,7 @@ const getUserDashboard = async (req, res) => {
       //group by status (accepted , failed,pending,error)
       {
         $group: {
-          _id: "$statue",
+          _id: "$submissionStatus",
           count: { $sum: 1 },
         },
       },
