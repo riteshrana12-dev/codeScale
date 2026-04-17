@@ -10,11 +10,13 @@ const RunCodeButton = () => {
     setIsLoading,
     isLoading,
     setSubmittedResult,
+    setCanSubmit,
   } = useProblem();
 
   async function runCode() {
     setIsLoading(true);
     setSubmittedResult(false);
+    setCanSubmit(true);
     try {
       const response = await api.post(`/submission/${slug}/run-code`, solution);
       console.log(response.data);
