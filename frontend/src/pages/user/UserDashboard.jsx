@@ -20,11 +20,17 @@ const UserDashboard = () => {
 
   const getAcceptancePercentage = () => {
     if (!dashboard) return 0;
+    console.log(dashboard);
     const accepted =
       dashboard.submissionRaw.find((sub) => sub._id === "accepted")?.count || 0;
-
     const total = dashboard.points?.totalSubmissions || 0;
-    return total > 0 ? ((accepted / total) * 100).toFixed(2) : 0;
+
+    if (total === 0) return 0;
+
+    const percentage = (accepted / total) * 100;
+
+    // Clamp to 100 max
+    return Math.min(percentage, 100).toFixed(2);
   };
   return (
     <div>
