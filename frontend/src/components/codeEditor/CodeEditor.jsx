@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import Language from "./Language";
 import { useProblem } from "../../context/ProblemContext";
 import RunCodeButton from "./RunCodeButton";
 import SubmitCodeButton from "./SubmitButton";
 import { motion, AnimatePresence } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 function CodeEditor() {
   const {
@@ -12,13 +13,21 @@ function CodeEditor() {
     setSolution,
     submissionResult,
     submittedResult,
+    setSubmittedResult,
+    setSubmissionResult,
     isLoading,
   } = useProblem();
   const editorRef = useRef(null);
+  const { slug } = useParams();
 
   function handleEditorDidMount(editor) {
     editorRef.current = editor;
   }
+
+  useEffect(() => {
+    setSubmittedResult(false);
+    setSubmissionResult(null);
+  }, [slug]);
 
   const submission = submissionResult;
   const submit = submittedResult;
