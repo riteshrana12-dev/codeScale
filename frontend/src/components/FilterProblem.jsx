@@ -137,24 +137,47 @@ function useBalls(tags) {
   return pos;
 }
 
-function toggleDiff(d) {
-  const next = difficulty === d ? null : d;
-  setDifficulty(next);
-  onFilterChange?.({ difficulty: next, tags: selectedTags });
-}
-function addTag(tag) {
-  if (selectedTags.includes(tag)) return;
-  const next = [...selectedTags, tag];
-  setSelectedTags(next);
-  onFilterChange?.({ difficulty, tags: next });
-}
-function removeTag(tag) {
-  const next = selectedTags.filter((t) => t !== tag);
-  setSelectedTags(next);
-  onFilterChange?.({ difficulty, tags: next });
-}
-function clearAll() {
-  setDifficulty(null);
-  setSelectedTags([]);
-  onFilterChange?.({ difficulty: null, tags: [] });
-}
+
+/* ─── Component ─── */
+export default function ProblemFilter({ onFilterChange }) {
+  const [open, setOpen] = useState(false);
+  const [difficulty, setDifficulty] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const panelRef = useRef(null);
+
+  const available = TAGS.filter((t) => !selectedTags.includes(t));
+  const positions = useBalls(open ? available : []);
+  const activeCount = (difficulty ? 1 : 0) + selectedTags.length;
+  const SIZE = ARENA_R * 2.5; // 440px
+
+  useEffect(() => {
+    if (!open) return;
+    const fn = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target))
+        setOpen(false);
+    };
+    document.addEventListener("mousedown", fn);
+    return () => document.removeEventListener("mousedown", fn);
+  }, [open]);
+
+  function toggleDiff(d) {
+    const next = difficulty === d ? null : d;
+    setDifficulty(next);
+    onFilterChange?.({ difficulty: next, tags: selectedTags });
+  }
+  function addTag(tag) {
+    if (selectedTags.includes(tag)) return;
+    const next = [...selectedTags, tag];
+    setSelectedTags(next);
+    onFilterChange?.({ difficulty, tags: next });
+  }
+  function removeTag(tag) {
+    const next = selectedTags.filter((t) => t !== tag);
+    setSelectedTags(next);
+    onFilterChange?.({ difficulty, tags: next });
+  }
+  function clearAll() {
+    setDifficulty(null);
+    setSelectedTags([]);
+    onFilterChange?.({ difficulty: null, tags: [] });
+  }
