@@ -246,3 +246,19 @@ const Leaderboard = () => {
           const rank = i + 4;
           const pts = user?.summary?.totalPoints || 0;
           const pct = maxPoints > 0 ? (pts / maxPoints) * 100 : 0;
+
+          return (
+            <motion.div
+              key={user._id}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.35, delay: 0.05 + i * 0.04 }}
+              className="flex items-center gap-4 px-6 py-3.5 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-150 group"
+            >
+              <RankMedal rank={rank} />
+              <Avatar user={user} size={34} />
+
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-sm text-[#9999b0] group-hover:text-white transition-colors truncate">
+                  {user.firstName} {user.lastName}
+                </p>
