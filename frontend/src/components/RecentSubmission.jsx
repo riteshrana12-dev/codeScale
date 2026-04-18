@@ -44,3 +44,23 @@ const STATUS_CONFIG = {
       </svg>
     ),
   },
+  time_limit_exceeded: {
+    label: "TLE",
+    color: "#fb923c",
+    bg: "rgba(251,146,60,0.08)",
+    border: "rgba(251,146,60,0.2)",
+    icon: (
+      <svg
+        width="11"
+        height="11"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
