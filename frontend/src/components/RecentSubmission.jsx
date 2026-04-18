@@ -178,3 +178,5 @@ const RecentSubmissions = () => {
       transition={{ duration: 0.5, delay: 0.25 }}
       className="bg-[#0d0d1a] border border-white/5 rounded-xl overflow-hidden"
     >
+        {/* Top accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
