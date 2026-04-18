@@ -177,4 +177,32 @@ const Leaderboard = () => {
               const cfg = RANK_CONFIG[rank];
               const height = rank === 1 ? 88 : rank === 2 ? 68 : 56;
               const pts = user?.summary?.totalPoints || 0;
-          
+          return (
+                <motion.div
+                  key={user._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: podiumIdx * 0.1 }}
+                  className="flex flex-col items-center gap-2 flex-1"
+                  style={{ maxWidth: 120 }}
+                >
+                  {/* Crown for 1st */}
+                  {rank === 1 && (
+                    <motion.div
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <svg
+                        width="20"
+                        height="16"
+                        viewBox="0 0 31 20"
+                        fill="#facc15"
+                      >
+                        <path d="M2 19h20M2 19L5 7l7 6 5-10 5 10 7-6 3 12H2z" />
+                      </svg>
+                    </motion.div>
+                  )}
