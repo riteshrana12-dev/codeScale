@@ -181,3 +181,44 @@ export default function ProblemFilter({ onFilterChange }) {
     setSelectedTags([]);
     onFilterChange?.({ difficulty: null, tags: [] });
   }
+
+  return (
+    <div className="relative" ref={panelRef}>
+      {/* ── Trigger ── */}
+      <motion.button
+        onClick={() => setOpen((v) => !v)}
+        whileTap={{ scale: 0.93 }}
+        className={`flex items-center gap-2 font-mono text-s font-bold px-4 py-2.5 rounded-xl border transition-all duration-200 ${
+          open || activeCount > 0
+            ? "bg-[#00ff9d]/10 border-[#00ff9d]/35 text-[#00ff9d] shadow-[0_0_14px_rgba(0,255,157,0.12)]"
+            : "bg-white/[0.03] border-white/8 text-[#666680] hover:border-white/18 hover:text-[#9999b0]"
+        }`}
+      >
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+        </svg>
+        Filters
+        <AnimatePresence>
+          {activeCount > 0 && (
+            <motion.span
+              key="b"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ type: "spring", stiffness: 600, damping: 20 }}
+              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#00ff9d] text-[#0a0a0f] text-[15px] font-black"
+            >
+              {activeCount}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.button>
