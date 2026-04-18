@@ -167,3 +167,14 @@ const Leaderboard = () => {
           </span>
         </div>
       </div>
+      {/* ── Top 3 podium ── */}
+      {users.length >= 3 && (
+        <div className="px-6 py-5 border-b border-white/5">
+          <div className="flex items-end justify-center gap-3">
+            {/* 2nd place */}
+            {[users[1], users[0], users[2]].map((user, podiumIdx) => {
+              const rank = podiumIdx === 0 ? 2 : podiumIdx === 1 ? 1 : 3;
+              const cfg = RANK_CONFIG[rank];
+              const height = rank === 1 ? 88 : rank === 2 ? 68 : 56;
+              const pts = user?.summary?.totalPoints || 0;
+          
