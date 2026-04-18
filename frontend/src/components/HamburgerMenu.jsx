@@ -110,6 +110,8 @@ export default function HamburgerMenu() {
         }`}
         aria-label={open ? "Close menu" : "Open menu"}
       >
+        
+
         {/* Bar 1 */}
         <motion.span
           animate={open ? { rotate: 45, y: 6.5, backgroundColor: "#00ff9d" } : { rotate: 0, y: 0, backgroundColor: "#888899" }}
