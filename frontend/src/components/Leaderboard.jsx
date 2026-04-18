@@ -86,3 +86,23 @@ function RankMedal({ rank }) {
     </div>
   );
 }
+
+const Leaderboard = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const res = await api.get("/analytics/leaderboard");
+        setUsers(res.data.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetch();
+  }, []);
+
+  const maxPoints = users.length > 0 ? users[0]?.summary?.totalPoints || 1 : 1;
