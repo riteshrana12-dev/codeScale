@@ -59,3 +59,30 @@ function Avatar({ user, size = 36 }) {
     </div>
   );
 }
+
+function RankMedal({ rank }) {
+  const cfg = RANK_CONFIG[rank];
+  if (!cfg)
+    return (
+      <span className="font-mono text-xs text-[#444460] w-8 text-center font-bold">
+        #{rank}
+      </span>
+    );
+  return (
+    <div
+      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+      style={{
+        background: cfg.bg,
+        border: `1.5px solid ${cfg.color}40`,
+        boxShadow: `0 0 10px ${cfg.glow}`,
+      }}
+    >
+      <span
+        className="font-mono text-xs font-black"
+        style={{ color: cfg.color }}
+      >
+        {rank}
+      </span>
+    </div>
+  );
+}
