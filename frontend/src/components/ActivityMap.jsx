@@ -63,3 +63,57 @@ const MONTH_LABELS = [
   "Dec",
 ];
 const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
+
+// ── Component ────────────────────────────────────────────────────────────────
+const ActivityMap = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [tooltip, setTooltip] = useState(null); // { date, count, x, y }
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const res = await api.get("/analytics/heatmap");
+        setData(res.data.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetch();
+  }, []);
+
+  const { weeks, today } = buildWeeks();
+  const activityMap = buildMap(data);
+
+  // Build month label positions
+  const monthLabels = [];
+  weeks.forEach((week, wi) => {
+    const first = week[0];
+    if (first.getDate() <= 7) {
+      monthLabels.push({ label: MONTH_LABELS[first.getMonth()], col: wi });
+    }
+  });
+
+  if (loading) {
+    return (
+      <div className="bg-[#151527] border border-white/5 rounded-xl p-6">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="h-4 w-32 bg-white/5 rounded animate-pulse" />
+        </div>
+        <div className="flex gap-1">
+          {Array.from({ length: 52 }).map((_, i) => (
+            <div key={i} className="flex flex-col gap-1">
+              {Array.from({ length: 7 }).map((_, j) => (
+                <div
+                  key={j}
+                  className="w-3 h-3 rounded-sm bg-white/[0.03] animate-pulse"
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
