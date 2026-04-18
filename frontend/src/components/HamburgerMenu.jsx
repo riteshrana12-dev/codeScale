@@ -98,7 +98,6 @@ export default function HamburgerMenu() {
   return (
     /* This whole thing sits inline inside the navbar flex row */
     <div className="flex items-center gap-2">
-
       {/* ── Hamburger icon button ── */}
       <motion.button
         onClick={() => setOpen((v) => !v)}
@@ -110,11 +109,13 @@ export default function HamburgerMenu() {
         }`}
         aria-label={open ? "Close menu" : "Open menu"}
       >
-        
-
         {/* Bar 1 */}
         <motion.span
-          animate={open ? { rotate: 45, y: 6.5, backgroundColor: "#00ff9d" } : { rotate: 0, y: 0, backgroundColor: "#888899" }}
+          animate={
+            open
+              ? { rotate: 45, y: 6.5, backgroundColor: "#00ff9d" }
+              : { rotate: 0, y: 0, backgroundColor: "#888899" }
+          }
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="block rounded-full"
           style={{ width: 15, height: 1.5, transformOrigin: "center" }}
@@ -128,9 +129,82 @@ export default function HamburgerMenu() {
         />
         {/* Bar 3 */}
         <motion.span
-          animate={open ? { rotate: -45, y: -6.5, backgroundColor: "#00ff9d" } : { rotate: 0, y: 0, backgroundColor: "#888899" }}
+          animate={
+            open
+              ? { rotate: -45, y: -6.5, backgroundColor: "#00ff9d" }
+              : { rotate: 0, y: 0, backgroundColor: "#888899" }
+          }
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="block rounded-full"
           style={{ width: 15, height: 1.5, transformOrigin: "center" }}
         />
       </motion.button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: "auto", opacity: 1 }}
+            exit={{ width: 0, opacity: 0 }}
+            transition={{
+              width: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
+              opacity: { duration: 0.22, ease: "easeOut" },
+            }}
+            className="flex items-center overflow-hidden"
+            style={{ gap: 0 }}
+          >
+            {/* Left separator */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              exit={{ scaleY: 0 }}
+              transition={{ duration: 0.2 }}
+              className="w-px h-5 bg-white/10 mx-2 flex-shrink-0"
+            />
+
+            {NAV_ITEMS.map((item, i) => {
+              const active = isActive(item.to);
+              return (
+                <motion.button
+                  key={item.to}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{
+                    opacity: 0,
+                    x: -6,
+                    transition: { delay: 0, duration: 0.12 },
+                  }}
+                  transition={{
+                    delay: 0.06 + i * 0.055,
+                    duration: 0.28,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  onClick={() => handleNav(item.to)}
+                  whileHover={{ y: -1 }}
+                  whileTap={{ scale: 0.92 }}
+                  className={`flex items-center gap-1.5 font-mono text-s font-medium px-3 py-1.5 rounded-lg border transition-all duration-150 flex-shrink-0 mx-0.5 ${
+                    active
+                      ? "bg-[#00ff9d]/8 border-[#00ff9d]/20 text-[#00ff9d]"
+                      : "border-transparent text-[#666680] hover:text-white hover:bg-white/[0.05] hover:border-white/8"
+                  }`}
+                >
+                  <span
+                    className={active ? "text-[#00ff9d]" : "text-[#444460]"}
+                  >
+                    {item.icon}
+                  </span>
+                  {item.label}
+                  {active && (
+                    <span
+                      className="w-1 h-1 rounded-full bg-[#00ff9d] flex-shrink-0"
+                      style={{ boxShadow: "0 0 5px #00ff9d" }}
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
