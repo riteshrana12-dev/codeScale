@@ -268,3 +268,14 @@ const RecentSubmissions = () => {
                   slug ? "cursor-pointer hover:bg-white/[0.025] group" : ""
                 }`}
               >
+                {/* Status icon bubble */}
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: statusCfg.bg,
+                    border: `1.5px solid ${statusCfg.border}`,
+                    color: statusCfg.color,
+                  }}
+                >
+                  {statusCfg.icon}
+                </div>
