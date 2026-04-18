@@ -127,3 +127,43 @@ const Leaderboard = () => {
       </div>
     );
   }
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.15 }}
+      className="bg-[#0d0d1a] border border-white/5 rounded-xl overflow-hidden"
+    >
+      {/* Top accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#facc15]/35 to-transparent" />
+
+      {/* Header */}
+      <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+        <div>
+          <p className="font-mono text-[15px] text-[#7b7b95] tracking-widest uppercase">
+            Rankings
+          </p>
+          <p className="font-mono text-[23px] text-white font-bold text-base mt-0.5">
+            Leaderboard
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-[#facc15]/8 border border-[#facc15]/15 flex items-center justify-center">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#facc15"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <span className="font-mono text-s text-[#656581]">
+            Top {users.length}
+          </span>
+        </div>
+      </div>
