@@ -134,3 +134,27 @@ function useBalls(tags) {
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
   }, [tick]);
+  return pos;
+}
+
+function toggleDiff(d) {
+  const next = difficulty === d ? null : d;
+  setDifficulty(next);
+  onFilterChange?.({ difficulty: next, tags: selectedTags });
+}
+function addTag(tag) {
+  if (selectedTags.includes(tag)) return;
+  const next = [...selectedTags, tag];
+  setSelectedTags(next);
+  onFilterChange?.({ difficulty, tags: next });
+}
+function removeTag(tag) {
+  const next = selectedTags.filter((t) => t !== tag);
+  setSelectedTags(next);
+  onFilterChange?.({ difficulty, tags: next });
+}
+function clearAll() {
+  setDifficulty(null);
+  setSelectedTags([]);
+  onFilterChange?.({ difficulty: null, tags: [] });
+}
