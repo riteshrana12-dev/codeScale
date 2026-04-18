@@ -262,3 +262,26 @@ const Leaderboard = () => {
                 <p className="font-mono text-sm text-[#9999b0] group-hover:text-white transition-colors truncate">
                   {user.firstName} {user.lastName}
                 </p>
+                {/* Points bar */}
+                <div className="mt-1.5 h-1 bg-[#1a1a2e] rounded-full overflow-hidden w-full">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${pct}%` }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.3 + i * 0.04,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="h-full rounded-full bg-[#00ff9d]/60"
+                    style={{ minWidth: pts > 0 ? 4 : 0 }}
+                  />
+                </div>
+              </div>
+
+              <div className="text-right flex-shrink-0">
+                <p className="font-mono text-sm font-black text-white">{pts}</p>
+                <p className="font-mono text-[9px] text-[#444460]">pts</p>
+              </div>
+            </motion.div>
+          );
+        })}
