@@ -74,3 +74,36 @@ function useBalls(tags) {
       if (!tags.includes(k)) delete cur[k];
     });
   }, [tags]);
+
+  const tick = useCallback(() => {
+    const p = state.current;
+    const keys = Object.keys(p);
+    const WALL = ARENA_R - BALL_R - 8;
+    const PULL = 0.0; // NO center pull — let repulsion spread them
+    const REPEL = 2.5; // strong repel so they don't overlap
+    const SETTLE = 0.004; // very tiny drift toward own "home" zone
+    const FRIC = 0.94; // high friction → barely moving
+
+    keys.forEach((k) => {
+      const b = p[k];
+
+      // repel from every other ball — strong enough to prevent overlap
+      keys.forEach((j) => {
+        if (j === k) return;
+        const dx = b.x - p[j].x;
+        const dy = b.y - p[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy) || 0.001;
+        const min = BALL_R * 2 + 6; // 6px gap between balls
+        if (d < min) {
+          const overlap = min - d;
+          const fx = (dx / d) * overlap * REPEL * 0.06;
+          const fy = (dy / d) * overlap * REPEL * 0.06;
+          b.vx += fx;
+          b.vy += fy;
+        }
+      });
+
+      b.vx *= FRIC;
+      b.vy *= FRIC;
+      b.x += b.vx;
+      b.y += b.vy;
