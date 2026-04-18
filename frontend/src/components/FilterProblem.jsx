@@ -36,8 +36,8 @@ const TAGS = [
   "Matrix",
 ];
 
-const ARENA_R = 230;
-const BALL_R = 30;
+const ARENA_R = 230; // bigger arena
+const BALL_R = 30; // bigger balls
 const SPRING = { type: "spring", stiffness: 420, damping: 26 };
 
 /* Stable starting grid so tags spread out immediately */
@@ -134,6 +134,7 @@ function useBalls(tags) {
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
   }, [tick]);
+
   return pos;
 }
 
@@ -379,6 +380,7 @@ export default function ProblemFilter({ onFilterChange }) {
                       );
                     })}
                   </div>
+
                   {/* ── Tag balls (physics) ── */}
                   <AnimatePresence>
                     {available.map((tag) => {
@@ -517,6 +519,7 @@ export default function ProblemFilter({ onFilterChange }) {
                   </motion.div>
                 )}
               </AnimatePresence>
+
               <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/15 to-transparent" />
             </div>
           </motion.div>
