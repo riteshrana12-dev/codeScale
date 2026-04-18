@@ -380,3 +380,67 @@ export default function ProblemFilter({ onFilterChange }) {
                       );
                     })}
                   </div>
+                  {/* ── Tag balls (physics) ── */}
+                  <AnimatePresence>
+                    {available.map((tag) => {
+                      const p = positions[tag];
+                      if (!p) return null;
+                      return (
+                        <motion.button
+                          key={tag}
+                          title={tag}
+                          onClick={() => addTag(tag)}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1, x: p.x, y: p.y }}
+                          exit={{
+                            opacity: 0,
+                            scale: 0,
+                            transition: { duration: 0.15 },
+                          }}
+                          transition={{
+                            x: { duration: 0 },
+                            y: { duration: 0 },
+                            opacity: SPRING,
+                            scale: SPRING,
+                          }}
+                          whileHover={{ scale: 1.5, zIndex: 30 }}
+                          whileTap={{ scale: 0.85 }}
+                          className="absolute flex items-center justify-center rounded-full cursor-pointer select-none group"
+                          style={{
+                            width: BALL_R * 3,
+                            height: BALL_R * 3,
+                            left: "50%",
+                            top: "50%",
+                            marginLeft: -BALL_R,
+                            marginTop: -BALL_R,
+                            background: "rgba(17,17,40,0.9)",
+                            border: "1.5px solid rgba(255,255,255,0.1)",
+                            zIndex: 5,
+                            backdropFilter: "blur(4px)",
+                            transition: "border-color 0.15s, background 0.15s",
+                          }}
+                        >
+                          {/* hover glow ring */}
+                          <div
+                            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                            style={{
+                              border: "1.5px solid rgba(0,212,255,0.5)",
+                              background: "rgba(0,212,255,0.08)",
+                            }}
+                          />
+                          <span
+                            className="relative z-10 group-hover:text-[#00d4ff] transition-colors duration-150 pointer-events-none font-mono font-bold  "
+                            style={{
+                              fontSize:
+                                tag.length > 11 ? 13 : tag.length > 8 ? 13 : 15,
+                              color: "#8888aa",
+                              wordBreak: "break-word",
+                              maxWidth: BALL_R * 1.8,
+                            }}
+                          >
+                            {tag.length > 10 ? tag.replace(" ", "\n") : tag}
+                          </span>
+                        </motion.button>
+                      );
+                    })}
+                  </AnimatePresence>
