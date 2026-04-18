@@ -70,6 +70,8 @@ const getActivityHeatMap = async (req, res) => {
         $project: { _id: 0, date: "$_id", totalSubmission: "$count" },
       },
     ]);
+
+    console.log(heatMapData);
     res.status(200).json({ success: true, data: heatMapData });
   } catch (err) {
     return res.status(500).json({
@@ -83,7 +85,7 @@ const getLeaderboard = async (req, res) => {
   try {
     const leaderBoard = await userModel
       .find({ role: { $ne: "admin" } })
-      .select("firstname lastname profile.avatar summary.totalPoints")
+      .select("firstName lastName profile.avatar summary.totalPoints")
       .sort({ "summary.totalPoints": -1 })
       .limit(20);
 
@@ -92,7 +94,6 @@ const getLeaderboard = async (req, res) => {
         message: "failed to load leaderBoard",
       });
     }
-
     return res.status(200).json({
       message: "LeaderBoard",
       data: leaderBoard,
