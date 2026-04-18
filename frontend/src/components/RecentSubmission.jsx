@@ -279,3 +279,38 @@ const RecentSubmissions = () => {
                 >
                   {statusCfg.icon}
                 </div>
+                {/* Problem info */}
+                <div className="flex-1 min-w-0">
+                  <p
+                    className={`font-mono text-s font-bold truncate transition-colors duration-150 ${
+                      slug
+                        ? "text-[#ccccdd] group-hover:text-white"
+                        : "text-[#ccccdd]"
+                    }`}
+                  >
+                    {submission.problemId?.title || "Unknown Problem"}
+                  </p>
+                  <div className="flex items-center gap-2 ">
+                    {/* Difficulty */}
+                    {difficulty && (
+                      <span
+                        className="font-mono text-[14px] font-bold"
+                        style={{ color: diffColor }}
+                      >
+                        {difficulty}
+                      </span>
+                    )}
+                    {difficulty && (
+                      <span className="w-1 h-1 rounded-full bg-white/10 flex-shrink-0" />
+                    )}
+                    {/* Language */}
+                    <span className="font-mono text-[14px] text-[#787883]">
+                      {submission.language}
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-white/50 flex-shrink-0" />
+                    {/* Time */}
+                    <span className="font-mono text-[14px] text-[#787883]">
+                      {timeAgo(submission.createdAt)}
+                    </span>
+                  </div>
+                </div>
