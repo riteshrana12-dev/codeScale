@@ -107,3 +107,25 @@ function useBalls(tags) {
       b.vy *= FRIC;
       b.x += b.vx;
       b.y += b.vy;
+
+      // clamp inside circle — hard clamp, no bouncing energy
+      const dist = Math.sqrt(b.x * b.x + b.y * b.y);
+      if (dist > WALL) {
+        const nx = b.x / dist;
+        const ny = b.y / dist;
+        b.x = nx * WALL;
+        b.y = ny * WALL;
+        // kill velocity component toward wall
+        const dot = b.vx * nx + b.vy * ny;
+        if (dot > 0) {
+          b.vx -= dot * nx;
+          b.vy -= dot * ny;
+        }
+        b.vx *= 0.3;
+        b.vy *= 0.3;
+      }
+    });
+
+    setPos({ ...p });
+    raf.current = requestAnimationFrame(tick);
+  }, []);
