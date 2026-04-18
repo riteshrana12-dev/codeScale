@@ -148,3 +148,8 @@ function timeAgo(dateStr) {
     day: "numeric",
   });
 }
+
+const RecentSubmissions = () => {
+  const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
