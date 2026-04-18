@@ -234,3 +234,68 @@ export default function ProblemFilter({ onFilterChange }) {
             className="absolute z-50"
             style={{ top: "calc(100% + 10px)", left: 0, width: SIZE + 40 }}
           >
+            <div
+              className="bg-[#0d0d1a]/98 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden"
+              style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.85)" }}
+            >
+              <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/35 to-transparent" />
+
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 pt-5 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-[#00ff9d]/8 border border-[#00ff9d]/15 flex items-center justify-center">
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#00ff9d"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                    </svg>
+                  </div>
+                  <span className="font-mono text-sm font-bold text-white">
+                    Filter Problems
+                  </span>
+                </div>
+                <AnimatePresence>
+                  {activeCount > 0 && (
+                    <motion.button
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={clearAll}
+                      className="font-mono text-s text-[#555570] hover:text-[#f87171] flex items-center gap-1 transition-colors"
+                    >
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.8"
+                        strokeLinecap="round"
+                      >
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                      clear all
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* ── Circle arena ── */}
+              <div className="flex justify-center px-5 pb-4">
+                <div
+                  className="relative rounded-full border border-white/8 flex-shrink-0"
+                  style={{
+                    width: SIZE,
+                    height: SIZE,
+                    background:
+                      "radial-gradient(circle at center, rgba(0,255,157,0.025) 0%, rgba(0,212,255,0.015) 55%, transparent 100%)",
+                  }}
+                >
