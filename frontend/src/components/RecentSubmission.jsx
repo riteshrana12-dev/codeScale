@@ -314,3 +314,38 @@ const RecentSubmissions = () => {
                     </span>
                   </div>
                 </div>
+                {/* Status badge */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <span
+                    className="font-mono text-[11px] font-bold px-2.5 py-1 rounded-full border whitespace-nowrap"
+                    style={{
+                      color: statusCfg.color,
+                      background: statusCfg.bg,
+                      borderColor: statusCfg.border,
+                    }}
+                  >
+                    {statusCfg.label}
+                  </span>
+
+                  {/* Arrow for clickable rows */}
+                  {slug && (
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#333350"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      className="group-hover:stroke-[#666680] transition-colors flex-shrink-0"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
