@@ -168,7 +168,7 @@ const RecentSubmissions = () => {
     getSubmissionHistory();
   }, []);
 
-   // show only latest 4
+  // show only latest 4
   const recent = Array.isArray(history) ? history.slice(0, 4) : [];
 
   return (
@@ -178,7 +178,7 @@ const RecentSubmissions = () => {
       transition={{ duration: 0.5, delay: 0.25 }}
       className="bg-[#0d0d1a] border border-white/5 rounded-xl overflow-hidden"
     >
-        {/* Top accent */}
+      {/* Top accent */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
 
       {/* Header */}
@@ -208,6 +208,7 @@ const RecentSubmissions = () => {
           </svg>
         </button>
       </div>
+
       {/* Content */}
       {loading ? (
         <div className="divide-y divide-white/[0.04]">
@@ -222,7 +223,7 @@ const RecentSubmissions = () => {
             </div>
           ))}
         </div>
-        recent.length === 0 ? (
+      ) : recent.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-12 gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
             <svg
@@ -246,7 +247,7 @@ const RecentSubmissions = () => {
             Solve your first problem →
           </button>
         </div>
-        ) : (
+      ) : (
         <div className="divide-y divide-white/[0.04]">
           {recent.map((submission, i) => {
             const statusKey = (submission.submissionStatus || "")
@@ -279,6 +280,7 @@ const RecentSubmissions = () => {
                 >
                   {statusCfg.icon}
                 </div>
+
                 {/* Problem info */}
                 <div className="flex-1 min-w-0">
                   <p
@@ -314,6 +316,7 @@ const RecentSubmissions = () => {
                     </span>
                   </div>
                 </div>
+
                 {/* Status badge */}
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <span
@@ -349,3 +352,11 @@ const RecentSubmissions = () => {
           })}
         </div>
       )}
+
+      {/* Bottom accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/10 to-transparent" />
+    </motion.div>
+  );
+};
+
+export default RecentSubmissions;
