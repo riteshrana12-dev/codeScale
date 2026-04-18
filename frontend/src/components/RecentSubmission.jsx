@@ -167,3 +167,6 @@ const RecentSubmissions = () => {
     }
     getSubmissionHistory();
   }, []);
+
+   // show only latest 4
+  const recent = Array.isArray(history) ? history.slice(0, 4) : [];
