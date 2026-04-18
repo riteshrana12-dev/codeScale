@@ -107,3 +107,23 @@ const STATUS_CONFIG = {
     ),
   },
 };
+
+const FALLBACK_STATUS = {
+  label: "Attempted",
+  color: "#8888a0",
+  bg: "rgba(136,136,160,0.08)",
+  border: "rgba(136,136,160,0.15)",
+  icon: (
+    <svg
+      width="11"
+      height="11"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+    </svg>
+  ),
+};
