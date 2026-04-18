@@ -222,3 +222,27 @@ const RecentSubmissions = () => {
             </div>
           ))}
         </div>
+        recent.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-12 gap-3">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#333350"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </div>
+          <p className="font-mono text-sm text-[#444460]">No submissions yet</p>
+          <button
+            onClick={() => navigate("/problems")}
+            className="font-mono text-xs text-[#00ff9d] hover:underline"
+          >
+            Solve your first problem →
+          </button>
+        </div>
