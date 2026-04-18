@@ -153,3 +153,17 @@ const RecentSubmissions = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getSubmissionHistory() {
+      try {
+        const response = await api.get("/user/history");
+        setHistory(response.data.data);
+      } catch (err) {
+        console.error("error fetching", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getSubmissionHistory();
+  }, []);
