@@ -246,3 +246,25 @@ const RecentSubmissions = () => {
             Solve your first problem →
           </button>
         </div>
+        ) : (
+        <div className="divide-y divide-white/[0.04]">
+          {recent.map((submission, i) => {
+            const statusKey = (submission.submissionStatus || "")
+              .toLowerCase()
+              .replace(/ /g, "_");
+            const statusCfg = STATUS_CONFIG[statusKey] || FALLBACK_STATUS;
+            const difficulty = submission.problemId?.difficulty;
+            const diffColor = DIFF_COLOR[difficulty] || "#8888a0";
+            const slug = submission.problemId?.slug;
+
+            return (
+              <motion.div
+                key={submission._id}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.35, delay: 0.05 + i * 0.07 }}
+                onClick={() => slug && navigate(`/problems/${slug}`)}
+                className={`flex items-center gap-4 px-6 py-4 transition-colors duration-150 ${
+                  slug ? "cursor-pointer hover:bg-white/[0.025] group" : ""
+                }`}
+              >
