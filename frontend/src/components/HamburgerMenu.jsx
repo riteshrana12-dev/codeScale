@@ -126,5 +126,11 @@ export default function HamburgerMenu() {
           className="block rounded-full bg-[#888899]"
           style={{ width: 10, height: 1.5 }}
         />
-        
+        {/* Bar 3 */}
+        <motion.span
+          animate={open ? { rotate: -45, y: -6.5, backgroundColor: "#00ff9d" } : { rotate: 0, y: 0, backgroundColor: "#888899" }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="block rounded-full"
+          style={{ width: 15, height: 1.5, transformOrigin: "center" }}
+        />
       </motion.button>
