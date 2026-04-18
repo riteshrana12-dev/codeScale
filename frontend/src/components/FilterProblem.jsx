@@ -129,3 +129,8 @@ function useBalls(tags) {
     setPos({ ...p });
     raf.current = requestAnimationFrame(tick);
   }, []);
+
+  useEffect(() => {
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [tick]);
