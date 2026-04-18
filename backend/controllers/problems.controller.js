@@ -10,7 +10,7 @@ const problemsList = async (req, res) => {
 
     if (difficulty) filter.difficulty = difficulty;
 
-    if (tags) filter.tags = { $in: tags.split(",") };
+    if (tags) filter.tags = { $all: tags.split(",") };
 
     const problems = await problemsModel.find(filter);
 
