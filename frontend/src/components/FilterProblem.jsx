@@ -39,3 +39,17 @@ const TAGS = [
 const ARENA_R = 230;
 const BALL_R = 30;
 const SPRING = { type: "spring", stiffness: 420, damping: 26 };
+
+/* Stable starting grid so tags spread out immediately */
+function getStartPos(index, total) {
+  const cols = Math.ceil(Math.sqrt(total));
+  const rows = Math.ceil(total / cols);
+  const col = index % cols;
+  const row = Math.floor(index / cols);
+  const cellW = (ARENA_R * 2.5) / cols;
+  const cellH = (ARENA_R * 2.5) / rows;
+  return {
+    x: -((cols - 1) * cellW) / 2 + col * cellW + (Math.random() - 0.5) * 8,
+    y: -((rows - 1) * cellH) / 2 + row * cellH + (Math.random() - 0.5) * 8,
+  };
+}
