@@ -59,3 +59,18 @@ function useBalls(tags) {
   const state = useRef({});
   const [pos, setPos] = useState({});
   const raf = useRef(null);
+
+  useEffect(() => {
+    const cur = state.current;
+    // seed new
+    tags.forEach((t, i) => {
+      if (!cur[t]) {
+        const sp = getStartPos(i, tags.length);
+        cur[t] = { x: sp.x, y: sp.y, vx: 0, vy: 0 };
+      }
+    });
+    // remove gone
+    Object.keys(cur).forEach((k) => {
+      if (!tags.includes(k)) delete cur[k];
+    });
+  }, [tags]);
