@@ -139,6 +139,8 @@ export default function HamburgerMenu() {
           style={{ width: 15, height: 1.5, transformOrigin: "center" }}
         />
       </motion.button>
+
+      {/* ── Horizontal expanding nav items — inline in navbar ── */}
       <AnimatePresence>
         {open && (
           <motion.div
