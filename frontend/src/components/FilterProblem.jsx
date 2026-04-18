@@ -222,3 +222,15 @@ export default function ProblemFilter({ onFilterChange }) {
           )}
         </AnimatePresence>
       </motion.button>
+
+      {/* ── Panel ── */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -4 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute z-50"
+            style={{ top: "calc(100% + 10px)", left: 0, width: SIZE + 40 }}
+          >
