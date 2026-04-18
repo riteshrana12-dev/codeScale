@@ -25,3 +25,37 @@ const RANK_CONFIG = {
     crown: false,
   },
 };
+
+function Avatar({ user, size = 36 }) {
+  const initials =
+    `${user.firstName?.[0] || ""}${user.lastName?.[0] || ""}`.toUpperCase() ||
+    "?";
+
+  if (user.profile?.avatar) {
+    return (
+      <img
+        src={`${import.meta.env.VITE_API_URL}${user.profile.avatar}`}
+        alt={initials}
+        className="rounded-full object-cover flex-shrink-0"
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+  // generate a consistent hue from name
+  const hue = ((user.firstName?.charCodeAt(0) || 65) * 37) % 360;
+  return (
+    <div
+      className="rounded-full flex items-center justify-center font-mono font-black flex-shrink-0"
+      style={{
+        width: size,
+        height: size,
+        background: `hsl(${hue}, 60%, 18%)`,
+        border: `1.5px solid hsl(${hue}, 60%, 30%)`,
+        color: `hsl(${hue}, 80%, 65%)`,
+        fontSize: size * 0.35,
+      }}
+    >
+      {initials}
+    </div>
+  );
+}
