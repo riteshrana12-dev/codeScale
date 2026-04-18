@@ -170,3 +170,11 @@ const RecentSubmissions = () => {
 
    // show only latest 4
   const recent = Array.isArray(history) ? history.slice(0, 4) : [];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.25 }}
+      className="bg-[#0d0d1a] border border-white/5 rounded-xl overflow-hidden"
+    >
