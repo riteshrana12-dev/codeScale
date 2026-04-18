@@ -15,7 +15,7 @@ const userSchema = new Schema({
 
   // Profile Customization
   profile: {
-    avatar: { type: String, default: "https://via.placeholder.com/150" },
+    avatar: { type: String, default: "/avatar/profile.gif" },
     bio: { type: String, maxLength: 200 },
     github: { type: String },
     linkedin: { type: String },
