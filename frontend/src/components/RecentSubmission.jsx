@@ -127,3 +127,9 @@ const FALLBACK_STATUS = {
     </svg>
   ),
 };
+
+const DIFF_COLOR = {
+  Easy: "#00ff9d",
+  Medium: "#facc15",
+  Hard: "#f87171",
+};
