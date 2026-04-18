@@ -240,3 +240,9 @@ const Leaderboard = () => {
           </div>
         </div>
       )}
+      {/* ── Ranked list (4th onwards + all if < 3) ── */}
+      <div>
+        {users.slice(3).map((user, i) => {
+          const rank = i + 4;
+          const pts = user?.summary?.totalPoints || 0;
+          const pct = maxPoints > 0 ? (pts / maxPoints) * 100 : 0;
