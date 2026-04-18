@@ -8,6 +8,7 @@ import userRouter from "./routes/user.route.js";
 import connectToDb from "./config/db.js";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import analyticsRouter from "./routes/user_analytics.route.js";
 import historyroute from "./routes/user_history.route.js";
 import adminRouter from "./routes/admin.route.js";
@@ -51,7 +52,11 @@ const cleanupTempFolder = () => {
     console.error(" Error during temp cleanup:", err.message);
   }
 };
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+// Serve static files from /avatar (inside models folder)
+app.use("/avatar", express.static(path.join(__dirname, "models", "avatar")));
 // Route Definitions
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/problems", problemsRoutes);
