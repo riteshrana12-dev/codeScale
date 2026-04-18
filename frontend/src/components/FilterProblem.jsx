@@ -444,3 +444,78 @@ export default function ProblemFilter({ onFilterChange }) {
                       );
                     })}
                   </AnimatePresence>
+
+                  
+                  {/* empty */}
+                  {available.length === 0 && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="font-mono text-sm text-[#333350]">
+                        all selected ✓
+                      </p>
+                    </div>
+                  )}
+
+                  {/* bottom hint */}
+                  <p
+                    className="absolute font-mono text-[9px] text-[#252538] tracking-widest text-center"
+                    style={{
+                      bottom: 16,
+                      left: 0,
+                      right: 0,
+                      pointerEvents: "none",
+                    }}
+                  >
+                    CLICK BALL TO ADD FILTER
+                  </p>
+                </div>
+              </div>
+
+              {/* ── Selected tag pills ── */}
+              <AnimatePresence>
+                {selectedTags.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="border-t border-white/5 px-5 py-3 flex flex-wrap gap-2"
+                  >
+                    <AnimatePresence>
+                      {selectedTags.map((tag) => (
+                        <motion.button
+                          key={tag}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{
+                            scale: 0,
+                            opacity: 0,
+                            transition: { duration: 0.12 },
+                          }}
+                          transition={SPRING}
+                          onClick={() => removeTag(tag)}
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.88 }}
+                          className="flex items-center gap-1.5 font-mono text-s px-3 py-1.5 rounded-full border border-[#00d4ff]/25 bg-[#00d4ff]/8 text-[#00d4ff] group hover:border-[#f87171]/40 hover:bg-[#f87171]/8 hover:text-[#f87171] transition-colors duration-150"
+                        >
+                          {tag}
+                          <motion.svg
+                            whileHover={{ rotate: 90 }}
+                            transition={{ duration: 0.15 }}
+                            width="9"
+                            height="9"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            className="opacity-50 group-hover:opacity-100 flex-shrink-0"
+                          >
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                          </motion.svg>
+                        </motion.button>
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
