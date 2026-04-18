@@ -206,3 +206,37 @@ const Leaderboard = () => {
                       </svg>
                     </motion.div>
                   )}
+                  <Avatar user={user} size={rank === 1 ? 44 : 36} />
+
+                  <p className="font-mono text-s text-white font-bold text-center truncate w-full px-1">
+                    {user.firstName} {user.lastName}
+                  </p>
+                  <p
+                    className="font-mono text-s font-black"
+                    style={{ color: cfg.color }}
+                  >
+                    {pts} pts
+                  </p>
+
+                  {/* Podium block */}
+                  <div
+                    className="w-full rounded-t-lg flex items-center justify-center"
+                    style={{
+                      height,
+                      background: cfg.bg,
+                      border: `1px solid ${cfg.color}25`,
+                    }}
+                  >
+                    <span
+                      className="font-mono text-3xl font-black"
+                      style={{ color: cfg.color }}
+                    >
+                      {rank}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      )}
