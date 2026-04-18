@@ -35,3 +35,7 @@ const TAGS = [
   "Trie",
   "Matrix",
 ];
+
+const ARENA_R = 230;
+const BALL_R = 30;
+const SPRING = { type: "spring", stiffness: 420, damping: 26 };
