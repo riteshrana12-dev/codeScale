@@ -299,3 +299,84 @@ export default function ProblemFilter({ onFilterChange }) {
                       "radial-gradient(circle at center, rgba(0,255,157,0.025) 0%, rgba(0,212,255,0.015) 55%, transparent 100%)",
                   }}
                 >
+                  {/* Dashed inner ring */}
+                  <div
+                    className="absolute rounded-full border border-dashed border-white/[0.05] pointer-events-none"
+                    style={{
+                      width: SIZE * 0.65,
+                      height: SIZE * 0.65,
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                    }}
+                  />
+
+                  {/* ── Difficulty row — inside top ── */}
+                  <div
+                    className="absolute flex items-center justify-center gap-3"
+                    style={{ top: 0, left: 0, right: 0, zIndex: 15 }}
+                  >
+                    {DIFFICULTIES.map((d) => {
+                      const cfg = DIFF_CONFIG[d];
+                      const active = difficulty === d;
+                      return (
+                        <motion.button
+                          key={d}
+                          onClick={() => toggleDiff(d)}
+                          whileHover={{ y: -2, scale: 1.08 }}
+                          whileTap={{ scale: 0.88 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 22,
+                          }}
+                          className="font-mono text-s font-black px-3.5 py-1.5 rounded-full border select-none flex items-center gap-1.5"
+                          style={{
+                            color: cfg.color,
+                            background: active
+                              ? `${cfg.color}18`
+                              : "rgba(10,10,20,0.92)",
+                            borderColor: active ? cfg.color : `${cfg.color}40`,
+                            boxShadow: active ? `0 0 16px ${cfg.glow}` : "none",
+                            backdropFilter: "blur(10px)",
+                            transition: "all 0.18s ease",
+                          }}
+                        >
+                          <span
+                            className="w-2 h-2 rounded-full flex-shrink-0"
+                            style={{
+                              background: cfg.color,
+                              opacity: active ? 1 : 0.35,
+                              boxShadow: active
+                                ? `0 0 6px ${cfg.color}`
+                                : "none",
+                            }}
+                          />
+                          {d}
+                          <AnimatePresence>
+                            {active && (
+                              <motion.svg
+                                initial={{ scale: 0, rotate: -45 }}
+                                animate={{ scale: 1, rotate: 0 }}
+                                exit={{ scale: 0 }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 500,
+                                  damping: 22,
+                                }}
+                                width="10"
+                                height="10"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                              >
+                                <polyline points="20 6 9 17 4 12" />
+                              </motion.svg>
+                            )}
+                          </AnimatePresence>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
