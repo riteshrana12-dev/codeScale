@@ -137,7 +137,6 @@ function useBalls(tags) {
   return pos;
 }
 
-
 /* ─── Component ─── */
 export default function ProblemFilter({ onFilterChange }) {
   const [open, setOpen] = useState(false);
@@ -445,7 +444,6 @@ export default function ProblemFilter({ onFilterChange }) {
                     })}
                   </AnimatePresence>
 
-                  
                   {/* empty */}
                   {available.length === 0 && (
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -519,3 +517,11 @@ export default function ProblemFilter({ onFilterChange }) {
                   </motion.div>
                 )}
               </AnimatePresence>
+              <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/15 to-transparent" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
