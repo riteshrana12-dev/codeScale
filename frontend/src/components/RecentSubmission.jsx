@@ -180,10 +180,31 @@ const RecentSubmissions = () => {
     >
         {/* Top accent */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
-{/* Header */}
+
+      {/* Header */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
         <div>
           <p className="font-mono text-white text-[20px] font-bold text-base mt-0.5">
             Recent Submissions
           </p>
         </div>
+        <button
+          onClick={() => navigate("/submissions")}
+          className="font-mono text-s text-[#5d5d7d] hover:text-[#00d4ff] transition-colors flex items-center gap-1.5 group"
+        >
+          View all
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="group-hover:translate-x-0.5 transition-transform duration-150"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </button>
+      </div>
