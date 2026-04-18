@@ -106,3 +106,24 @@ const Leaderboard = () => {
   }, []);
 
   const maxPoints = users.length > 0 ? users[0]?.summary?.totalPoints || 1 : 1;
+
+  if (loading) {
+    return (
+      <div className="bg-[#0d0d1a] border border-white/5 rounded-xl overflow-hidden">
+        <div className="px-6 py-5 border-b border-white/5">
+          <div className="h-4 w-28 bg-white/5 rounded animate-pulse" />
+        </div>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-4 px-6 py-4 border-b border-white/[0.04]"
+          >
+            <div className="w-8 h-8 rounded-full bg-white/5 animate-pulse" />
+            <div className="w-8 h-8 rounded-full bg-white/5 animate-pulse" />
+            <div className="flex-1 h-3 bg-white/5 rounded animate-pulse" />
+            <div className="w-16 h-3 bg-white/5 rounded animate-pulse" />
+          </div>
+        ))}
+      </div>
+    );
+  }
