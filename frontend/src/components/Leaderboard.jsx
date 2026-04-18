@@ -177,7 +177,7 @@ const Leaderboard = () => {
               const cfg = RANK_CONFIG[rank];
               const height = rank === 1 ? 88 : rank === 2 ? 68 : 56;
               const pts = user?.summary?.totalPoints || 0;
-          return (
+              return (
                 <motion.div
                   key={user._id}
                   initial={{ opacity: 0, y: 20 }}
@@ -285,3 +285,29 @@ const Leaderboard = () => {
             </motion.div>
           );
         })}
+        {users.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-14 gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#333350"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              >
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <p className="font-mono text-sm text-[#444460]">No data yet</p>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+export default Leaderboard;
