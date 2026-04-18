@@ -53,3 +53,9 @@ function getStartPos(index, total) {
     y: -((rows - 1) * cellH) / 2 + row * cellH + (Math.random() - 0.5) * 8,
   };
 }
+
+/* ─── Physics ─── */
+function useBalls(tags) {
+  const state = useRef({});
+  const [pos, setPos] = useState({});
+  const raf = useRef(null);
