@@ -127,6 +127,7 @@ const Leaderboard = () => {
       </div>
     );
   }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -167,6 +168,7 @@ const Leaderboard = () => {
           </span>
         </div>
       </div>
+
       {/* ── Top 3 podium ── */}
       {users.length >= 3 && (
         <div className="px-6 py-5 border-b border-white/5">
@@ -206,6 +208,7 @@ const Leaderboard = () => {
                       </svg>
                     </motion.div>
                   )}
+
                   <Avatar user={user} size={rank === 1 ? 44 : 36} />
 
                   <p className="font-mono text-s text-white font-bold text-center truncate w-full px-1">
@@ -240,6 +243,7 @@ const Leaderboard = () => {
           </div>
         </div>
       )}
+
       {/* ── Ranked list (4th onwards + all if < 3) ── */}
       <div>
         {users.slice(3).map((user, i) => {
@@ -285,6 +289,7 @@ const Leaderboard = () => {
             </motion.div>
           );
         })}
+
         {users.length === 0 && (
           <div className="flex flex-col items-center justify-center py-14 gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
