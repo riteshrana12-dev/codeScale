@@ -188,7 +188,7 @@ export default function ProblemFilter({ onFilterChange }) {
       <motion.button
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.93 }}
-        className={`flex items-center gap-2 font-mono text-s font-bold px-4 py-2.5 rounded-xl border transition-all duration-200 ${
+        className={`flex items-center gap-2 font-mono text-s font-bold px-4 py-2.5 w-30 h-10 rounded-xl border transition-all duration-200 ${
           open || activeCount > 0
             ? "bg-[#00ff9d]/10 border-[#00ff9d]/35 text-[#00ff9d] shadow-[0_0_14px_rgba(0,255,157,0.12)]"
             : "bg-white/[0.03] border-white/8 text-[#666680] hover:border-white/18 hover:text-[#9999b0]"
