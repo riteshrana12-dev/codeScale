@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import api from "../api/api.js";
 import CodeEditor from "../components/codeEditor/CodeEditor"; // Your existing component
 import ProblemDescription from "../components/codeEditor/ProblemDescription";
 import { useProblem } from "../context/ProblemContext.jsx";
+
 import { motion } from "framer-motion";
 
 const difficultyConfig = {
@@ -69,14 +70,14 @@ const ProblemPage = () => {
     <div className="h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
       {/* Top Bar */}
       <div className="h-12 bg-[#0d0d1a] border-b border-white/5 flex items-center px-4 gap-4 flex-shrink-0">
-        <div className="flex items-center gap-2">
+        <Link to={"/problems"} className="flex items-center gap-2">
           <span className="font-mono text-[#00ff9d] font-bold text-sm">
             &gt;_
           </span>
           <span className="font-mono text-white text-sm font-semibold">
             CodeScale
           </span>
-        </div>
+        </Link>
         <div className="w-px h-4 bg-white/10" />
         <span className="font-semibold text-xs text-[#626282] truncate max-w-xs">
           {problem.title}
