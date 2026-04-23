@@ -45,7 +45,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Submissions",
-    to: "/submissions",
+    to: "/submissionHistory",
     icon: (
       <svg
         width="14"
