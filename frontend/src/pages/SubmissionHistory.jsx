@@ -182,3 +182,23 @@ const SubmissionsPage = () => {
             </p>
           </div>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-[#0d0d1a] border border-white/5 rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
+
+          {loading ? (
+            <div className="divide-y divide-white/[0.04]">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="p-6 flex items-center gap-4 animate-pulse">
+                  <div className="w-10 h-10 rounded-xl bg-white/5" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 w-1/4 bg-white/5 rounded" />
+                    <div className="h-3 w-1/6 bg-white/5 rounded" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : submissions.length === 0 ? (
