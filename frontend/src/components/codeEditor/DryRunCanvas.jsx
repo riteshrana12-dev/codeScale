@@ -1,13 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+
 const DryRunCanvas = ({ onClose, problemId }) => {
   const canvasRef = useRef(null);
+
+  // States for Tooling
   const [tool, setTool] = useState("pen"); // pen, eraser, pan
   const [strokeColor, setStrokeColor] = useState("#00d4ff");
   const [strokeWidth, setStrokeWidth] = useState(4);
   const [eraserWidth, setEraserWidth] = useState(20);
 
   const storageKey = `sketch_cache_${problemId || "global"}`;
+
+  // 1. PERSISTENCE: Load on Mount
   useEffect(() => {
     const savedData = localStorage.getItem(storageKey);
     if (savedData && canvasRef.current) {
@@ -17,6 +22,7 @@ const DryRunCanvas = ({ onClose, problemId }) => {
     }
   }, [storageKey]);
 
+  // 2. PERSISTENCE: Save on Stroke
   const handleStroke = () => {
     canvasRef.current
       .exportPaths()
@@ -37,6 +43,7 @@ const DryRunCanvas = ({ onClose, problemId }) => {
         {/* TOP TOOLBAR */}
         <div className="px-6 py-3 border-b border-white/5 bg-[#161625] flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
+            {/* TOOL SELECTOR */}
             <div className="flex bg-black/40 p-1 rounded-xl border border-white/10">
               <button
                 onClick={() => {
@@ -95,6 +102,7 @@ const DryRunCanvas = ({ onClose, problemId }) => {
               </button>
             </div>
 
+            {/* COLOR PALETTE */}
             <div className="flex gap-2 px-4 border-l border-white/10">
               {["#00d4ff", "#00ff9d", "#facc15", "#ffffff"].map((c) => (
                 <button
@@ -109,6 +117,8 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 />
               ))}
             </div>
+
+            {/* SIZE SLIDER */}
             <div className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-xl border border-white/5">
               <span className="text-[10px] text-white/30 font-bold uppercase">
                 {tool === "eraser" ? "Eraser" : "Pen"}
@@ -184,6 +194,7 @@ const DryRunCanvas = ({ onClose, problemId }) => {
             eraserWidth={eraserWidth}
             strokeColor={strokeColor}
             canvasColor="transparent"
+            /* NAVIGATION PROPS */
             withPanAndZoom={
               tool === "pan" || tool === "pen" || tool === "eraser"
             }
