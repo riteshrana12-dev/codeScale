@@ -201,4 +201,12 @@ const SubmissionsPage = () => {
                 </div>
               ))}
             </div>
-          ) : submissions.length === 0 ? (
+          ) : submissions.length === 0 ? ( <div className="py-20 text-center flex flex-col items-center">
+              <div className="w-16 h-16 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333350" strokeWidth="1.5">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                  <polyline points="13 2 13 9 20 9" />
+                </svg>
+              </div>
+              <p className="text-[#5d5d7d] font-mono">No submissions found.</p>
+            </div>
