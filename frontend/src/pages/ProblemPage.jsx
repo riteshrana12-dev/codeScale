@@ -3,8 +3,9 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import api from "../api/api.js";
 import CodeEditor from "../components/codeEditor/CodeEditor"; // Your existing component
 import ProblemDescription from "../components/codeEditor/ProblemDescription";
+import DryRunCanvas from "../components/codeEditor/DryRunCanvas.jsx";
 import { useProblem } from "../context/ProblemContext.jsx";
-
+import HamburgerMenu from "../components/HamburgerMenu.jsx";
 import { motion } from "framer-motion";
 
 const difficultyConfig = {
@@ -28,6 +29,7 @@ const difficultyConfig = {
 const ProblemPage = () => {
   const navigate = useNavigate();
   const { setSolution, setSubmissionResult } = useProblem();
+  const [isCanvasOpen, setIsCanvasOpen] = useState(false);
   const { slug } = useParams();
   const [problem, setProblem] = useState(null);
 
@@ -79,18 +81,29 @@ const ProblemPage = () => {
           </span>
         </Link>
         <div className="w-px h-4 bg-white/10" />
-        <span className="font-semibold text-xs text-[#626282] truncate max-w-xs">
-          {problem.title}
-        </span>
-        <div
-          className="ml-auto font-mono text-xs px-2.5 py-1 rounded-full border"
-          style={{
-            color: diff.color,
-            background: diff.bg,
-            borderColor: diff.border,
-          }}
-        >
-          {problem.difficulty}
+        <div>
+          <button
+            onClick={() => setIsCanvasOpen(true)}
+            className="flex items-center gap-2 px-3 py-1 bg-[#00d4ff]/10 text-[#00d5ff7c] border border-[#00d4ff]/20 rounded-md hover:bg-[#00d4ff]/20 transition-all text-xs font-bold"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+            Dry Run Board
+          </button>
+        </div>
+        <div className="ml-auto font-mono text-xs ">
+          <HamburgerMenu />
         </div>
       </div>
 
@@ -106,6 +119,8 @@ const ProblemPage = () => {
           <CodeEditor testCase={problem.testCase} />
         </div>
       </div>
+      {/* The Canvas Modal */}
+      {isCanvasOpen && <DryRunCanvas onClose={() => setIsCanvasOpen(false)} />}
     </div>
   );
 };
