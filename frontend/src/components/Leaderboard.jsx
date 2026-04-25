@@ -141,10 +141,10 @@ const Leaderboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
         <div>
-          <p className="font-mono text-[15px] text-[#7b7b95] tracking-widest uppercase">
+          <p className="font-mono text-[11px] text-[#7b7b95] tracking-widest uppercase">
             Rankings
           </p>
-          <p className="font-mono text-[23px] text-white font-bold text-base mt-0.5">
+          <p className="font-mono text-[17px] text-white font-bold text-base mt-0.5">
             Leaderboard
           </p>
         </div>
