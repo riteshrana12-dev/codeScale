@@ -89,3 +89,12 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+
+          <Link to="/dashboard" className="flex items-center gap-2 flex-shrink-0 group">
+            <motion.span whileHover={{ scale: 1.05 }} className="font-mono text-[#00ff9d] text-lg font-bold">
+              &gt;_
+            </motion.span>
+            <span className="font-mono text-white font-semibold text-base tracking-wide group-hover:text-white/90 transition-colors">
+              CodeScale
+            </span>
+          </Link>
