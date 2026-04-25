@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
-import { Link } from "react-router-dom"; // Added Link import
+import { Link, useNavigate } from "react-router-dom"; // Added Link import
 import useSignUp from "../../hooks/signUp.js";
 
 const PARTICLES = Array.from({ length: 110 }, (_, i) => ({
@@ -120,6 +120,7 @@ const schema = z.object({
 });
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [validationError, setValidationError] = useState("");
   const [message, setMessage] = useState("");
   const { formData, handleChange, executeSignUp, loading, error } = useSignUp();
@@ -130,7 +131,6 @@ const SignUp = () => {
     const feildError = {}; // created to store the error as per feild than show in to repesctive input filed
     if (!result.success) {
       const zodError = result.error.issues;
-      console.log(zodError);
       zodError.forEach((element) => {
         setValidationError(element.message);
         feildError[element.path[0]] = element.message;
@@ -141,6 +141,7 @@ const SignUp = () => {
     try {
       const response = await executeSignUp();
       setMessage(response?.success);
+      navigate("/signIn");
     } catch (err) {
       setMessage(err || "Signup failed");
     }
@@ -463,7 +464,6 @@ const SignUp = () => {
             </motion.p>
           </div>
 
-          {message && <p>{message}</p>}
           {/* Bottom line */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/30 to-transparent" />
         </div>
