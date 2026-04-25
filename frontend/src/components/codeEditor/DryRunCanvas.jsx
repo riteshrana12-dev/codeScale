@@ -137,3 +137,8 @@ const DryRunCanvas = ({ onClose, problemId }) => {
             </button>
           </div>
         </div>
+
+        {/* CANVAS AREA */}
+        <div
+          className={`flex-1 relative overflow-hidden ${tool === "pan" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}
+        >
