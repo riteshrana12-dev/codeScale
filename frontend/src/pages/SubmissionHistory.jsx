@@ -143,3 +143,28 @@ function timeAgo(dateStr) {
     day: "numeric",
   });
 }
+
+const SubmissionsPage = () => {
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const navigate = useNavigate();
+
+  const fetchSubmissions = async (page) => {
+    setLoading(true);
+    try {
+      const response = await api.get(`/user/history?page=${page}&limit=10`);
+      setSubmissions(response.data.data);
+      setTotalPages(response.data.pagination.totalPages);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      console.error("Fetch error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSubmissions(currentPage);
+  }, [currentPage]);
