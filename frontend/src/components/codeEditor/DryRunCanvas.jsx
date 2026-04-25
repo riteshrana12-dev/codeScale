@@ -73,3 +73,18 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 </svg>
               </button>
             </div>
+
+            <div className="flex gap-2 px-4 border-l border-white/10">
+              {["#00d4ff", "#00ff9d", "#facc15", "#ffffff"].map((c) => (
+                <button
+                  key={c}
+                  onClick={() => {
+                    setStrokeColor(c);
+                    setTool("pen");
+                    canvasRef.current.eraseMode(false);
+                  }}
+                  className={`w-6 h-6 rounded-full border-2 ${strokeColor === c && tool === "pen" ? "border-white scale-110" : "border-transparent"}`}
+                  style={{ backgroundColor: c }}
+                />
+              ))}
+            </div>
