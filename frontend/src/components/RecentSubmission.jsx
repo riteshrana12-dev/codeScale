@@ -184,13 +184,13 @@ const RecentSubmissions = () => {
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
         <div>
-          <p className="font-mono text-white text-[20px] font-bold text-base mt-0.5">
+          <p className="font-mono text-white text-[16px] font-bold text-base mt-0.5">
             Recent Submissions
           </p>
         </div>
         <button
-          onClick={() => navigate("/submissions")}
-          className="font-mono text-s text-[#5d5d7d] hover:text-[#00d4ff] transition-colors flex items-center gap-1.5 group"
+          onClick={() => navigate("/submissionshistory")}
+          className="font-mono text-xs text-[#5d5d7d] hover:text-[#00d4ff] transition-colors flex items-center gap-1.5 group"
         >
           View all
           <svg
@@ -264,14 +264,13 @@ const RecentSubmissions = () => {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.35, delay: 0.05 + i * 0.07 }}
-                onClick={() => slug && navigate(`/problems/${slug}`)}
                 className={`flex items-center gap-4 px-6 py-4 transition-colors duration-150 ${
                   slug ? "cursor-pointer hover:bg-white/[0.025] group" : ""
                 }`}
               >
                 {/* Status icon bubble */}
                 <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{
                     background: statusCfg.bg,
                     border: `1.5px solid ${statusCfg.border}`,
@@ -284,7 +283,7 @@ const RecentSubmissions = () => {
                 {/* Problem info */}
                 <div className="flex-1 min-w-0">
                   <p
-                    className={`font-mono text-s font-bold truncate transition-colors duration-150 ${
+                    className={`font-mono text-xs font-bold truncate transition-colors duration-150 ${
                       slug
                         ? "text-[#ccccdd] group-hover:text-white"
                         : "text-[#ccccdd]"
@@ -296,7 +295,7 @@ const RecentSubmissions = () => {
                     {/* Difficulty */}
                     {difficulty && (
                       <span
-                        className="font-mono text-[14px] font-bold"
+                        className="font-mono text-[10px] font-bold"
                         style={{ color: diffColor }}
                       >
                         {difficulty}
@@ -306,12 +305,12 @@ const RecentSubmissions = () => {
                       <span className="w-1 h-1 rounded-full bg-white/10 flex-shrink-0" />
                     )}
                     {/* Language */}
-                    <span className="font-mono text-[14px] text-[#787883]">
+                    <span className="font-mono text-[10px] text-[#787883]">
                       {submission.language}
                     </span>
                     <span className="w-1 h-1 rounded-full bg-white/50 flex-shrink-0" />
                     {/* Time */}
-                    <span className="font-mono text-[14px] text-[#787883]">
+                    <span className="font-mono text-[10px] text-[#787883]">
                       {timeAgo(submission.createdAt)}
                     </span>
                   </div>
@@ -320,7 +319,7 @@ const RecentSubmissions = () => {
                 {/* Status badge */}
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <span
-                    className="font-mono text-[11px] font-bold px-2.5 py-1 rounded-full border whitespace-nowrap"
+                    className="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full border whitespace-nowrap"
                     style={{
                       color: statusCfg.color,
                       background: statusCfg.bg,
@@ -329,23 +328,6 @@ const RecentSubmissions = () => {
                   >
                     {statusCfg.label}
                   </span>
-
-                  {/* Arrow for clickable rows */}
-                  {slug && (
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#333350"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      className="group-hover:stroke-[#666680] transition-colors flex-shrink-0"
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  )}
                 </div>
               </motion.div>
             );
