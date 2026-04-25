@@ -74,3 +74,19 @@ function TypingDots() {
     </div>
   );
 }
+
+function MessageBubble({ msg, isLatest }) {
+  const isUser = msg.role === "user";
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      className={`flex gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"}`}
+    >
+      <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${isUser ? "bg-[#00ff9d]/10 border border-[#00ff9d]/20" : "bg-[#00d4ff]/10 border border-[#00d4ff]/20"}`}>
+        {isUser ? (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+        ) : (
+          <span className="font-mono text-[#00d4ff] text-[10px] font-black">&gt;_</span>
+        )}
+      </div>
