@@ -218,3 +218,25 @@ export default function ChatBot() {
                     </div>
                   </motion.div>
                 )}
+
+                {messages.map((msg, i) => (
+                  <MessageBubble key={i} msg={msg} isLatest={i === messages.length - 1} />
+                ))}
+
+                {loading && (
+                  <div className="flex gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="font-mono text-[#00d4ff] text-[10px] font-black">&gt;_</span>
+                    </div>
+                    <div className="bg-[#111128] border border-white/8 rounded-2xl rounded-tl-sm"><TypingDots /></div>
+                  </div>
+                )}
+
+                {error && (
+                  <div className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#f87171]/8 border border-[#f87171]/20">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                    <p className="font-mono text-xs text-[#f87171]">{error}</p>
+                  </div>
+                )}
+                <div ref={bottomRef} />
+              </div>
