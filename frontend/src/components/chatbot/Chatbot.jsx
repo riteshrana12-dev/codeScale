@@ -240,3 +240,19 @@ export default function ChatBot() {
                 )}
                 <div ref={bottomRef} />
               </div>
+              <div className="flex-shrink-0 border-t border-white/5 p-3">
+                <div className={`flex items-end gap-2 rounded-xl border transition-all duration-200 px-3 py-2 ${input.length > 0 ? "border-[#00d4ff]/35 bg-[#00d4ff]/5" : "border-white/8 bg-white/[0.03]"}`}>
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={(e) => {
+                      setInput(e.target.value);
+                      e.target.style.height = "auto";
+                      e.target.style.height = Math.min(e.target.scrollHeight, 100) + "px";
+                    }}
+                    onKeyDown={handleKey}
+                    placeholder="Ask about DSA, approach, complexity..."
+                    disabled={loading}
+                    rows={1}
+                    className="flex-1 bg-transparent font-mono text-xs text-white placeholder-[#6c6c8d] outline-none resize-none leading-relaxed"
+                  />
