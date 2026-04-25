@@ -45,7 +45,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Submissions",
-    to: "/submissionHistory",
+    to: "/submissionshistory",
     icon: (
       <svg
         width="14"
@@ -63,8 +63,8 @@ const NAV_ITEMS = [
     ),
   },
   {
-    label: "Profile",
-    to: "/profile",
+    label: "Account",
+    to: "/account",
     icon: (
       <svg
         width="14"
@@ -102,7 +102,7 @@ export default function HamburgerMenu() {
       <motion.button
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.88 }}
-        className={`relative z-10 flex flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-xl border transition-all duration-200 flex-shrink-0 ${
+        className={`relative z-10 flex flex-col items-center justify-center gap-[5px] w-8 h-8 rounded-xl border transition-all duration-200 flex-shrink-0 ${
           open
             ? "bg-[#00ff9d]/10 border-[#00ff9d]/35 shadow-[0_0_12px_rgba(0,255,157,0.1)]"
             : "bg-white/[0.03] border-white/8 hover:border-white/20 hover:bg-white/[0.06]"
@@ -183,11 +183,8 @@ export default function HamburgerMenu() {
                   onClick={() => handleNav(item.to)}
                   whileHover={{ y: -1 }}
                   whileTap={{ scale: 0.92 }}
-                  className={`flex items-center gap-1.5 font-mono text-s font-medium px-3 py-1.5 rounded-lg border transition-all duration-150 flex-shrink-0 mx-0.5 ${
-                    active
-                      ? "bg-[#00ff9d]/8 border-[#00ff9d]/20 text-[#00ff9d]"
-                      : "border-transparent text-[#666680] hover:text-white hover:bg-white/[0.05] hover:border-white/8"
-                  }`}
+                  className={`flex items-center gap-1.5 font-mono text-xs font-medium px-3 py-1.5 rounded-lg border transition-all duration-150 flex-shrink-0 mx-0.5 border-transparent text-[#666680] hover:text-white hover:bg-white/[0.05] hover:border-white/8
+                  `}
                 >
                   <span
                     className={active ? "text-[#00ff9d]" : "text-[#444460]"}
