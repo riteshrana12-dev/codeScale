@@ -168,3 +168,17 @@ const SubmissionsPage = () => {
   useEffect(() => {
     fetchSubmissions(currentPage);
   }, [currentPage]);
+
+  return (
+    <div className="min-h-screen bg-[#05050a] text-white p-4 md:p-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+          <div>
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#5d5d7d]">
+              Submission History
+            </h1>
+            <p className="text-[#5d5d7d] font-mono text-sm mt-1">
+              Track your progress and review past solutions
+            </p>
+          </div>
+        </div>
