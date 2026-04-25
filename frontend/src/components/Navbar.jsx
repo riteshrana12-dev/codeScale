@@ -98,3 +98,28 @@ export default function Navbar() {
               CodeScale
             </span>
           </Link>
+
+          <nav className="flex items-center gap-1">
+            {NAV_ITEMS.map((item) => {
+              const active = isActive(item.to);
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`relative flex items-center gap-2 px-3.5 py-2 rounded-lg font-mono text-[13px] font-medium transition-all duration-150 ${
+                    active ? "text-[#00ff9d] bg-[#00ff9d]/[0.07] " : "text-[#666680] hover:text-white hover:bg-white/[0.04]"
+                  }`}
+                >
+                  <span className={active ? "text-[#00ff9d]" : "text-[#3a3a55]"}>{item.icon}</span>
+                  {item.label}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-active-dot"
+                      className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#00ff9d]"
+                      style={{ boxShadow: "0 0 5px #00ff9d" }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
