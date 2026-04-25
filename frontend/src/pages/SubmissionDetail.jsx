@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import api from "../api/api.js";
 
+// Reusing your constants for theme consistency
 const STATUS_CONFIG = {
   accepted: {
     label: "Accepted",
@@ -82,6 +83,7 @@ const SubmissionsDetail = () => {
               {submission.submissionStatus}
             </div>
           </div>
+
           {/* CODE CONTAINER - This is the fix for the "blur" */}
           <div className="relative bg-[#000000]">
             {" "}
