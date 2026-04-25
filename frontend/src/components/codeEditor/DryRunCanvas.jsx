@@ -8,3 +8,11 @@ const DryRunCanvas = ({ onClose, problemId }) => {
   const [eraserWidth, setEraserWidth] = useState(20);
 
   const storageKey = `sketch_cache_${problemId || "global"}`;
+  useEffect(() => {
+    const savedData = localStorage.getItem(storageKey);
+    if (savedData && canvasRef.current) {
+      setTimeout(() => {
+        canvasRef.current.loadPaths(JSON.parse(savedData));
+      }, 150);
+    }
+  }, [storageKey]);
