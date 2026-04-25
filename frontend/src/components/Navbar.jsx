@@ -63,3 +63,15 @@ const NAV_ITEMS = [
     ),
   },
 ];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  const isActive = (to) => location.pathname === to;
