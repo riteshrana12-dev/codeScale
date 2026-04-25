@@ -39,3 +39,24 @@ const SubmissionsDetail = () => {
   }, [id]);
 
   if (loading) return <div className="min-h-screen bg-[#05050a]" />;
+
+  return (
+    <div className="min-h-screen bg-[#05050a] text-white p-4 md:p-8 font-sans">
+      <div className="max-w-5xl mx-auto">
+        {/* Navigation */}
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-6 flex items-center gap-2 text-sm font-mono text-[#5d5d7d] hover:text-[#00d4ff] transition-colors"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Back to History
+        </button>
