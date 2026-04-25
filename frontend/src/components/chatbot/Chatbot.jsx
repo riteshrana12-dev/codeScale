@@ -168,3 +168,16 @@ export default function ChatBot() {
             <div className="flex flex-col h-full bg-[#0d0d1a]/98 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden"
                  style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.04)" }}>
               <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/50 to-transparent flex-shrink-0" />
+              <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/5 flex-shrink-0">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/20 flex items-center justify-center">
+                    <span className="font-mono text-[#00d4ff] text-sm font-black">&gt;_</span>
+                  </div>
+                  <div>
+                    <p className="font-mono text-white text-m font-bold leading-none">CodeScale Assistant</p>
+                    <div className="flex items-center gap-1.5 mt-1.8">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00ff9d] animate-pulse" />
+                      <p className="font-mono text-[13px] text-[#00ff9d]">Online · DSA only</p>
+                    </div>
+                  </div>
+                </div>
