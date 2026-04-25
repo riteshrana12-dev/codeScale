@@ -148,3 +148,10 @@ export default function ChatBot() {
     sendMessage(input.trim());
     setInput("");
   }
+
+  function handleKey(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  }
