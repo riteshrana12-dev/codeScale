@@ -60,3 +60,25 @@ const SubmissionsDetail = () => {
           </svg>
           Back to History
         </button>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="bg-[#0d0d1a] border border-white/10 rounded-2xl overflow-hidden"
+        >
+          {/* Top Info Bar */}
+          <div className="p-6 border-b border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-300 tracking-tight">
+                {submission.problemId?.title}
+              </h1>
+              <div className="flex items-center gap-3 mt-2 text-xs font-mono text-[#5d5d7d]">
+                <span className="text-[#00d4ff]">{submission.language}</span>
+                <span>•</span>
+                <span>{new Date(submission.createdAt).toLocaleString()}</span>
+              </div>
+            </div>
+            <div className="px-4 py-1.5 rounded-lg border border-[#00ff9d]/30 bg-[#00ff9d]/5 text-[#00ff9d] font-mono text-sm font-bold">
+              {submission.submissionStatus}
+            </div>
+          </div>
