@@ -98,7 +98,13 @@ const loginUser = async (req, res) => {
     { expiresIn: "7d" },
   );
 
-  res.cookie("userToken", Token);
+  res.cookie("userToken", Token, {
+    httpOnly: true, // prevents JS access
+    secure: true, // required on HTTPS (Render will give you HTTPS)
+    sameSite: "strict", // CSRF protection
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    path: "/",
+  });
 
   res.status(200).json({
     success: true,
