@@ -172,6 +172,7 @@ const SubmissionsPage = () => {
   return (
     <div className="min-h-screen bg-[#05050a] text-white p-4 md:p-8">
       <div className="max-w-5xl mx-auto">
+        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#5d5d7d]">
@@ -182,6 +183,8 @@ const SubmissionsPage = () => {
             </p>
           </div>
         </div>
+
+        {/* Main Content Box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -190,9 +193,13 @@ const SubmissionsPage = () => {
           <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
 
           {loading ? (
+            /* Skeleton Loading State */
             <div className="divide-y divide-white/[0.04]">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="p-6 flex items-center gap-4 animate-pulse">
+                <div
+                  key={i}
+                  className="p-6 flex items-center gap-4 animate-pulse"
+                >
                   <div className="w-10 h-10 rounded-xl bg-white/5" />
                   <div className="flex-1 space-y-2">
                     <div className="h-4 w-1/4 bg-white/5 rounded" />
@@ -201,16 +208,25 @@ const SubmissionsPage = () => {
                 </div>
               ))}
             </div>
-          ) : submissions.length === 0 ? ( <div className="py-20 text-center flex flex-col items-center">
+          ) : submissions.length === 0 ? (
+            <div className="py-20 text-center flex flex-col items-center">
               <div className="w-16 h-16 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333350" strokeWidth="1.5">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#333350"
+                  strokeWidth="1.5"
+                >
                   <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
                   <polyline points="13 2 13 9 20 9" />
                 </svg>
               </div>
               <p className="text-[#5d5d7d] font-mono">No submissions found.</p>
             </div>
-
+          ) : (
+            /* Submission List */
             <div className="divide-y divide-white/[0.04]">
               <AnimatePresence mode="wait">
                 {submissions.map((sub, i) => {
@@ -226,11 +242,20 @@ const SubmissionsPage = () => {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      onClick={() => navigate(`/submissiondetailveiw/${sub._id}`)}
+                      // CHANGED: Navigates to detail view now
+                      onClick={() =>
+                        navigate(`/submissiondetailveiw/${sub._id}`)
+                      }
                       className="group flex items-center gap-4 px-6 py-5 hover:bg-white/[0.02] transition-all cursor-pointer"
                     >
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center border transition-transform group-hover:scale-105"
-                        style={{ background: statusCfg.bg, borderColor: statusCfg.border, color: statusCfg.color }}>
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center border transition-transform group-hover:scale-105"
+                        style={{
+                          background: statusCfg.bg,
+                          borderColor: statusCfg.border,
+                          color: statusCfg.color,
+                        }}
+                      >
                         {statusCfg.icon}
                       </div>
 
@@ -239,20 +264,38 @@ const SubmissionsPage = () => {
                           {sub.problemId?.title || "Unknown Problem"}
                         </h3>
                         <div className="flex items-center gap-3 mt-1 text-sm font-mono">
-                          <span style={{ color: DIFF_COLOR[difficulty] }}>{difficulty}</span>
+                          <span style={{ color: DIFF_COLOR[difficulty] }}>
+                            {difficulty}
+                          </span>
                           <span className="w-1 h-1 rounded-full bg-white/10" />
                           <span className="text-[#787883]">{sub.language}</span>
                           <span className="w-1 h-1 rounded-full bg-white/10" />
-                          <span className="text-[#787883]">{timeAgo(sub.createdAt)}</span>
+                          <span className="text-[#787883]">
+                            {timeAgo(sub.createdAt)}
+                          </span>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-4">
-                        <span className="hidden sm:block font-mono text-[11px] font-bold px-3 py-1 rounded-full border"
-                          style={{ color: statusCfg.color, background: statusCfg.bg, borderColor: statusCfg.border }}>
+                        <span
+                          className="hidden sm:block font-mono text-[11px] font-bold px-3 py-1 rounded-full border"
+                          style={{
+                            color: statusCfg.color,
+                            background: statusCfg.bg,
+                            borderColor: statusCfg.border,
+                          }}
+                        >
                           {statusCfg.label}
                         </span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333350" strokeWidth="2" className="group-hover:stroke-[#00d4ff] group-hover:translate-x-1 transition-all">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#333350"
+                          strokeWidth="2"
+                          className="group-hover:stroke-[#00d4ff] group-hover:translate-x-1 transition-all"
+                        >
                           <polyline points="9 18 15 12 9 6" />
                         </svg>
                       </div>
@@ -263,34 +306,69 @@ const SubmissionsPage = () => {
             </div>
           )}
         </motion.div>
+
+        {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="mt-10 flex flex-col items-center gap-4">
             <div className="flex items-center gap-2">
-              <button disabled={currentPage === 1} onClick={() => setCurrentPage((prev) => prev - 1)}
-                className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-20 transition-all">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+              <button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((prev) => prev - 1)}
+                className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-20 transition-all"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
               </button>
 
               <div className="flex items-center gap-1">
                 {[...Array(totalPages)].map((_, i) => (
-                  <button key={i + 1} onClick={() => setCurrentPage(i + 1)}
+                  <button
+                    key={i + 1}
+                    onClick={() => setCurrentPage(i + 1)}
                     className={`w-10 h-10 rounded-lg font-mono text-sm border transition-all ${
-                      currentPage === i + 1 ? "border-[#00d4ff] bg-[#00d4ff]/10 text-[#00d4ff] shadow-[0_0_15px_rgba(0,212,255,0.2)]" : "border-white/5 bg-white/[0.02] text-[#5d5d7d] hover:border-white/20"
-                    }`}>
+                      currentPage === i + 1
+                        ? "border-[#00d4ff] bg-[#00d4ff]/10 text-[#00d4ff] shadow-[0_0_15px_rgba(0,212,255,0.2)]"
+                        : "border-white/5 bg-white/[0.02] text-[#5d5d7d] hover:border-white/20"
+                    }`}
+                  >
                     {i + 1}
                   </button>
                 ))}
               </div>
 
-              <button disabled={currentPage === totalPages} onClick={() => setCurrentPage((prev) => prev + 1)}
-                className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-20 transition-all">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((prev) => prev + 1)}
+                className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-20 transition-all"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
               </button>
             </div>
-            <p className="text-[#5d5d7d] font-mono text-xs italic">Page {currentPage} of {totalPages}</p>
+            <p className="text-[#5d5d7d] font-mono text-xs italic">
+              Page {currentPage} of {totalPages}
+            </p>
           </div>
         )}
       </div>
     </div>
   );
 };
+
+export default SubmissionsPage;
