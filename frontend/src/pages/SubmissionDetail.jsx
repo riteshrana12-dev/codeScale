@@ -98,3 +98,17 @@ const SubmissionsDetail = () => {
                 Copy
               </button>
             </div>
+            {/* The actual code text */}
+            <pre className="p-6 md:p-8 overflow-x-auto selection:bg-[#00d4ff]/30">
+              <code className="block font-mono text-[14px] leading-relaxed text-[#a4a4af] antialiased">
+                {submission.code}
+              </code>
+            </pre>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default SubmissionsDetail;
