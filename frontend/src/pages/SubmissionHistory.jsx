@@ -229,3 +229,37 @@ const SubmissionsPage = () => {
                       onClick={() => navigate(`/submissiondetailveiw/${sub._id}`)}
                       className="group flex items-center gap-4 px-6 py-5 hover:bg-white/[0.02] transition-all cursor-pointer"
                     >
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center border transition-transform group-hover:scale-105"
+                        style={{ background: statusCfg.bg, borderColor: statusCfg.border, color: statusCfg.color }}>
+                        {statusCfg.icon}
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-bold text-[#ccccdd] group-hover:text-white transition-colors truncate">
+                          {sub.problemId?.title || "Unknown Problem"}
+                        </h3>
+                        <div className="flex items-center gap-3 mt-1 text-sm font-mono">
+                          <span style={{ color: DIFF_COLOR[difficulty] }}>{difficulty}</span>
+                          <span className="w-1 h-1 rounded-full bg-white/10" />
+                          <span className="text-[#787883]">{sub.language}</span>
+                          <span className="w-1 h-1 rounded-full bg-white/10" />
+                          <span className="text-[#787883]">{timeAgo(sub.createdAt)}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4">
+                        <span className="hidden sm:block font-mono text-[11px] font-bold px-3 py-1 rounded-full border"
+                          style={{ color: statusCfg.color, background: statusCfg.bg, borderColor: statusCfg.border }}>
+                          {statusCfg.label}
+                        </span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333350" strokeWidth="2" className="group-hover:stroke-[#00d4ff] group-hover:translate-x-1 transition-all">
+                          <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          )}
+        </motion.div>
