@@ -155,3 +155,16 @@ export default function ChatBot() {
       handleSend();
     }
   }
+
+  <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 16 }}
+            className="fixed bottom-24 right-6 z-50 w-[550px] flex flex-col"
+            style={{ height: 625, maxHeight: "80vh" }}
+          >
+            <div className="flex flex-col h-full bg-[#0d0d1a]/98 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden"
+                 style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.04)" }}>
+              <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/50 to-transparent flex-shrink-0" />
