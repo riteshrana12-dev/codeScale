@@ -136,4 +136,4 @@ export default function ChatBot() {
   const inputRef = useRef(null);
   const isEmpty = messages.length === 0;
 
-  feat(chat): initialize ChatBot component with custom useChatBot hook
+  
