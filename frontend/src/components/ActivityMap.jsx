@@ -127,7 +127,7 @@ const ActivityMap = () => {
     >
       {/* ── Header ── */}
       <div className="flex items-start justify-between mb-1">
-        <p className="font-mono font-bold text-[20px] text-[#ffffff] tracking-widest uppercase">
+        <p className="font-mono font-bold text-[15px] text-[#ffffff] tracking-widest uppercase">
           Activity
         </p>
       </div>
@@ -145,7 +145,7 @@ const ActivityMap = () => {
                   style={{ width: 14, marginRight: 2, flexShrink: 0 }}
                 >
                   {ml && (
-                    <span className="font-mono font-bold text-[13px] text-[#8f8faa] whitespace-nowrap">
+                    <span className="font-mono font-bold text-[10px] text-[#8f8faa] whitespace-nowrap">
                       {ml.label}
                     </span>
                   )}
@@ -159,7 +159,7 @@ const ActivityMap = () => {
             <div className="flex flex-col gap-0.5 mr-2 flex-shrink-0">
               {DAY_LABELS.map((d, i) => (
                 <div key={i} style={{ height: 14, lineHeight: "14px" }}>
-                  <span className="font-mono font-bold text-[13px] text-[#8f8faa]">
+                  <span className="font-mono font-bold text-[10px] text-[#8f8faa]">
                     {d}
                   </span>
                 </div>
