@@ -109,3 +109,31 @@ const DryRunCanvas = ({ onClose, problemId }) => {
               </span>
             </div>
           </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => canvasRef.current.undo()}
+              className="p-2 text-white/40 hover:text-white"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 7v6h6" />
+                <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13" />
+              </svg>
+            </button>
+            <button
+              onClick={handleClear}
+              className="p-2 text-red-500/40 hover:text-red-500"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 6h18" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              </svg>
+            </button>
+            <button
+              onClick={onClose}
+              className="ml-2 px-6 py-2 bg-[#00d4ff] text-black font-bold rounded-xl hover:brightness-110 transition-all"
+            >
+              CLOSE
+            </button>
+          </div>
+        </div>
