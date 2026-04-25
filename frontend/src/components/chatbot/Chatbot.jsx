@@ -256,3 +256,18 @@ export default function ChatBot() {
                     rows={1}
                     className="flex-1 bg-transparent font-mono text-xs text-white placeholder-[#6c6c8d] outline-none resize-none leading-relaxed"
                   />
+                  <motion.button
+                    onClick={handleSend}
+                    disabled={!input.trim() || loading}
+                    whileTap={{ scale: 0.88 }}
+                    className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-all bg-[#00ff9d] hover:bg-[#00e88a] disabled:opacity-30"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" strokeWidth="2.5"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
+                  </motion.button>
+                </div>
+                <p className="font-mono text-[9px] text-[#1e1e30] text-center mt-2 tracking-widest">ENTER TO SEND · DSA TOPICS ONLY</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
