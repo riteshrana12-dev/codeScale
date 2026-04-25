@@ -23,3 +23,19 @@ const SubmissionsDetail = () => {
   const navigate = useNavigate();
   const [submission, setSubmission] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDetail = async () => {
+      try {
+        const response = await api.get(`/user/history/detailview/${id}`);
+        setSubmission(response.data.data);
+      } catch (err) {
+        console.error("Error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDetail();
+  }, [id]);
+
+  if (loading) return <div className="min-h-screen bg-[#05050a]" />;
