@@ -202,3 +202,19 @@ export default function ChatBot() {
                       <p className="font-mono text-m text-white font-bold mb-1">Ask me anything DSA</p>
                       <p className="font-mono text-[15px] text-[#747495] leading-relaxed">Approach guidance · Concepts · Complexity <br /> Patterns · Competitive programming</p>
                     </div>
+                    <div className="flex flex-col gap-2 w-full">
+                      {SUGGESTIONS.map((s, i) => (
+                        <motion.button
+                          key={i}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.15 + i * 0.06 }}
+                          onClick={() => { setInput(s); inputRef.current?.focus(); }}
+                          className="w-full text-left font-mono text-s text-[#666680] px-3 py-2 rounded-xl border border-white/6 bg-white/[0.025] hover:border-[#00d4ff]/25 hover:text-[#00d4ff] hover:bg-[#00d4ff]/5 transition-all"
+                        >
+                          <span className="text-[#333350] mr-2">▸</span>{s}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
