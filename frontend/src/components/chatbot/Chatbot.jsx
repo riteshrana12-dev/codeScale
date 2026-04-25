@@ -142,3 +142,9 @@ export default function ChatBot() {
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 120);
   }, [open]);
+
+  function handleSend() {
+    if (!input.trim() || loading) return;
+    sendMessage(input.trim());
+    setInput("");
+  }
