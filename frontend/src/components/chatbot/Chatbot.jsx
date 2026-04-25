@@ -181,3 +181,14 @@ export default function ChatBot() {
                     </div>
                   </div>
                 </div>
+                <div className="flex items-center gap-1">
+                  {messages.length > 0 && (
+                    <button onClick={clearChat} className="w-7 h-7 rounded-lg flex items-center justify-center text-[#444460] hover:text-[#f87171] hover:bg-[#f87171]/8 transition-all">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M9 6V4h6v2" /></svg>
+                    </button>
+                  )}
+                  <button onClick={() => setOpen(false)} className="w-7 h-7 rounded-lg flex items-center justify-center text-[#7b7b91] hover:text-white hover:bg-white/8 transition-all">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                  </button>
+                </div>
+              </div>
