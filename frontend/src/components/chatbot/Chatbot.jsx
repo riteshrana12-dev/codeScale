@@ -271,3 +271,26 @@ export default function ChatBot() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <motion.button
+        onClick={() => setOpen((v) => !v)}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
+        className={`fixed bottom-6 right-6 z-50 w-10 h-10 rounded-2xl flex items-center justify-center transition-all ${open ? "bg-[#0d0d1a] border-2 border-[#00d4ff]/40" : "bg-[#00ff9d]"}`}
+      >
+        <AnimatePresence mode="wait">
+          {open ? (
+            <motion.svg key="close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></motion.svg>
+          ) : (
+            <motion.svg key="chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></motion.svg>
+          )}
+        </AnimatePresence>
+
+        {!open && messages.length > 0 && (
+          <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#00d4ff] border-2 border-[#0a0a0f] flex items-center justify-center">
+            <span className="font-mono text-[8px] text-[#0a0a0f] font-black">
+              {messages.filter((m) => m.role === "assistant").length}
+            </span>
+          </span>
+        )}
+      </motion.button>
