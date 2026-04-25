@@ -118,3 +118,11 @@ function MessageBubble({ msg, isLatest }) {
     </motion.div>
   );
 }
+
+const SUGGESTIONS = [
+  "How do I approach Two Sum?",
+  "Explain sliding window technique",
+  "When should I use BFS vs DFS?",
+  "How does binary search work?",
+  "Tips for dynamic programming?",
+];
