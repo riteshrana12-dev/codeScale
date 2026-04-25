@@ -34,7 +34,7 @@ const DryRunCanvas = ({ onClose, problemId }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-2">
       <div className="w-full h-full bg-[#0d0d1a] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-      {/* TOP TOOLBAR */}
+        {/* TOP TOOLBAR */}
         <div className="px-6 py-3 border-b border-white/5 bg-[#161625] flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="flex bg-black/40 p-1 rounded-xl border border-white/10">
@@ -45,7 +45,14 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 }}
                 className={`p-2.5 rounded-lg transition-all ${tool === "pen" ? "bg-[#00d4ff] text-black shadow-[0_0_15px_rgba(0,212,255,0.4)]" : "text-white/40 hover:text-white"}`}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                 </svg>
               </button>
@@ -57,7 +64,14 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 }}
                 className={`p-2.5 rounded-lg transition-all ${tool === "eraser" ? "bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.4)]" : "text-white/40 hover:text-white"}`}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <path d="M20 20H7L3 16C2 15 2 13 3 12L13 2L22 11L20 20Z" />
                 </svg>
               </button>
@@ -66,7 +80,14 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 onClick={() => setTool("pan")}
                 className={`p-2.5 rounded-lg transition-all ${tool === "pan" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <circle cx="12" cy="12" r="10" />
                   <path d="m15 9-6 6" />
                   <path d="m9 9 6 6" />
@@ -115,7 +136,14 @@ const DryRunCanvas = ({ onClose, problemId }) => {
               onClick={() => canvasRef.current.undo()}
               className="p-2 text-white/40 hover:text-white"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M3 7v6h6" />
                 <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13" />
               </svg>
@@ -124,7 +152,14 @@ const DryRunCanvas = ({ onClose, problemId }) => {
               onClick={handleClear}
               className="p-2 text-red-500/40 hover:text-red-500"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M3 6h18" />
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
               </svg>
@@ -142,3 +177,24 @@ const DryRunCanvas = ({ onClose, problemId }) => {
         <div
           className={`flex-1 relative overflow-hidden ${tool === "pan" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}
         >
+          <ReactSketchCanvas
+            ref={canvasRef}
+            onStroke={handleStroke}
+            strokeWidth={strokeWidth}
+            eraserWidth={eraserWidth}
+            strokeColor={strokeColor}
+            canvasColor="transparent"
+            withPanAndZoom={
+              tool === "pan" || tool === "pen" || tool === "eraser"
+            }
+            allowOnlyPointerType="all"
+            style={{ width: "100%", height: "100%" }}
+            backgroundImage="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0V0zm9 0h1v1H9V0zM0 9h1v1H0V9zm9 9h1v1H9v-1z' fill='%23ffffff' fill-opacity='.05'/%3E%3C/svg%3E"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DryRunCanvas;
