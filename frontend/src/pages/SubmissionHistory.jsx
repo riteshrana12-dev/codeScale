@@ -210,3 +210,22 @@ const SubmissionsPage = () => {
               </div>
               <p className="text-[#5d5d7d] font-mono">No submissions found.</p>
             </div>
+
+            <div className="divide-y divide-white/[0.04]">
+              <AnimatePresence mode="wait">
+                {submissions.map((sub, i) => {
+                  const statusKey = (sub.submissionStatus || "")
+                    .toLowerCase()
+                    .replace(/ /g, "_");
+                  const statusCfg = STATUS_CONFIG[statusKey] || FALLBACK_STATUS;
+                  const difficulty = sub.problemId?.difficulty;
+
+                  return (
+                    <motion.div
+                      key={sub._id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      onClick={() => navigate(`/submissiondetailveiw/${sub._id}`)}
+                      className="group flex items-center gap-4 px-6 py-5 hover:bg-white/[0.02] transition-all cursor-pointer"
+                    >
