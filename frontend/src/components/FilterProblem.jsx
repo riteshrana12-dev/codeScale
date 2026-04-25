@@ -36,8 +36,8 @@ const TAGS = [
   "Matrix",
 ];
 
-const ARENA_R = 230; // bigger arena
-const BALL_R = 30; // bigger balls
+const ARENA_R = 200; // bigger arena
+const BALL_R = 25; // bigger balls
 const SPRING = { type: "spring", stiffness: 420, damping: 26 };
 
 /* Stable starting grid so tags spread out immediately */
@@ -188,7 +188,7 @@ export default function ProblemFilter({ onFilterChange }) {
       <motion.button
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.93 }}
-        className={`flex items-center gap-2 font-mono text-s font-bold px-4 py-2.5 w-30 h-10 rounded-xl border transition-all duration-200 ${
+        className={`flex items-center gap-2 font-mono text-xs font-bold px-4 py-2.5 w-25 h-8 rounded-xl border transition-all duration-200 ${
           open || activeCount > 0
             ? "bg-[#00ff9d]/10 border-[#00ff9d]/35 text-[#00ff9d] shadow-[0_0_14px_rgba(0,255,157,0.12)]"
             : "bg-white/[0.03] border-white/8 text-[#666680] hover:border-white/18 hover:text-[#9999b0]"
@@ -215,7 +215,7 @@ export default function ProblemFilter({ onFilterChange }) {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={{ type: "spring", stiffness: 600, damping: 20 }}
-              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#00ff9d] text-[#0a0a0f] text-[15px] font-black"
+              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#00ff9d] text-[#0a0a0f] text-[15px] font-black"
             >
               {activeCount}
             </motion.span>
@@ -232,7 +232,7 @@ export default function ProblemFilter({ onFilterChange }) {
             exit={{ opacity: 0, scale: 0.95, y: -4 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute z-50"
-            style={{ top: "calc(100% + 10px)", left: 0, width: SIZE + 40 }}
+            style={{ top: "calc(100% + 10px)", left: 0, width: SIZE + 20 }}
           >
             <div
               className="bg-[#0d0d1a]/98 backdrop-blur-xl border border-white/8 rounded-2xl overflow-hidden"
@@ -268,7 +268,7 @@ export default function ProblemFilter({ onFilterChange }) {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={clearAll}
-                      className="font-mono text-s text-[#555570] hover:text-[#f87171] flex items-center gap-1 transition-colors"
+                      className="font-mono text-xs text-[#555570] hover:text-[#f87171] flex items-center gap-1 transition-colors"
                     >
                       <svg
                         width="10"
@@ -303,8 +303,8 @@ export default function ProblemFilter({ onFilterChange }) {
                   <div
                     className="absolute rounded-full border border-dashed border-white/[0.05] pointer-events-none"
                     style={{
-                      width: SIZE * 0.65,
-                      height: SIZE * 0.65,
+                      width: SIZE * 0.75,
+                      height: SIZE * 0.75,
                       top: "50%",
                       left: "50%",
                       transform: "translate(-50%, -50%)",
@@ -330,7 +330,7 @@ export default function ProblemFilter({ onFilterChange }) {
                             stiffness: 500,
                             damping: 22,
                           }}
-                          className="font-mono text-s font-black px-3.5 py-1.5 rounded-full border select-none flex items-center gap-1.5"
+                          className="font-mono text-xs font-black px-3.5 py-1.5 rounded-full border select-none flex items-center gap-1.5"
                           style={{
                             color: cfg.color,
                             background: active
@@ -433,10 +433,10 @@ export default function ProblemFilter({ onFilterChange }) {
                             className="relative z-10 group-hover:text-[#00d4ff] transition-colors duration-150 pointer-events-none font-mono font-bold  "
                             style={{
                               fontSize:
-                                tag.length > 11 ? 13 : tag.length > 8 ? 13 : 15,
+                                tag.length > 10 ? 11 : tag.length > 9 ? 10 : 12,
                               color: "#8888aa",
                               wordBreak: "break-word",
-                              maxWidth: BALL_R * 1.8,
+                              maxWidth: BALL_R * 1.6,
                             }}
                           >
                             {tag.length > 10 ? tag.replace(" ", "\n") : tag}
@@ -495,7 +495,7 @@ export default function ProblemFilter({ onFilterChange }) {
                           onClick={() => removeTag(tag)}
                           whileHover={{ scale: 1.06 }}
                           whileTap={{ scale: 0.88 }}
-                          className="flex items-center gap-1.5 font-mono text-s px-3 py-1.5 rounded-full border border-[#00d4ff]/25 bg-[#00d4ff]/8 text-[#00d4ff] group hover:border-[#f87171]/40 hover:bg-[#f87171]/8 hover:text-[#f87171] transition-colors duration-150"
+                          className="flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full border border-[#00d4ff]/25 bg-[#00d4ff]/8 text-[#00d4ff] group hover:border-[#f87171]/40 hover:bg-[#f87171]/8 hover:text-[#f87171] transition-colors duration-150"
                         >
                           {tag}
                           <motion.svg
