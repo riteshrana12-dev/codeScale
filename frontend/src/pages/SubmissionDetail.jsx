@@ -82,3 +82,19 @@ const SubmissionsDetail = () => {
               {submission.submissionStatus}
             </div>
           </div>
+          {/* CODE CONTAINER - This is the fix for the "blur" */}
+          <div className="relative bg-[#000000]">
+            {" "}
+            {/* Solid black for maximum contrast */}
+            {/* Header / Copy Button */}
+            <div className="flex items-center justify-between px-6 py-3 border-b border-white/[0.05] bg-white/[0.02]">
+              <span className="text-[10px] uppercase tracking-widest text-[#5d5d7d] font-bold">
+                Source Code
+              </span>
+              <button
+                onClick={() => navigator.clipboard.writeText(submission.code)}
+                className="text-[10px] text-[#00d4ff] active:brightness-125 font-bold uppercase tracking-tighter"
+              >
+                Copy
+              </button>
+            </div>
