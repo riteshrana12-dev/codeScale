@@ -12,6 +12,7 @@ import { fileURLToPath } from "url";
 import analyticsRouter from "./routes/user_analytics.route.js";
 import historyroute from "./routes/user_history.route.js";
 import adminRouter from "./routes/admin.route.js";
+import chatbotRoute from "./routes/chatbot.route.js";
 
 const app = express();
 
@@ -66,6 +67,7 @@ app.use("/api/v1/analytics", analyticsRouter);
 app.use("/api/v1/user", historyroute);
 
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/chatbot", chatbotRoute);
 
 // Database connection
 // Server Activation
