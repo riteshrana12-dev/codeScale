@@ -88,3 +88,24 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                 />
               ))}
             </div>
+            <div className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-xl border border-white/5">
+              <span className="text-[10px] text-white/30 font-bold uppercase">
+                {tool === "eraser" ? "Eraser" : "Pen"}
+              </span>
+              <input
+                type="range"
+                min="1"
+                max="60"
+                value={tool === "eraser" ? eraserWidth : strokeWidth}
+                onChange={(e) =>
+                  tool === "eraser"
+                    ? setEraserWidth(parseInt(e.target.value))
+                    : setStrokeWidth(parseInt(e.target.value))
+                }
+                className="w-28 accent-[#00d4ff] cursor-pointer"
+              />
+              <span className="text-xs font-mono text-white/60 w-4">
+                {tool === "eraser" ? eraserWidth : strokeWidth}
+              </span>
+            </div>
+          </div>
