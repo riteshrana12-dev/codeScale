@@ -17,3 +17,9 @@ const STATUS_CONFIG = {
     border: "rgba(248,113,113,0.2)",
   },
 };
+
+const SubmissionsDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [submission, setSubmission] = useState(null);
+  const [loading, setLoading] = useState(true);
