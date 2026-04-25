@@ -23,3 +23,10 @@ const DryRunCanvas = ({ onClose, problemId }) => {
       .then((paths) => localStorage.setItem(storageKey, JSON.stringify(paths)))
       .catch((e) => console.error(e));
   };
+
+  const handleClear = () => {
+    if (window.confirm("Clear entire board?")) {
+      canvasRef.current.clearCanvas();
+      localStorage.removeItem(storageKey);
+    }
+  };
