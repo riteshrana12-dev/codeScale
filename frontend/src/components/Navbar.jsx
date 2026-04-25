@@ -75,3 +75,17 @@ export default function Navbar() {
   }, []);
 
   const isActive = (to) => location.pathname === to;
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -64, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#060610]/90 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_40px_rgba(0,0,0,0.4)]"
+            : "bg-[#060610]/70 backdrop-blur-md border-b border-white/[0.03]"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
