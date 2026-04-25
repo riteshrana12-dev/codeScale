@@ -37,3 +37,15 @@ const DryRunCanvas = ({ onClose, problemId }) => {
       {/* TOP TOOLBAR */}
         <div className="px-6 py-3 border-b border-white/5 bg-[#161625] flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
+            <div className="flex bg-black/40 p-1 rounded-xl border border-white/10">
+              <button
+                onClick={() => {
+                  setTool("pen");
+                  canvasRef.current.eraseMode(false);
+                }}
+                className={`p-2.5 rounded-lg transition-all ${tool === "pen" ? "bg-[#00d4ff] text-black shadow-[0_0_15px_rgba(0,212,255,0.4)]" : "text-white/40 hover:text-white"}`}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                </svg>
+              </button>
