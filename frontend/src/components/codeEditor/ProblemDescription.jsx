@@ -1,8 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const difficultyConfig = {
+  Easy: {
+    color: "#00ff9d",
+    bg: "rgba(0,255,157,0.08)",
+    border: "rgba(0,255,157,0.2)",
+  },
+  Medium: {
+    color: "#facc15",
+    bg: "rgba(250,204,21,0.08)",
+    border: "rgba(250,204,21,0.2)",
+  },
+  Hard: {
+    color: "#f87171",
+    bg: "rgba(248,113,113,0.08)",
+    border: "rgba(248,113,113,0.2)",
+  },
+};
+
 const ProblemDescription = ({ problem }) => {
   if (!problem) return null;
+
+  const diff = difficultyConfig[problem.difficulty] || difficultyConfig.Medium;
 
   return (
     <div
@@ -15,11 +35,21 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="relative pb-10 mb-10"
       >
-        <h1 className="font-mono text-3xl font-black text-white mb-2 leading-tight">
+        <div
+          className="absolute top-0 right-0 font-mono text-xs px-2.5 py-1 rounded-full border"
+          style={{
+            color: diff.color,
+            background: diff.bg,
+            borderColor: diff.border,
+          }}
+        >
+          {problem.difficulty}
+        </div>
+        <h1 className="font-mono text-2xl font-black text-white mb-2 leading-tight">
           {problem.title}
         </h1>
 
-        <p className="text-[#9999b0] text-xl leading-relaxed font-light whitespace-pre-wrap">
+        <p className="text-[#9999b0] text-m leading-relaxed font-light whitespace-pre-wrap">
           {problem.description}
         </p>
 
@@ -38,7 +68,7 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="mb-10 space-y-4"
       >
-        <h2 className="font-mono text-s text-[#00ff9d] tracking-widest uppercase mb-4">
+        <h2 className="font-mono text-xs text-[#00ff9d] tracking-widest uppercase mb-4">
           Examples
         </h2>
         {problem.examples.map((exp, i) => (
@@ -47,30 +77,30 @@ const ProblemDescription = ({ problem }) => {
             className="rounded-xl border border-white/8 bg-[#0d0d1a] overflow-hidden"
           >
             <div className="px-4 py-2 border-b border-white/5 bg-[#111120]">
-              <span className="font-mono text-[15px] text-[#606086]">
+              <span className="font-mono text-[11px] text-[#606086]">
                 Example {i + 1}
               </span>
             </div>
             <div className="p-4 space-y-3">
               <div className="flex flex-col gap-1">
-                <span className="font-mono text-[15px] text-[#606086] uppercase">
+                <span className="font-mono text-[11px] text-[#606086] uppercase">
                   Input
                 </span>
-                <code className="font-mono text-s text-[#00d4ff] bg-[#00d4ff]/5 p-2 rounded border border-[#00d4ff]/10">
+                <code className="font-mono text-xs text-[#00d4ff] bg-[#00d4ff]/5 p-2 rounded border border-[#00d4ff]/10">
                   {exp.input}
                 </code>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="font-mono text-[15px] text-[#606086] uppercase">
+                <span className="font-mono text-[11px] text-[#606086] uppercase">
                   Output
                 </span>
-                <code className="font-mono text-s text-[#00ff9d] bg-[#00ff9d]/5 p-2 rounded border border-[#00ff9d]/10">
+                <code className="font-mono text-xs text-[#00ff9d] bg-[#00ff9d]/5 p-2 rounded border border-[#00ff9d]/10">
                   {exp.output}
                 </code>
               </div>
               {exp.explanation && (
                 <div className="pt-2 border-t border-white/5">
-                  <p className="text-s text-[#777790] leading-relaxed italic">
+                  <p className="text-xs text-[#777790] leading-relaxed italic">
                     <span className="text-[#555570] not-italic mr-2">
                       Note:
                     </span>
@@ -91,7 +121,7 @@ const ProblemDescription = ({ problem }) => {
         animate={{ opacity: 1 }}
         className="pb-10"
       >
-        <h2 className="font-mono text-s text-[#f87171] tracking-widest uppercase mb-4">
+        <h2 className="font-mono text-xs text-[#f87171] tracking-widest uppercase mb-4">
           Constraints
         </h2>
         <ul className="space-y-3">
@@ -103,7 +133,7 @@ const ProblemDescription = ({ problem }) => {
               <span className="text-[#f87171] font-mono text-s tracking-tighter">
                 {"{ ! }"}
               </span>
-              <code className="font-mono text-s text-[#9999b0] leading-relaxed italic">
+              <code className="font-mono text-xs text-[#9999b0] leading-relaxed italic">
                 {c}
               </code>
             </li>
