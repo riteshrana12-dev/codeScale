@@ -34,3 +34,6 @@ const DryRunCanvas = ({ onClose, problemId }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-2">
       <div className="w-full h-full bg-[#0d0d1a] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+      {/* TOP TOOLBAR */}
+        <div className="px-6 py-3 border-b border-white/5 bg-[#161625] flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
