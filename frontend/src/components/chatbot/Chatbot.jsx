@@ -136,4 +136,9 @@ export default function ChatBot() {
   const inputRef = useRef(null);
   const isEmpty = messages.length === 0;
 
-  
+  useEffect(() => {
+    if (open) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading, open]);
+  useEffect(() => {
+    if (open) setTimeout(() => inputRef.current?.focus(), 120);
+  }, [open]);
