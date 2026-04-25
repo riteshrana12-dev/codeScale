@@ -89,9 +89,14 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-
-          <Link to="/dashboard" className="flex items-center gap-2 flex-shrink-0 group">
-            <motion.span whileHover={{ scale: 1.05 }} className="font-mono text-[#00ff9d] text-lg font-bold">
+          <Link
+            to="/dashboard"
+            className="flex items-center gap-2 flex-shrink-0 group"
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              className="font-mono text-[#00ff9d] text-lg font-bold"
+            >
               &gt;_
             </motion.span>
             <span className="font-mono text-white font-semibold text-base tracking-wide group-hover:text-white/90 transition-colors">
@@ -107,10 +112,16 @@ export default function Navbar() {
                   key={item.to}
                   to={item.to}
                   className={`relative flex items-center gap-2 px-3.5 py-2 rounded-lg font-mono text-[13px] font-medium transition-all duration-150 ${
-                    active ? "text-[#00ff9d] bg-[#00ff9d]/[0.07] " : "text-[#666680] hover:text-white hover:bg-white/[0.04]"
+                    active
+                      ? "text-[#00ff9d] bg-[#00ff9d]/[0.07] "
+                      : "text-[#666680] hover:text-white hover:bg-white/[0.04]"
                   }`}
                 >
-                  <span className={active ? "text-[#00ff9d]" : "text-[#3a3a55]"}>{item.icon}</span>
+                  <span
+                    className={active ? "text-[#00ff9d]" : "text-[#3a3a55]"}
+                  >
+                    {item.icon}
+                  </span>
                   {item.label}
                   {active && (
                     <motion.span
@@ -134,10 +145,29 @@ export default function Navbar() {
               }`}
               title="My Account"
             >
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive("/account") ? "bg-[#00ff9d]/15 text-[#00ff9d]" : "bg-white/8 text-[#888899]"}`}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+              <div
+                className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive("/account") ? "bg-[#00ff9d]/15 text-[#00ff9d]" : "bg-white/8 text-[#888899]"}`}
+              >
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
               </div>
               Account
             </Link>
           </div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/10 to-transparent" />
+      </motion.nav>
+      <div className="h-14" />
+    </>
+  );
+}
