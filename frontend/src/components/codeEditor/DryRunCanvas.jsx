@@ -49,3 +49,27 @@ const DryRunCanvas = ({ onClose, problemId }) => {
                   <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                 </svg>
               </button>
+
+              <button
+                onClick={() => {
+                  setTool("eraser");
+                  canvasRef.current.eraseMode(true);
+                }}
+                className={`p-2.5 rounded-lg transition-all ${tool === "eraser" ? "bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.4)]" : "text-white/40 hover:text-white"}`}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 20H7L3 16C2 15 2 13 3 12L13 2L22 11L20 20Z" />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => setTool("pan")}
+                className={`p-2.5 rounded-lg transition-all ${tool === "pan" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m15 9-6 6" />
+                  <path d="m9 9 6 6" />
+                </svg>
+              </button>
+            </div>
