@@ -123,3 +123,21 @@ export default function Navbar() {
               );
             })}
           </nav>
+
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <Link
+              to="/account"
+              className={`flex items-center gap-2 font-mono text-[12px] px-3 py-1.5 rounded-lg border transition-all duration-200 ${
+                isActive("/account")
+                  ? "bg-[#00ff9d]/8 border-[#00ff9d]/25 text-[#00ff9d]"
+                  : "bg-white/[0.03] border-white/8 text-[#666680] hover:text-white hover:border-white/15"
+              }`}
+              title="My Account"
+            >
+              <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive("/account") ? "bg-[#00ff9d]/15 text-[#00ff9d]" : "bg-white/8 text-[#888899]"}`}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+              </div>
+              Account
+            </Link>
+          </div>
+        </div>
