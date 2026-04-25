@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
   {
@@ -69,9 +69,9 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (to) => location.pathname === to;
@@ -89,6 +89,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+          {/* Logo */}
           <Link
             to="/dashboard"
             className="flex items-center gap-2 flex-shrink-0 group"
@@ -104,6 +105,7 @@ export default function Navbar() {
             </span>
           </Link>
 
+          {/* Desktop Nav Links */}
           <nav className="flex items-center gap-1">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.to);
@@ -123,6 +125,8 @@ export default function Navbar() {
                     {item.icon}
                   </span>
                   {item.label}
+
+                  {/* Active Indicator Dot */}
                   {active && (
                     <motion.span
                       layoutId="nav-active-dot"
@@ -135,6 +139,7 @@ export default function Navbar() {
             })}
           </nav>
 
+          {/* Right Side: Account */}
           <div className="flex items-center gap-2 flex-shrink-0">
             <Link
               to="/account"
@@ -146,7 +151,11 @@ export default function Navbar() {
               title="My Account"
             >
               <div
-                className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive("/account") ? "bg-[#00ff9d]/15 text-[#00ff9d]" : "bg-white/8 text-[#888899]"}`}
+                className={`w-5 h-5 rounded-full flex items-center justify-center ${
+                  isActive("/account")
+                    ? "bg-[#00ff9d]/15 text-[#00ff9d]"
+                    : "bg-white/8 text-[#888899]"
+                }`}
               >
                 <svg
                   width="11"
@@ -165,8 +174,12 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
+
+        {/* Accent Bar */}
         <div className="h-px bg-gradient-to-r from-transparent via-[#00ff9d]/10 to-transparent" />
       </motion.nav>
+
+      {/* Spacer to prevent content overlap */}
       <div className="h-14" />
     </>
   );
