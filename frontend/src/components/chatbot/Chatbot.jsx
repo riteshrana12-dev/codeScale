@@ -126,3 +126,12 @@ const SUGGESTIONS = [
   "How does binary search work?",
   "Tips for dynamic programming?",
 ];
+
+
+export default function ChatBot() {
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const { messages, loading, error, sendMessage, clearChat } = useChatBot();
+  const bottomRef = useRef(null);
+  const inputRef = useRef(null);
+  const isEmpty = messages.length === 0;
