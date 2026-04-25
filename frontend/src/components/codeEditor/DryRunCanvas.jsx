@@ -16,3 +16,10 @@ const DryRunCanvas = ({ onClose, problemId }) => {
       }, 150);
     }
   }, [storageKey]);
+
+  const handleStroke = () => {
+    canvasRef.current
+      .exportPaths()
+      .then((paths) => localStorage.setItem(storageKey, JSON.stringify(paths)))
+      .catch((e) => console.error(e));
+  };
