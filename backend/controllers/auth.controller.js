@@ -112,7 +112,7 @@ const loginUser = async (req, res) => {
     Token,
     user: {
       firstname: isAlreadyExist.firstName,
-      role: isAlreadyExist.role, // 👈 The Frontend needs this to show the Admin Panel
+      role: isAlreadyExist.role,
     },
   });
 };
