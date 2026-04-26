@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.VITE_API_URL, // Frontend URL
+    origin: process.env.FRONTEND_URL, // Frontend URL
     credentials: true,
   }),
 );
@@ -71,6 +71,7 @@ app.use("/api/v1/chatbot", chatbotRoute);
 
 // Database connection
 // Server Activation
+const PORT = process.env.PORT || 3000;
 (async () => {
   try {
     await connectToDb();
@@ -78,8 +79,8 @@ app.use("/api/v1/chatbot", chatbotRoute);
     // Run cleanup immediately after DB connection but before listening for requests
     cleanupTempFolder();
 
-    app.listen(3000, () => {
-      console.log(" Server is running on port 3000");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (err) {
     console.error(
