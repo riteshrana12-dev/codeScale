@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 
-import SignUp from "./pages/auth/SignUp";
-import SignIn from "./pages/auth/SignIn";
-import UserDashboard from "./pages/user/userDashboard";
-import ProblemsList from "./pages/ProblemsList";
+import SignUp from "./pages/auth/SignUp.jsx";
+import SignIn from "./pages/auth/SignIn.jsx";
+import UserDashboard from "./pages/user/UserDashboard.jsx";
+import ProblemsList from "./pages/ProblemsList.jsx";
 // import ProblemSelected from "./components/codeEditor/ProblemSelected";
-import ProblemPage from "./pages/ProblemPage";
-import { ProblemProvider } from "./context/ProblemContext";
+import ProblemPage from "./pages/ProblemPage.jsx";
+import { ProblemProvider } from "./context/ProblemContext.jsx";
 import HomePage from "./pages/HomePage";
-import SubmissionsHistory from "./pages/SubmissionHistory";
-import SubmissionsDetail from "./pages/SubmissionDetail";
-import ChatBot from "./components/chatbot/Chatbot";
-import AppLayout from "./AppLayout";
-import MyAccount from "./pages/user/MyAccount";
+import SubmissionsHistory from "./pages/SubmissionHistory.jsx";
+import SubmissionsDetail from "./pages/SubmissionDetail.jsx";
+import ChatBot from "./components/chatbot/Chatbot.jsx";
+import AppLayout from "./AppLayout.jsx";
+import MyAccount from "./pages/user/MyAccount.jsx";
 const App = () => {
   return (
     <ProblemProvider>
