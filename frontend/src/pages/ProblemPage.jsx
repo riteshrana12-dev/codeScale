@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import api from "../api/api.js";
-import CodeEditor from "../components/codeEditor/CodeEditor"; // Your existing component
-import ProblemDescription from "../components/codeEditor/ProblemDescription";
+import CodeEditor from "../components/codeEditor/CodeEditor.jsx"; // Your existing component
+import ProblemDescription from "../components/codeEditor/ProblemDescription.jsx";
 import DryRunCanvas from "../components/codeEditor/DryRunCanvas.jsx";
 import { useProblem } from "../context/ProblemContext.jsx";
 import HamburgerMenu from "../components/HamburgerMenu.jsx";
