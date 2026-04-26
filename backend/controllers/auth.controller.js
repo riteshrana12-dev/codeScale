@@ -101,7 +101,7 @@ const loginUser = async (req, res) => {
   res.cookie("userToken", Token, {
     httpOnly: true, // prevents JS access
     secure: true, // required on HTTPS (Render will give you HTTPS)
-    sameSite: "strict", // CSRF protection
+    sameSite: "none", // CSRF protection
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     path: "/",
   });
