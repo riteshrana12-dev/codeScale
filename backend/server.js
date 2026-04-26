@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Frontend URL
+    origin: process.env.VITE_API_URL, // Frontend URL
     credentials: true,
   }),
 );
