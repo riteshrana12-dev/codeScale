@@ -107,6 +107,7 @@
   <text x="494" y="116" font-family="'JetBrains Mono', monospace" font-size="10" fill="#7dd4ff">twoSum</text>
   <text x="536" y="116" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">(nums, target) {</text>
 
+<<<<<<< HEAD
   <text x="416" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">2</text>
   <text x="434" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#61dafb">  const </text>
   <text x="474" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">map = </text>
@@ -143,6 +144,44 @@
   <text x="478" y="260" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">[];</text>
   <text x="416" y="276" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">11</text>
   <text x="434" y="276" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">}</text>
+=======
+<text x="416" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">2</text>
+<text x="434" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#61dafb"> const </text>
+<text x="474" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">map = </text>
+<text x="504" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a855f7">new </text>
+<text x="526" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#7dd4ff">Map</text>
+<text x="548" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">();</text>
+
+<text x="416" y="148" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">3</text>
+<text x="416" y="164" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">4</text>
+<text x="434" y="164" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a855f7"> for </text>
+<text x="464" y="164" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">(</text>
+<text x="470" y="164" font-family="'JetBrains Mono', monospace" font-size="10" fill="#61dafb">let </text>
+<text x="490" y="164" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">i = 0; i &lt; nums.length; i++) {</text>
+
+<text x="416" y="180" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">5</text>
+<text x="434" y="180" font-family="'JetBrains Mono', monospace" font-size="10" fill="#61dafb"> const </text>
+<text x="482" y="180" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">comp = target - nums[i];</text>
+
+<text x="416" y="196" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">6</text>
+<text x="434" y="196" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a855f7"> if </text>
+<text x="458" y="196" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">(map.has(comp))</text>
+
+<text x="416" y="212" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">7</text>
+<text x="434" y="212" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a855f7"> return </text>
+<text x="490" y="212" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">[map.get(comp), i];</text>
+
+<text x="416" y="228" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">8</text>
+<text x="434" y="228" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff"> map.set(nums[i], i);</text>
+
+<text x="416" y="244" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">9</text>
+<text x="434" y="244" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff"> }</text>
+<text x="416" y="260" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">10</text>
+<text x="434" y="260" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a855f7"> return </text>
+<text x="478" y="260" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">[];</text>
+<text x="416" y="276" font-family="'JetBrains Mono', monospace" font-size="10" fill="#333">11</text>
+<text x="434" y="276" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">}</text>
+>>>>>>> df5cc14 (readme)
 
   <!-- Cursor blink line -->
   <rect x="450" y="278" width="2" height="13" fill="#00ff88" opacity="0.9"/>
@@ -191,7 +230,12 @@
   <rect width="860" height="560" fill="url(#bg3)" rx="16"/>
 
   <!-- Section title -->
+<<<<<<< HEAD
   <text x="430" y="38" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00ff88" text-anchor="middle" letter-spacing="4" opacity="0.6">FEATURES</text>
+=======
+
+<text x="430" y="38" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00ff88" text-anchor="middle" letter-spacing="4" opacity="0.6">FEATURES</text>
+>>>>>>> df5cc14 (readme)
 
   <!-- CENTER HUB -->
   <rect x="318" y="224" width="224" height="80" rx="10" fill="#0d2018" stroke="#00ff88" stroke-width="1.2"/>
@@ -270,7 +314,12 @@
   <path d="M620 436 Q582 436 542 302" fill="none" stroke="#f59e0b50" stroke-width="1" marker-end="url(#arr4)" stroke-dasharray="4,2"/>
 
   <!-- Corner labels -->
+<<<<<<< HEAD
   <text x="430" y="540" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00ff88" text-anchor="middle" opacity="0.3">code-scale.vercel.app</text>
+=======
+
+<text x="430" y="540" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00ff88" text-anchor="middle" opacity="0.3">code-scale.vercel.app</text>
+>>>>>>> df5cc14 (readme)
 </svg>
 
 </div>
@@ -382,7 +431,12 @@
   <text x="750" y="326" font-family="'JetBrains Mono', monospace" font-size="8" fill="#9966cc" text-anchor="middle" opacity="0.7">LLaMA 3.1 · 8B params</text>
 
   <!-- Return arrow label -->
+<<<<<<< HEAD
   <text x="391" y="218" font-family="'JetBrains Mono', monospace" font-size="7" fill="#00d4ff" text-anchor="middle" opacity="0.5">← JSON</text>
+=======
+
+<text x="391" y="218" font-family="'JetBrains Mono', monospace" font-size="7" fill="#00d4ff" text-anchor="middle" opacity="0.5">← JSON</text>
+>>>>>>> df5cc14 (readme)
 
   <!-- Legend -->
   <rect x="30" y="370" width="800" height="38" rx="6" fill="#060f08"/>
@@ -468,7 +522,11 @@
   <text x="791" y="100" font-family="'JetBrains Mono', monospace" font-size="8" fill="#7dffbb" text-anchor="middle" opacity="0.6">or ✗ Wrong Ans</text>
   <text x="791" y="112" font-family="'JetBrains Mono', monospace" font-size="8" fill="#7dffbb" text-anchor="middle" opacity="0.6">or ✗ TLE</text>
 
+<<<<<<< HEAD
   <text x="430" y="148" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5dcc88" text-anchor="middle" opacity="0.4">No server env exposed · Concurrent-safe unique filenames · Auto-cleanup after every run</text>
+=======
+<text x="430" y="148" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5dcc88" text-anchor="middle" opacity="0.4">No server env exposed · Concurrent-safe unique filenames · Auto-cleanup after every run</text>
+>>>>>>> df5cc14 (readme)
 </svg>
 
 </div>
@@ -538,6 +596,7 @@ CodeScale/
 
 ## ✦ API Reference
 
+<<<<<<< HEAD
 | Method | Route | Auth | What it does |
 |:---:|:---|:---:|:---|
 | `POST` | `/api/v1/auth/signup` | — | Register new user |
@@ -553,6 +612,23 @@ CodeScale/
 | `POST` | `/api/v1/chatbot/ask` | ✓ | AI assistant |
 | `POST` | `/api/v1/admin/problem` | 🛡 Admin | Add new problem |
 | `DELETE` | `/api/v1/admin/problem/:id` | 🛡 Admin | Remove problem |
+=======
+|  Method  | Route                         |   Auth   | What it does             |
+| :------: | :---------------------------- | :------: | :----------------------- |
+|  `POST`  | `/api/v1/auth/signup`         |    —     | Register new user        |
+|  `POST`  | `/api/v1/auth/signin`         |    —     | Login → JWT cookie       |
+|  `POST`  | `/api/v1/auth/signout`        |    ✓     | Clear session            |
+|  `GET`   | `/api/v1/problems/`           |    ✓     | All problems list        |
+|  `GET`   | `/api/v1/problems/:id`        |    ✓     | Problem + test cases     |
+|  `POST`  | `/api/v1/submission/run`      |    ✓     | Run vs sample cases      |
+|  `POST`  | `/api/v1/submission/submit`   |    ✓     | Full judge               |
+|  `GET`   | `/api/v1/user/history`        |    ✓     | Submission history       |
+|  `PUT`   | `/api/v1/user/update`         |    ✓     | Update account           |
+|  `GET`   | `/api/v1/analytics/dashboard` |    ✓     | Stats + streak + heatmap |
+|  `POST`  | `/api/v1/chatbot/ask`         |    ✓     | AI assistant             |
+|  `POST`  | `/api/v1/admin/problem`       | 🛡 Admin | Add new problem          |
+| `DELETE` | `/api/v1/admin/problem/:id`   | 🛡 Admin | Remove problem           |
+>>>>>>> df5cc14 (readme)
 
 ---
 
@@ -593,7 +669,11 @@ CodeScale/
   <rect x="323" y="72" width="48" height="20" rx="10" fill="#f7df1e10" stroke="#f7df1e20" stroke-width="0.5"/>
   <text x="347" y="85" font-family="'JetBrains Mono', monospace" font-size="8" fill="#f7df1e" text-anchor="middle">Axios</text>
 
+<<<<<<< HEAD
   <text x="30" y="116" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5dcc88" opacity="0.4">Deployed → Vercel CDN + Edge Network</text>
+=======
+<text x="30" y="116" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5dcc88" opacity="0.4">Deployed → Vercel CDN + Edge Network</text>
+>>>>>>> df5cc14 (readme)
 
   <!-- BACKEND -->
   <rect x="437" y="20" width="406" height="116" rx="8" fill="#0a1220" stroke="#00d4ff22" stroke-width="1"/>
@@ -619,7 +699,11 @@ CodeScale/
   <rect x="699" y="72" width="96" height="20" rx="10" fill="#00ff8810" stroke="#00ff8822" stroke-width="0.5"/>
   <text x="747" y="85" font-family="'JetBrains Mono', monospace" font-size="8" fill="#7dffbb" text-anchor="middle">child_process</text>
 
+<<<<<<< HEAD
   <text x="449" y="116" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5daacc" opacity="0.4">Deployed → Render Web Service</text>
+=======
+<text x="449" y="116" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5daacc" opacity="0.4">Deployed → Render Web Service</text>
+>>>>>>> df5cc14 (readme)
 </svg>
 
 </div>
