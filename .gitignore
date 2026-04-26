@@ -49,8 +49,6 @@ cookies.txt
 uploads/
 public/uploads/
 
-# 🐳 DOCKER (if you add later)
-docker-data/
 
 # 📊 DATABASE (local dumps)
 *.dump
