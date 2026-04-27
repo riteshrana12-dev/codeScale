@@ -19,7 +19,6 @@ const RunCodeButton = () => {
     setCanSubmit(true);
     try {
       const response = await api.post(`/submission/${slug}/run-code`, solution);
-      console.log(response.data);
       setSubmissionResult(response.data);
     } catch (err) {
       setSubmissionResult({ status: "error", message: err.message });
