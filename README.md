@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 <div align="center">
 
@@ -300,5 +300,3 @@ This project is licensed under the **ISC License** — see the [LICENSE](./LICEN
 ⭐ **If you found this project helpful, consider giving it a star!** ⭐
 
 # </div>
-
-> > > > > > > 025f91c (docs: update README)
