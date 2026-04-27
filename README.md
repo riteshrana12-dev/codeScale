@@ -22,21 +22,13 @@
 
 ## 📸 Screenshots
 
-> **Place your screenshots in a folder named `assets/` at the root of your repo**, then update the paths below. For example, drag all the provided screenshots into `assets/screenshots/` and commit them.
-
 |              Home Page               |                Problems List                 |               Code Editor                |
 | :----------------------------------: | :------------------------------------------: | :--------------------------------------: |
-| ![Home](assets/screenshots/home.png) | ![Problems](assets/screenshots/problems.png) | ![Editor](assets/screenshots/editor.png) |
+| ![Home](codeScale/assets/screenshots/home.png) | ![Problems](assets/screenshots/problems.png) | ![Editor](assets/screenshots/editor.png) |
 
 |                   Dashboard                    |                    Submissions                     |                  Account                   |
 | :--------------------------------------------: | :------------------------------------------------: | :----------------------------------------: |
 | ![Dashboard](assets/screenshots/dashboard.png) | ![Submissions](assets/screenshots/submissions.png) | ![Account](assets/screenshots/account.png) |
-
-> 💡 **How to add your screenshots:**
->
-> 1. Create the folder: `mkdir -p assets/screenshots`
-> 2. Copy your images: rename your provided screenshots as shown above (`home.png`, `problems.png`, `editor.png`, `dashboard.png`, `submissions.png`, `account.png`, `dry-run.png`)
-> 3. `git add assets/ && git commit -m "feat: add screenshots" && git push`
 
 ---
 
