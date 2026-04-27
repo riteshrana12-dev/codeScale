@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 <div align="center">
 
 <!-- ANIMATED HEADER -->
@@ -22,15 +24,16 @@
 
 > **Place your screenshots in a folder named `assets/` at the root of your repo**, then update the paths below. For example, drag all the provided screenshots into `assets/screenshots/` and commit them.
 
-| Home Page | Problems List | Code Editor |
-|:---------:|:------------:|:-----------:|
+|              Home Page               |                Problems List                 |               Code Editor                |
+| :----------------------------------: | :------------------------------------------: | :--------------------------------------: |
 | ![Home](assets/screenshots/home.png) | ![Problems](assets/screenshots/problems.png) | ![Editor](assets/screenshots/editor.png) |
 
-| Dashboard | Submissions | Account |
-|:---------:|:-----------:|:-------:|
+|                   Dashboard                    |                    Submissions                     |                  Account                   |
+| :--------------------------------------------: | :------------------------------------------------: | :----------------------------------------: |
 | ![Dashboard](assets/screenshots/dashboard.png) | ![Submissions](assets/screenshots/submissions.png) | ![Account](assets/screenshots/account.png) |
 
 > 💡 **How to add your screenshots:**
+>
 > 1. Create the folder: `mkdir -p assets/screenshots`
 > 2. Copy your images: rename your provided screenshots as shown above (`home.png`, `problems.png`, `editor.png`, `dashboard.png`, `submissions.png`, `account.png`, `dry-run.png`)
 > 3. `git add assets/ && git commit -m "feat: add screenshots" && git push`
@@ -49,18 +52,18 @@ The platform currently supports **JavaScript** and **Python**, with **30 curated
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=2000&color=00FF88&width=500&lines=Everything+you+need+to+level+up+your+DSA+game" alt="features" />
 
-| Feature | Description |
-|---|---|
-| 🧩 **Problem Library** | 30 problems (10 Easy / 10 Medium / 10 Hard) with topic filters like Arrays, Trees, DP, Graphs and more |
-| ⚡ **Live Code Execution** | Write JavaScript or Python in a Monaco editor and run code with real test cases, getting instant verdicts |
+| Feature                     | Description                                                                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 🧩 **Problem Library**      | 30 problems (10 Easy / 10 Medium / 10 Hard) with topic filters like Arrays, Trees, DP, Graphs and more                        |
+| ⚡ **Live Code Execution**  | Write JavaScript or Python in a Monaco editor and run code with real test cases, getting instant verdicts                     |
 | 🤖 **AI Chatbot Assistant** | Built-in DSA-only AI (powered by Groq) that guides you on approach, complexity, and strategy — without giving away the answer |
-| 🖊️ **Dry Run Canvas** | A freehand drawing canvas to sketch arrays, trees, or graphs before writing a single line of code |
-| 📊 **User Dashboard** | Points, streaks, activity heatmap, submission breakdown, and a leaderboard — all in one place |
-| 📜 **Submission History** | Full history of every accepted/rejected submission with source code review |
-| 🔐 **Auth System** | JWT-based authentication with secure cookie storage, bcrypt password hashing, and Zod validation |
-| 👤 **Account Management** | Update name, email, password, and public bio from your account settings page |
-| 🛡️ **Admin Panel** | Protected admin routes to manage problems and platform analytics |
-| 🏆 **Leaderboard** | Global rankings by total points earned across all accepted problems |
+| 🖊️ **Dry Run Canvas**       | A freehand drawing canvas to sketch arrays, trees, or graphs before writing a single line of code                             |
+| 📊 **User Dashboard**       | Points, streaks, activity heatmap, submission breakdown, and a leaderboard — all in one place                                 |
+| 📜 **Submission History**   | Full history of every accepted/rejected submission with source code review                                                    |
+| 🔐 **Auth System**          | JWT-based authentication with secure cookie storage, bcrypt password hashing, and Zod validation                              |
+| 👤 **Account Management**   | Update name, email, password, and public bio from your account settings page                                                  |
+| 🛡️ **Admin Panel**          | Protected admin routes to manage problems and platform analytics                                                              |
+| 🏆 **Leaderboard**          | Global rankings by total points earned across all accepted problems                                                           |
 
 ---
 
@@ -188,35 +191,38 @@ CodeScale/
 ## 🛠️ Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|---|---|
-| ![React](https://img.shields.io/badge/React_19-20232A?style=flat&logo=react&logoColor=61DAFB) | UI framework |
-| ![Vite](https://img.shields.io/badge/Vite_8-646CFF?style=flat&logo=vite&logoColor=white) | Build tool & dev server |
-| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS_4-38B2AC?style=flat&logo=tailwind-css&logoColor=white) | Utility-first styling |
-| ![React Router](https://img.shields.io/badge/React_Router_7-CA4245?style=flat&logo=react-router&logoColor=white) | Client-side routing |
-| ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white) | Animations & transitions |
+
+| Technology                                                                                                             | Purpose                     |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| ![React](https://img.shields.io/badge/React_19-20232A?style=flat&logo=react&logoColor=61DAFB)                          | UI framework                |
+| ![Vite](https://img.shields.io/badge/Vite_8-646CFF?style=flat&logo=vite&logoColor=white)                               | Build tool & dev server     |
+| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS_4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)         | Utility-first styling       |
+| ![React Router](https://img.shields.io/badge/React_Router_7-CA4245?style=flat&logo=react-router&logoColor=white)       | Client-side routing         |
+| ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white)             | Animations & transitions    |
 | ![Monaco Editor](https://img.shields.io/badge/Monaco_Editor-007ACC?style=flat&logo=visual-studio-code&logoColor=white) | VS Code-quality code editor |
-| ![React Sketch Canvas](https://img.shields.io/badge/Sketch_Canvas-FF6B6B?style=flat) | Dry run drawing canvas |
-| ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white) | HTTP client |
+| ![React Sketch Canvas](https://img.shields.io/badge/Sketch_Canvas-FF6B6B?style=flat)                                   | Dry run drawing canvas      |
+| ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)                              | HTTP client                 |
 
 ### Backend
-| Technology | Purpose |
-|---|---|
-| ![Express](https://img.shields.io/badge/Express_5-000000?style=flat&logo=express&logoColor=white) | REST API framework |
-| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white) | Server runtime |
-| ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white) | Database |
-| ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongoose&logoColor=white) | ODM for MongoDB |
-| ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white) | Authentication tokens |
-| ![Bcrypt](https://img.shields.io/badge/Bcrypt-6B46C1?style=flat) | Password hashing |
-| ![Zod](https://img.shields.io/badge/Zod-3068B7?style=flat) | Input validation |
-| ![Groq SDK](https://img.shields.io/badge/Groq_AI-FF4500?style=flat) | AI chatbot (DSA assistant) |
-| ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=nodemon&logoColor=white) | Dev auto-restart |
+
+| Technology                                                                                         | Purpose                    |
+| -------------------------------------------------------------------------------------------------- | -------------------------- |
+| ![Express](https://img.shields.io/badge/Express_5-000000?style=flat&logo=express&logoColor=white)  | REST API framework         |
+| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)  | Server runtime             |
+| ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white)    | Database                   |
+| ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongoose&logoColor=white) | ODM for MongoDB            |
+| ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)      | Authentication tokens      |
+| ![Bcrypt](https://img.shields.io/badge/Bcrypt-6B46C1?style=flat)                                   | Password hashing           |
+| ![Zod](https://img.shields.io/badge/Zod-3068B7?style=flat)                                         | Input validation           |
+| ![Groq SDK](https://img.shields.io/badge/Groq_AI-FF4500?style=flat)                                | AI chatbot (DSA assistant) |
+| ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=nodemon&logoColor=white)    | Dev auto-restart           |
 
 ### Deployment
-| Service | Role |
-|---|---|
+
+| Service                                                                                      | Role             |
+| -------------------------------------------------------------------------------------------- | ---------------- |
 | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white) | Frontend hosting |
-| ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat&logo=render&logoColor=white) | Backend hosting |
+| ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat&logo=render&logoColor=white) | Backend hosting  |
 
 ---
 
@@ -237,17 +243,20 @@ CodeScale/
 ## 🏁 Getting Started Locally
 
 ### Prerequisites
+
 - Node.js v18+
 - MongoDB (local or Atlas)
 - A [Groq API key](https://console.groq.com)
 
 ### 1. Clone the repo
+
 ```bash
 git clone https://github.com/your-username/CodeScale.git
 cd CodeScale
 ```
 
 ### 2. Setup Backend
+
 ```bash
 cd backend
 cp config/.env.example config/.env
@@ -257,6 +266,7 @@ npm run dev
 ```
 
 ### 3. Setup Frontend
+
 ```bash
 cd ../frontend
 # Create .env with your backend URL
@@ -266,6 +276,7 @@ npm run dev
 ```
 
 ### 4. Open in browser
+
 ```
 Frontend → http://localhost:5173
 Backend  → http://localhost:3000
@@ -275,10 +286,10 @@ Backend  → http://localhost:3000
 
 ## 🌐 Live Deployment
 
-| | URL |
-|---|---|
-| 🖥️ **Frontend** | [https://code-scale.vercel.app](https://code-scale.vercel.app) |
-| ⚙️ **Backend API** | Hosted on Render (connected internally) |
+|                    | URL                                                            |
+| ------------------ | -------------------------------------------------------------- |
+| 🖥️ **Frontend**    | [https://code-scale.vercel.app](https://code-scale.vercel.app) |
+| ⚙️ **Backend API** | Hosted on Render (connected internally)                        |
 
 ---
 
@@ -296,4 +307,6 @@ This project is licensed under the **ISC License** — see the [LICENSE](./LICEN
 
 ⭐ **If you found this project helpful, consider giving it a star!** ⭐
 
-</div>
+# </div>
+
+> > > > > > > 025f91c (docs: update README)
