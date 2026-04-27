@@ -137,7 +137,6 @@ const SignUp = () => {
       });
       setValidationError(feildError);
     }
-    console.log(validationError);
     try {
       const response = await executeSignUp();
       setMessage(response?.success);
