@@ -24,7 +24,7 @@
 
 |              Home Page               |                Problems List                 |               Code Editor                |
 | :----------------------------------: | :------------------------------------------: | :--------------------------------------: |
-| ![Home](codeScale/assets/screenshots/home.png) | ![Problems](assets/screenshots/problems.png) | ![Editor](assets/screenshots/editor.png) |
+| ![Home](/assets/screenshots/home.png) | ![Problems](assets/screenshots/problems.png) | ![Editor](assets/screenshots/editor.png) |
 
 |                   Dashboard                    |                    Submissions                     |                  Account                   |
 | :--------------------------------------------: | :------------------------------------------------: | :----------------------------------------: |
