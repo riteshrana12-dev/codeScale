@@ -402,7 +402,7 @@ const MyAccount = () => {
     } catch (err) {
       console.error(err);
     } finally {
-      navigate("/"); // redirect to login/home
+      navigate("/"); // redirect to home
     }
   }
 
