@@ -398,13 +398,11 @@ const MyAccount = () => {
 
   async function handleSignOut() {
     try {
-      await api.post("/auth/logout");
-    } catch (_) {
+      await api.post("/auth/logout"); // backend clears cookie
+    } catch (err) {
+      console.error(err);
     } finally {
-      const expiry = "expires=" + new Date(0).toUTCString();
-      document.cookie = "userToken=;path=/;" + expiry;
-      document.cookie = "userToken=;path=/;domain=localhost;" + expiry;
-      navigate("/");
+      navigate("/"); // redirect to login/home
     }
   }
 
