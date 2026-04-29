@@ -29,6 +29,12 @@ const problemsList = async (req, res) => {
         userId = null; // Treat as guest if token is invalid
       }
     }
+
+    console.log(
+      userId
+        ? `Logged in user ID: ${userId}`
+        : "No user logged in, treating as guest.",
+    );
     // 2. Handle Guests
     if (!userId) {
       const guestList = problems.map((p) => ({ ...p._doc, isSolved: false }));
@@ -39,12 +45,15 @@ const problemsList = async (req, res) => {
     const user = await userModel.findById(userId).select("solvedProblems");
     const solvedIds = user?.solvedProblems || [];
 
+    console.log("SolvedProblems in DB:", user.solvedProblems);
+
     // 5. Compare IDs (convert to string for accurate matching)
     // pro conatin lot of data coming from db which contain metadata inside _doc object it contain the original and usefull data from problem extracting the _doc object
     const finalizedList = problems.map((prob) => ({
       ...prob._doc,
       isSolved: solvedIds.some((id) => id.toString() === prob._id.toString()),
     }));
+    console.log("Finalized List with isSolved:", finalizedList);
 
     return res.status(200).json({
       success: true,
