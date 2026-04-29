@@ -24,8 +24,7 @@ const problemsList = async (req, res) => {
           req.cookies.userToken,
           process.env.JWT_SECRET_USER,
         );
-        console.log("decoded:", decoded);
-        userId = decoded.userId;
+        userId = decoded.id;
       } catch (err) {
         console.error("JWT verification failed:", err);
         userId = null; // Treat as guest if token is invalid
