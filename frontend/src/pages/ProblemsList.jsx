@@ -309,10 +309,10 @@ const ProblemsList = () => {
                           </motion.h3>
                           {/* Checking if the problem is solved and showing the "Solved" badge */}
                           {p.isSolved && (
-                            <div className="inline-flex items-center gap-1 mb-2 text-[10px] font-bold uppercase tracking-widest text-[#facc15]">
+                            <div className="inline-flex items-center gap-1 mb-2 text-[7px] font-bold uppercase tracking-widest text-[#facc15]">
                               <svg
-                                width="14"
-                                height="14"
+                                width="11"
+                                height="11"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
