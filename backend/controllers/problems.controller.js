@@ -17,10 +17,10 @@ const problemsList = async (req, res) => {
       .select("-testCases -solutions");
 
     let userId;
-    if (req.cookies?.token) {
+    if (req.cookies?.userToken) {
       try {
         const decoded = jwt.verify(
-          req.cookies.token,
+          req.cookies.userToken,
           process.env.JWT_SECRET_USER,
         );
         userId = decoded.userId;
