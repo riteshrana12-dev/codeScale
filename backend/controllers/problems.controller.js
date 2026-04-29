@@ -2,6 +2,7 @@ import problemsModel from "../models/problems.model.js";
 import dotenv from "dotenv";
 import userModel from "../models/user.model.js";
 dotenv.config({ path: "./config/.env" });
+import jwt from "jsonwebtoken";
 
 const problemsList = async (req, res) => {
   try {
