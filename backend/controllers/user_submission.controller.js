@@ -34,6 +34,11 @@ const submitCode = async (req, res) => {
       submissionStatus: output.allPassed ? "accepted" : "error",
       testCaseResults: output.results,
     });
+
+    await userModel.findByIdAndUpdate(req.user_id, {
+      $inc: { "summary.totalSubmissions": 1 },
+    });
+
     if (output.allPassed) {
       const user = await userModel.findById(req.user_id);
       if (!user) {
@@ -43,16 +48,16 @@ const submitCode = async (req, res) => {
       }
       await updateStreakAndStats(user, problem.difficulty, problem.points);
 
+      await userModel.findByIdAndUpdate(
+        req.user_id,
+        {
+          $addToSet: { solvedProblems: problem._id },
+        },
+        { new: true },
+      );
+
       return res.status(200).json({ success: true, submission });
     }
-    await userModel.findByIdAndUpdate(
-      req.user_id,
-      {
-        $inc: { "summary.totalSubmissions": 1 },
-        $addToSet: { solvedProblems: problem._id },
-      },
-      { new: true },
-    );
 
     return res
       .status(200)
