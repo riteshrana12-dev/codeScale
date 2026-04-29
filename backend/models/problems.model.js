@@ -57,5 +57,5 @@ problemsSchema.pre("save", function (next) {
   next();
 });
 
-const problemsModel = model("Question", problemsSchema);
+const problemsModel = model("question", problemsSchema);
 export default problemsModel;
