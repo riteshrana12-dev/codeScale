@@ -12,10 +12,23 @@ const problemsList = async (req, res) => {
 
     if (tags) filter.tags = { $all: tags.split(",") };
 
-    const problems = await problemsModel.find(filter);
+    const problems = await problemsModel
+      .find(filter)
+      .select("-testCases -solutions");
 
-    const userId = req.user_id;
-
+    let userId;
+    if (req.cookies?.token) {
+      try {
+        const decoded = jwt.verify(
+          req.cookies.token,
+          process.env.JWT_SECRET_USER,
+        );
+        userId = decoded.userId;
+      } catch (err) {
+        console.error("JWT verification failed:", err);
+        userId = null; // Treat as guest if token is invalid
+      }
+    }
     // 2. Handle Guests
     if (!userId) {
       const guestList = problems.map((p) => ({ ...p._doc, isSolved: false }));
