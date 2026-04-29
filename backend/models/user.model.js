@@ -22,7 +22,7 @@ const userSchema = new Schema({
     website: { type: String },
   },
 
-  solvedProblems: [{ type: Schema.Types.ObjectId, ref: "questions" }], // List of solved problem IDs
+  solvedProblems: [{ type: Schema.Types.ObjectId, ref: "question" }], // List of solved problem IDs
 
   summary: {
     totalSolved: { type: Number, default: 0 },
