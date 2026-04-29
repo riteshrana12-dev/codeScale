@@ -24,6 +24,7 @@ const problemsList = async (req, res) => {
           req.cookies.userToken,
           process.env.JWT_SECRET_USER,
         );
+        console.log("decoded:", decoded);
         userId = decoded.userId;
       } catch (err) {
         console.error("JWT verification failed:", err);
@@ -31,7 +32,6 @@ const problemsList = async (req, res) => {
       }
     }
 
-    console.log("decoded:", decoded);
     // 2. Handle Guests
     if (!userId) {
       const guestList = problems.map((p) => ({ ...p._doc, isSolved: false }));
