@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const submissionSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "profile" },
-  problemId: { type: Schema.Types.ObjectId, ref: "Question" },
+  problemId: { type: Schema.Types.ObjectId, ref: "question" },
   code: { type: String, required: true },
   language: { type: String, required: true },
   submissionStatus: {
