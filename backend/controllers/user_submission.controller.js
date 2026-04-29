@@ -49,7 +49,7 @@ const submitCode = async (req, res) => {
       req.user_id,
       {
         $inc: { "summary.totalSubmissions": 1 },
-        $addToSet: { solvedProblems: problemId },
+        $addToSet: { solvedProblems: problem._id },
       },
       { new: true },
     );
