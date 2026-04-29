@@ -22,6 +22,8 @@ const userSchema = new Schema({
     website: { type: String },
   },
 
+  solvedProblems: [{ type: Schema.Types.ObjectId, ref: "problems" }], // List of solved problem IDs
+
   summary: {
     totalSolved: { type: Number, default: 0 },
     totalSubmissions: { type: Number, default: 0 }, // For accuracy %
