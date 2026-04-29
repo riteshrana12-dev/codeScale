@@ -306,6 +306,24 @@ const ProblemsList = () => {
                         >
                           {p.title}
                         </motion.h3>
+                        {/* Checking if the problem is solved and showing the "Solved" badge */}
+                        {p.isSolved && (
+                          <div className="inline-flex items-center gap-1 mb-2 text-[10px] font-bold uppercase tracking-widest text-[#facc15]">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            Solved
+                          </div>
+                        )}
                         <motion.p
                           layout="position"
                           className={`text-[#a0a0c0] font-normal leading-relaxed ${
