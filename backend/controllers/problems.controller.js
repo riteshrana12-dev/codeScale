@@ -2,7 +2,7 @@ import problemsModel from "../models/problems.model.js";
 import dotenv from "dotenv";
 import userModel from "../models/user.model.js";
 dotenv.config({ path: "./config/.env" });
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 
 const problemsList = async (req, res) => {
   try {
@@ -31,11 +31,7 @@ const problemsList = async (req, res) => {
       }
     }
 
-    console.log(
-      userId
-        ? `Logged in user ID: ${userId}`
-        : "No user logged in, treating as guest.",
-    );
+    console.log("decoded:", decoded);
     // 2. Handle Guests
     if (!userId) {
       const guestList = problems.map((p) => ({ ...p._doc, isSolved: false }));
