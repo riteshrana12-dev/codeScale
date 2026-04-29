@@ -45,9 +45,14 @@ const submitCode = async (req, res) => {
 
       return res.status(200).json({ success: true, submission });
     }
-    await userModel.findByIdAndUpdate(req.user_id, {
-      $inc: { "summary.totalSubmissions": 1 },
-    });
+    await userModel.findByIdAndUpdate(
+      req.user_id,
+      {
+        $inc: { "summary.totalSubmissions": 1 },
+        $addToSet: { solvedProblems: problemId },
+      },
+      { new: true },
+    );
 
     return res
       .status(200)
