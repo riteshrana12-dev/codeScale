@@ -169,7 +169,7 @@ const RecentSubmissions = () => {
   }, []);
 
   // show only latest 4
-  const recent = Array.isArray(history) ? history.slice(0, 4) : [];
+  const recent = Array.isArray(history) ? history.slice(0, 5) : [];
 
   return (
     <motion.div
