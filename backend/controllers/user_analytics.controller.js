@@ -82,6 +82,7 @@ const getActivityHeatMap = async (req, res) => {
 };
 
 const getLeaderboard = async (req, res) => {
+  const userId = req.user_id;
   try {
     const leaderBoard = await userModel
       .find({ role: { $ne: "admin" } })
@@ -97,6 +98,7 @@ const getLeaderboard = async (req, res) => {
     return res.status(200).json({
       message: "LeaderBoard",
       data: leaderBoard,
+      userId: userId,
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
