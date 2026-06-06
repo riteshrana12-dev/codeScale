@@ -95,7 +95,7 @@ const deleteProblem = async (req, res) => {
 const getAllUser = async (req, res) => {
   try {
     const alluser = await userModel.find();
-    if (!alluser) {
+    if (!alluser || alluser.length === 0) {
       return res.status(404).json({
         message: "No user found",
       });
