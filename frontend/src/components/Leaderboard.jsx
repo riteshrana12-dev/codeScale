@@ -41,7 +41,6 @@ function Avatar({ user, size = 36 }) {
       />
     );
   }
-  // generate a consistent hue from name
   const hue = ((user.firstName?.charCodeAt(0) || 65) * 37) % 360;
   return (
     <div
@@ -88,14 +87,18 @@ function RankMedal({ rank }) {
 }
 
 const Leaderboard = () => {
-  const [users, setUsers] = useState([]);
+  // keep full list in allUsers so we can compute real ranks/percentages
+  const [allUsers, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
     async function fetch() {
       try {
         const res = await api.get("/analytics/leaderboard");
-        setUsers(res.data.data);
+        // API returns current user id in res.data.userId and full list in res.data.data
+        setCurrentUserId(res.data.userId);
+        setAllUsers(res.data.data || []);
       } catch (err) {
         console.log(err);
       } finally {
@@ -105,7 +108,17 @@ const Leaderboard = () => {
     fetch();
   }, []);
 
-  const maxPoints = users.length > 0 ? users[0]?.summary?.totalPoints || 1 : 1;
+  // compute top three and current user (real rank from allUsers)
+  const topThree = allUsers.slice(0, 3);
+  const currentUserFull = allUsers.find((u) => u._id === currentUserId) || null;
+  const currentUserRank =
+    currentUserFull !== null
+      ? allUsers.findIndex((u) => u._id === currentUserId) + 1
+      : null;
+
+  // maxPoints should be based on the real top user from allUsers
+  const maxPoints =
+    allUsers.length > 0 ? allUsers[0]?.summary?.totalPoints || 1 : 1;
 
   if (loading) {
     return (
@@ -164,17 +177,16 @@ const Leaderboard = () => {
             </svg>
           </div>
           <span className="font-mono text-s text-[#656581]">
-            Top {users.length}
+            Top {topThree.length}
           </span>
         </div>
       </div>
 
       {/* ── Top 3 podium ── */}
-      {users.length >= 3 && (
+      {topThree.length >= 3 && (
         <div className="px-6 py-5 border-b border-white/5">
           <div className="flex items-end justify-center gap-3">
-            {/* 2nd place */}
-            {[users[1], users[0], users[2]].map((user, podiumIdx) => {
+            {[topThree[1], topThree[0], topThree[2]].map((user, podiumIdx) => {
               const rank = podiumIdx === 0 ? 2 : podiumIdx === 1 ? 1 : 3;
               const cfg = RANK_CONFIG[rank];
               const height = rank === 1 ? 88 : rank === 2 ? 68 : 56;
@@ -188,7 +200,6 @@ const Leaderboard = () => {
                   className="flex flex-col items-center gap-2 flex-1"
                   style={{ maxWidth: 120 }}
                 >
-                  {/* Crown for 1st */}
                   {rank === 1 && (
                     <motion.div
                       animate={{ y: [0, -3, 0] }}
@@ -221,7 +232,6 @@ const Leaderboard = () => {
                     {pts} pts
                   </p>
 
-                  {/* Podium block */}
                   <div
                     className="w-full rounded-t-lg flex items-center justify-center"
                     style={{
@@ -244,53 +254,57 @@ const Leaderboard = () => {
         </div>
       )}
 
-      {/* ── Ranked list (4th onwards + all if < 3) ── */}
+      {/* ── Ranked list: only show current user if not in top 3 ── */}
       <div>
-        {users.slice(3).map((user, i) => {
-          const rank = i + 4;
-          const pts = user?.summary?.totalPoints || 0;
-          const pct = maxPoints > 0 ? (pts / maxPoints) * 100 : 0;
+        {currentUserFull &&
+        ![...topThree].some((u) => u._id === currentUserFull._id)
+          ? (() => {
+              const user = currentUserFull;
+              const rank = currentUserRank || usersRankFallback(user, allUsers);
+              const pts = user?.summary?.totalPoints || 0;
+              const pct = maxPoints > 0 ? (pts / maxPoints) * 100 : 0;
+              return (
+                <motion.div
+                  key={user._id}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.35, delay: 0.05 }}
+                  className="flex items-center gap-4 px-6 py-3.5 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-150 group"
+                >
+                  <RankMedal rank={rank} />
+                  <Avatar user={user} size={34} />
 
-          return (
-            <motion.div
-              key={user._id}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35, delay: 0.05 + i * 0.04 }}
-              className="flex items-center gap-4 px-6 py-3.5 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-150 group"
-            >
-              <RankMedal rank={rank} />
-              <Avatar user={user} size={34} />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-mono text-sm text-[#9999b0] group-hover:text-white transition-colors truncate">
+                      {user.firstName} {user.lastName}
+                    </p>
+                    <div className="mt-1.5 h-1 bg-[#1a1a2e] rounded-full overflow-hidden w-full">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${pct}%` }}
+                        transition={{
+                          duration: 0.7,
+                          delay: 0.3,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="h-full rounded-full bg-[#00ff9d]/60"
+                        style={{ minWidth: pts > 0 ? 4 : 0 }}
+                      />
+                    </div>
+                  </div>
 
-              <div className="flex-1 min-w-0">
-                <p className="font-mono text-sm text-[#9999b0] group-hover:text-white transition-colors truncate">
-                  {user.firstName} {user.lastName}
-                </p>
-                {/* Points bar */}
-                <div className="mt-1.5 h-1 bg-[#1a1a2e] rounded-full overflow-hidden w-full">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${pct}%` }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.3 + i * 0.04,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="h-full rounded-full bg-[#00ff9d]/60"
-                    style={{ minWidth: pts > 0 ? 4 : 0 }}
-                  />
-                </div>
-              </div>
+                  <div className="text-right flex-shrink-0">
+                    <p className="font-mono text-sm font-black text-white">
+                      {pts}
+                    </p>
+                    <p className="font-mono text-[9px] text-[#444460]">pts</p>
+                  </div>
+                </motion.div>
+              );
+            })()
+          : null}
 
-              <div className="text-right flex-shrink-0">
-                <p className="font-mono text-sm font-black text-white">{pts}</p>
-                <p className="font-mono text-[9px] text-[#444460]">pts</p>
-              </div>
-            </motion.div>
-          );
-        })}
-
-        {users.length === 0 && (
+        {allUsers.length === 0 && (
           <div className="flex flex-col items-center justify-center py-14 gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
               <svg
@@ -314,5 +328,11 @@ const Leaderboard = () => {
     </motion.div>
   );
 };
+
+// helper function for not in top 3 and only current user ranking is visible and top three not other's user
+function usersRankFallback(user, allUsers) {
+  const idx = allUsers.findIndex((u) => u._id === user._id);
+  return idx >= 0 ? idx + 1 : 0;
+}
 
 export default Leaderboard;
