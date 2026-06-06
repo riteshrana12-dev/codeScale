@@ -1,5 +1,5 @@
 import problemsModel from "../models/problems.model.js";
-
+import userModel from "../models/user.model.js";
 const getAllproblems = async (req, res) => {
   try {
     const allproblems = await problemsModel.find().sort({ createdAt: -1 });
@@ -76,7 +76,7 @@ const updateProblem = async (req, res) => {
 };
 
 // 3. DELETE: Remove a problem completely
-export const deleteProblem = async (req, res) => {
+const deleteProblem = async (req, res) => {
   try {
     const { id } = req.params;
     const deleted = await problemsModel.findByIdAndDelete(id);
@@ -88,8 +88,33 @@ export const deleteProblem = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Problem deleted from platform." });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 };
 
-export default { getAllproblems, addProblem, updateProblem, deleteProblem };
+const getAllUser = async (req, res) => {
+  try {
+    const alluser = await userModel.find();
+    if (!alluser) {
+      return res.status(404).json({
+        message: "No user found",
+      });
+    }
+
+    return res.status(200).json({
+      list: alluser,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+    });
+  }
+};
+
+export default {
+  getAllproblems,
+  getAllUser,
+  addProblem,
+  updateProblem,
+  deleteProblem,
+};
