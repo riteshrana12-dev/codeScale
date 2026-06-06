@@ -12,6 +12,13 @@ adminRouter.get(
   authMiddleware(process.env.JWT_SECRET_USER),
   adminController.getAllproblems,
 );
+
+adminRouter.get(
+  "/all-user",
+  authMiddleware(process.env.JWT_SECRET_USER),
+  adminController.getAllUser,
+);
+
 adminRouter.post(
   "/add-problem",
   authMiddleware(process.env.JWT_SECRET_USER),
